@@ -17,10 +17,47 @@ namespace iCatalogSite.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult Login()
         {
-            
+            return View();
+        }
+
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LogOn(UserAccountModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.validateUser())
+                {
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else if (model.isGeneralAdmin)
+                    {
+                        TempData.Add("UserModel", model);
+                        return RedirectToAction("IndexBackEnd", "BackEnd");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or password is incorrect.");
+                }
+            }
             return View(model);
         }
     }

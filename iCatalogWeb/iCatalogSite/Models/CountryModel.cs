@@ -5,7 +5,9 @@ using System.Web;
 
 namespace iCatalogSite.Models
 {
-    public class LogOnModel
+    public class CountryModel
     {
+        public int IdCountry { get; set; }
+        public string CountryName { get; set; }
     }
 }

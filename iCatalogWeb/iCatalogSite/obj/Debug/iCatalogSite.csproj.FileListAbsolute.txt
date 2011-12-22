@@ -1,0 +1,6 @@
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\bin\iCatalogSite.dll
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\bin\iCatalogSite.pdb
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\obj\Debug\iCatalogSite.dll
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\obj\Debug\iCatalogSite.pdb
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\bin\MvcContrib.dll

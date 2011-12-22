@@ -1,0 +1,6 @@
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogData\bin\Debug\iCatalogData.dll.config
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogData\bin\Debug\iCatalogData.dll
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogData\bin\Debug\iCatalogData.pdb
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogData\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogData\obj\Debug\iCatalogData.dll
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogData\obj\Debug\iCatalogData.pdb
