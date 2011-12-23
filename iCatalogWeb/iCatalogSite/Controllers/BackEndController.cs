@@ -25,6 +25,16 @@ namespace iCatalogSite.Controllers
             return View();
         }
 
+        public ActionResult EditCountry(int id)
+        {
+            ViewData["Title"] = "New Country";
+            if (id > 0)
+            {
+                ViewData["Title"] = "Edit Country";
+            }
+            return View();
+        }
+
         private void GetAllCountries()
         {
             List<CountryModel> lst = new List<CountryModel>();

@@ -410,6 +410,7 @@
     <Content Include="media\unit_testing\tests_onhold\6_delayed_rendering\_zero_config.js" />
     <Content Include="media\unit_testing\unit_test.js" />
     <Content Include="Views\BackEnd\CountriesPage.aspx" />
+    <Content Include="Views\BackEnd\EditCountry.aspx" />
     <Content Include="Views\BackEnd\IndexBackEnd.aspx" />
     <Content Include="Views\Home\ForgotPassword.aspx" />
     <Content Include="Views\Home\Index.aspx" />
