@@ -9,3 +9,7 @@ C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogSite.pdb
 C:\Works\iCatalogWeb\iCatalogSite\obj\Debug\ResolveAssemblyReference.cache
 C:\Works\iCatalogWeb\iCatalogSite\obj\Debug\iCatalogSite.dll
 C:\Works\iCatalogWeb\iCatalogSite\obj\Debug\iCatalogSite.pdb
+C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogBB.dll
+C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogData.dll
+C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogBB.pdb
+C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogData.pdb

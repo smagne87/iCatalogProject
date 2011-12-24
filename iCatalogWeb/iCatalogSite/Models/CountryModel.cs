@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using iCatalogBB;
 
 namespace iCatalogSite.Models
 {
@@ -9,5 +10,15 @@ namespace iCatalogSite.Models
     {
         public int IdCountry { get; set; }
         public string CountryName { get; set; }
+        private BBCountries _countriesContext;
+
+        public CountryModel()
+        {
+            _countriesContext = new BBCountries();
+        }
+
+        public void SaveCountry(int idCountry, string countryName)
+        {
+        }
     }
 }
