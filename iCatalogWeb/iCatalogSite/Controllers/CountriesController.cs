@@ -25,9 +25,24 @@ namespace iCatalogSite.Controllers
         [HttpPost]
         public ActionResult SaveCountry(CountryModel model)
         {
-            string message = "volvio";
+            string message = string.Empty;
+            try
+            {
+                model.SaveCountry();
 
+                message = "The Country Was Saved!";
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
             return Json(new { Message = message });
+        }
+
+        public ActionResult RefreshGridData()
+        {
+            GetAllCountries();
+            return PartialView("CountriesPage", (List<iCatalogData.Country>)ViewData["CountriesList"]);
         }
 
         public ActionResult CountriesPage()
@@ -38,10 +53,13 @@ namespace iCatalogSite.Controllers
 
         private void GetAllCountries()
         {
-            List<CountryModel> lst = new List<CountryModel>();
-            lst.Add(new CountryModel { IdCountry = 1, CountryName = "Argentina" });
-            lst.Add(new CountryModel { IdCountry = 2, CountryName = "Brasil" });
-            lst.Add(new CountryModel { IdCountry = 3, CountryName = "Paraguay" });
+            List<iCatalogData.Country> lst = new List<iCatalogData.Country>();
+            CountryModel cm = new CountryModel();
+            lst = cm.GetAllCountries();
+            //if (lst.Count <= 0)
+            //{
+            //    lst.Add(new iCatalogData.Country() { IdCountry = 0, CountryName = "" });
+            //}
             ViewData["CountriesList"] = lst;
         }
     }

@@ -10,3 +10,5 @@ C:\Works\iCatalogWeb\iCatalogBB\obj\Debug\iCatalogBB.dll
 C:\Works\iCatalogWeb\iCatalogBB\obj\Debug\iCatalogBB.pdb
 C:\Works\iCatalogWeb\iCatalogBB\bin\Debug\iCatalogData.dll
 C:\Works\iCatalogWeb\iCatalogBB\bin\Debug\iCatalogData.pdb
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogBB\bin\Debug\iCatalogData.dll
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogBB\bin\Debug\iCatalogData.pdb

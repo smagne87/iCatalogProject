@@ -50,7 +50,6 @@
         }
 
         function getCountry() {
-            debugger;
             var id = countryhdn.val();
             var name = countrytext.val();
             return (name == "") ? null : { IdCountry: id, CountryName: name };
@@ -81,6 +80,7 @@
                             data: json,
                             contentType: 'application/json; charset=utf-8',
                             success: function (data) {
+                                refreshTable();
                                 // get the result and do some magic with it
                                 var message = data.Message;
                                 $("#message").html(message);
@@ -112,9 +112,28 @@
         $("#create-country")
 			.button()
 			.click(function () {
-			    $("#countryDialog-form").title = "New Country";
+			    $("span.ui-dialog-title").text('New Country');
 			    $("#countryDialog-form").dialog("open");
 			});
+
+        $("#edit-country")
+			    .button()
+			    .click(function () {
+			        $("span.ui-dialog-title").text('Edit Country');
+			        $("#countryDialog-form").dialog("open");
+			    });
+
+        function refreshTable() {
+            $.ajaxSetup({
+                async: false,
+                cache: false
+            });
+            $.get('<%= Url.Action("RefreshGridData", "Countries") %>',
+                function (response) {
+                    debugger;
+                    $(".table-list").replaceWith(response)
+                });
+        }
     });
 </script>
 
@@ -128,13 +147,13 @@
     </ul>
 </header>
 <div id="container">
-<% Html.Grid((List<iCatalogSite.Models.CountryModel>)ViewData["CountriesList"])
+<% Html.Grid((List<iCatalogData.Country>)ViewData["CountriesList"])
        .Columns(column =>
            {
                column.For(co => Html.ActionLink(co.IdCountry.ToString(), "EditCountry", "Countries", new { id = co.IdCountry }, null)).Named("Id Country");
                column.For(co => co.CountryName);
                column.For(co => Html.ActionLink("Delete", "DeleteCountry", "Countries", new { id = co.IdCountry }, null)).Named("Delete");
-           }).Attributes(id => "example").Render();
+           }).Attributes(id => "example", @class => "table-list", style => "width: 100%;").Empty("No countries available").Render();
 %>
 </div>
 

@@ -13,3 +13,7 @@ C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogBB.dll
 C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogData.dll
 C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogBB.pdb
 C:\Works\iCatalogWeb\iCatalogSite\bin\iCatalogData.pdb
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\bin\iCatalogBB.dll
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\bin\iCatalogData.dll
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\bin\iCatalogBB.pdb
+C:\Users\smagne\iCatalogProject\iCatalogWeb\iCatalogSite\bin\iCatalogData.pdb

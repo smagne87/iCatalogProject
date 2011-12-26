@@ -17,8 +17,21 @@ namespace iCatalogSite.Models
             _countriesContext = new BBCountries();
         }
 
-        public void SaveCountry(int idCountry, string countryName)
+        public void SaveCountry()
         {
+            if (IdCountry.Equals(0))
+            {
+                _countriesContext.InsertCountry(CountryName);
+            }
+            else
+            {
+                _countriesContext.UpdateCountry(IdCountry, CountryName);
+            }
+        }
+
+        public List<iCatalogData.Country> GetAllCountries()
+        {
+            return _countriesContext.GetAllCountries();
         }
     }
 }
