@@ -88,5 +88,22 @@ namespace iCatalogBB
                 throw ex;
             }
         }
+
+        public void DeleteCountry(int IdCountry)
+        {
+            try
+            {
+                using (Repository r = new Repository())
+                {
+                    Country c = r.Countries.Where<Country>(co => co.IdCountry.Equals(IdCountry)).SingleOrDefault();
+                    r.Countries.DeleteOnSubmit(c);
+                    r.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

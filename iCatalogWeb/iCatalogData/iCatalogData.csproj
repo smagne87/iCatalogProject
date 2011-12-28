@@ -55,7 +55,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="iCatalogdb.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>iCatalogdb.designer.cs</LastGenOutput>

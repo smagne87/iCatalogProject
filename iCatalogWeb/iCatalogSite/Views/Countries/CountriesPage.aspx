@@ -14,16 +14,73 @@
 </header>
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
-        $('#example').dataTable({
-            "iDisplayLength": 25,
-            "aaSorting": [[1, "asc"]],
-            "aoColumns": [{ "bSortable": true }, { "bSortable": true }, { "bSortable": false }]
-        });
+        var oTable;
+        defineTable();
     });
+
+    function defineTable() {
+        if (typeof oTable == 'undefined') {
+            oTable = $('#example').dataTable({
+                "iDisplayLength": 25,
+                "bRetrieve": true,
+                "bDestroy": true,
+                "aaSorting": [[1, "asc"]],
+                "aoColumns": [{ "bSortable": true }, { "bSortable": true }, { "bSortable": false }, { "bSortable": false}]
+            });
+        }
+        else {
+            oTable.fnClearTable(0);
+            oTable.fnDraw();
+        }
+    }
+
+    function editCountry(id, name) {
+        $("#countryhdn").val(id);
+        $("#countrytext").val(name);
+        $("#countryDialog-form").dialog("open");
+    }
+
+    function confirmDeleteCountry(id) {
+        $("#countryhdntoDelete").val(id);
+        $("#dialog-confirm").dialog('open');
+    }
 
     $(function () {
         // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
         $("#dialog:ui-dialog").dialog("destroy");
+
+        $("#dialog-confirm").dialog({
+            resizable: false,
+            autoOpen: false,
+            height: 180,
+            modal: true,
+            buttons: {
+                "Delete Country": function () {
+                    debugger;
+                    var id = $("#countryhdntoDelete").val();
+                    var json = JSON.stringify({ IdCountry: id });
+
+                    $.ajax({
+                        url: '/Countries/DeleteCountry',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: json,
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            refreshTable();
+                            // get the result and do some magic with it
+                            var message = data.Message;
+                            $("#message").html(message);
+                            $("#dialog-message").dialog("open");
+                        }
+                    });
+                    $("#dialog-confirm").dialog('close');
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
 
         var countrytext = $("#countrytext"),
             countryhdn = $("#countryhdn"),
@@ -57,8 +114,8 @@
 
         $("#countryDialog-form").dialog({
             autoOpen: false,
-            height: 200,
-            width: 250,
+            height: 250,
+            width: 300,
             modal: true,
             buttons: {
                 "Save Country": function () {
@@ -116,29 +173,24 @@
 			    $("#countryDialog-form").dialog("open");
 			});
 
-        $("#edit-country")
-			    .button()
-			    .click(function () {
-			        $("span.ui-dialog-title").text('Edit Country');
-			        $("#countryDialog-form").dialog("open");
-			    });
-
         function refreshTable() {
             $.ajaxSetup({
                 async: false,
-                cache: false
+                cache: false,
+                dataType: "json"
             });
-            $.get('<%= Url.Action("RefreshGridData", "Countries") %>',
+            $.getJSON('<%= Url.Action("CountriesPage", "Countries") %>',
                 function (response) {
-                    debugger;
-                    $(".table-list").replaceWith(response)
+                    oTable.fnClearTable(0);
+                    oTable.fnAddData(response);
+                    oTable.fnDraw();
                 });
         }
     });
 </script>
 
 <style>
-#example { width: 100%; }
+#example { width: 600px; }
 #container { width: 600px; }
 </style>
 <header>
@@ -147,13 +199,17 @@
     </ul>
 </header>
 <div id="container">
-<% Html.Grid((List<iCatalogData.Country>)ViewData["CountriesList"])
+<% Html.Grid((List<iCatalogSite.Models.CountryModel>)ViewData["CountriesList"])
        .Columns(column =>
            {
-               column.For(co => Html.ActionLink(co.IdCountry.ToString(), "EditCountry", "Countries", new { id = co.IdCountry }, null)).Named("Id Country");
+               column.For(co => co.IdCountry).Named("Id Country"); 
                column.For(co => co.CountryName);
-               column.For(co => Html.ActionLink("Delete", "DeleteCountry", "Countries", new { id = co.IdCountry }, null)).Named("Delete");
-           }).Attributes(id => "example", @class => "table-list", style => "width: 100%;").Empty("No countries available").Render();
+               column.For(co => co.IdCountry).Named("Edit").Action(co => { %>  
+                                    <td><img src="../Content/themes/images/icon_edicion.gif" onclick="editCountry('<%= co.IdCountry  %>', '<%= co.CountryName  %>')" /></td> <% }); 
+               column.For(co => co.IdCountry).Named("Delete").Action(co => { %>  
+                                    <td><img src="../Content/themes/images/delete_small.PNG" onclick="confirmDeleteCountry('<%= co.IdCountry  %>')" /></td> <% }); 
+           }).Attributes(id => "example").Empty("No countries available").Render();
+
 %>
 </div>
 
@@ -161,6 +217,7 @@
     <form action="CountriesPage.aspx">
     <fieldset>
         <legend></legend>
+        <p class="validateTips">All form fields are required.</p>
         <input type="hidden" name="countryhdn" id="countryhdn" />
         <div class="editor-label">
             <label for="CountryName" id="lblCountryName">Country Name</label>
@@ -173,5 +230,10 @@
 </div>
 <div id="dialog-message" title="Country Saved">
     <div id="message"></div>
+</div>
+
+<div id="dialog-confirm" title="Delete Country?">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These item will be permanently deleted and cannot be recovered. Are you sure?</p>
+    <input type="hidden" name="countryhdntoDelete" id="countryhdntoDelete" />
 </div>
 </asp:Content>

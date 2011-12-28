@@ -29,9 +29,19 @@ namespace iCatalogSite.Models
             }
         }
 
-        public List<iCatalogData.Country> GetAllCountries()
+        public List<CountryModel> GetAllCountries()
         {
-            return _countriesContext.GetAllCountries();
+            List<CountryModel> lst = new List<CountryModel>();
+            foreach (iCatalogData.Country co in _countriesContext.GetAllCountries())
+            {
+                lst.Add(new CountryModel { IdCountry = co.IdCountry, CountryName = co.CountryName });
+            }
+            return lst;
+        }
+
+        internal void DeleteCountry()
+        {
+            _countriesContext.DeleteCountry(IdCountry);
         }
     }
 }
