@@ -72,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\themes\delete_small.PNG" />
     <Content Include="Content\themes\icon_edicion.gif" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -414,8 +415,8 @@
     <Content Include="media\unit_testing\tests_onhold\6_delayed_rendering\_zero_config.js" />
     <Content Include="media\unit_testing\unit_test.js" />
     <Content Include="Views\Countries\CountriesPage.aspx" />
-    <Content Include="Views\Countries\EditCountry.aspx" />
     <Content Include="Views\BackEnd\IndexBackEnd.aspx" />
+    <Content Include="Views\Countries\CountriesList.ascx" />
     <Content Include="Views\Home\ForgotPassword.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\Login.aspx" />

@@ -45,9 +45,7 @@ namespace iCatalogSite.Controllers
             GetAllCountries();
             if (Request.IsAjaxRequest())
             {
-                List<CountryModel> lst = (List<CountryModel>)ViewData["CountriesList"];
-                var jsonCountries = new JavaScriptSerializer().Serialize(lst);
-                return Json(jsonCountries, JsonRequestBehavior.AllowGet);
+                return PartialView("CountriesList", (List<iCatalogSite.Models.CountryModel>)ViewData["CountriesList"]);
             }
             else
             {
@@ -76,11 +74,8 @@ namespace iCatalogSite.Controllers
         {
             List<CountryModel> lst = new List<CountryModel>();
             CountryModel cm = new CountryModel();
-            lst = cm.GetAllCountries();
-            //if (lst.Count <= 0)
-            //{
-            //    lst.Add(new iCatalogData.Country() { IdCountry = 0, CountryName = "" });
-            //}
+            lst.Add(new CountryModel { IdCountry = 0, CountryName = "" });//This row will be deleted after the datatable is created.
+            lst.AddRange(cm.GetAllCountries());
             ViewData["CountriesList"] = lst;
         }
     }

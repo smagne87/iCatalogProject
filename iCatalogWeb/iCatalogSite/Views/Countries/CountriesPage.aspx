@@ -19,19 +19,15 @@
     });
 
     function defineTable() {
-        if (typeof oTable == 'undefined') {
-            oTable = $('#example').dataTable({
-                "iDisplayLength": 25,
-                "bRetrieve": true,
-                "bDestroy": true,
-                "aaSorting": [[1, "asc"]],
-                "aoColumns": [{ "bSortable": true }, { "bSortable": true }, { "bSortable": false }, { "bSortable": false}]
-            });
-        }
-        else {
-            oTable.fnClearTable(0);
-            oTable.fnDraw();
-        }
+        oTable = $('#example').dataTable({
+            "iDisplayLength": 25,
+            "bRetrieve": true,
+            "bDestroy": true,
+            "aaSorting": [[1, "asc"]],
+            "aoColumns": [{ "bSortable": true }, { "bSortable": true }, { "bSortable": false }, { "bSortable": false}]
+        });
+        oTable.fnDraw(true);
+        oTable.fnDeleteRow(0); //this resolves the error when the grid is empty.
     }
 
     function editCountry(id, name) {
@@ -46,7 +42,6 @@
     }
 
     $(function () {
-        // a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
         $("#dialog:ui-dialog").dialog("destroy");
 
         $("#dialog-confirm").dialog({
@@ -56,7 +51,6 @@
             modal: true,
             buttons: {
                 "Delete Country": function () {
-                    debugger;
                     var id = $("#countryhdntoDelete").val();
                     var json = JSON.stringify({ IdCountry: id });
 
@@ -177,13 +171,11 @@
             $.ajaxSetup({
                 async: false,
                 cache: false,
-                dataType: "json"
+                dataType: "html"
             });
-            $.getJSON('<%= Url.Action("CountriesPage", "Countries") %>',
+            $.get('<%= Url.Action("CountriesPage", "Countries") %>',
                 function (response) {
-                    oTable.fnClearTable(0);
-                    oTable.fnAddData(response);
-                    oTable.fnDraw();
+                    $("#container").replaceWith(response);
                 });
         }
     });
@@ -199,18 +191,7 @@
     </ul>
 </header>
 <div id="container">
-<% Html.Grid((List<iCatalogSite.Models.CountryModel>)ViewData["CountriesList"])
-       .Columns(column =>
-           {
-               column.For(co => co.IdCountry).Named("Id Country"); 
-               column.For(co => co.CountryName);
-               column.For(co => co.IdCountry).Named("Edit").Action(co => { %>  
-                                    <td><img src="../Content/themes/images/icon_edicion.gif" onclick="editCountry('<%= co.IdCountry  %>', '<%= co.CountryName  %>')" /></td> <% }); 
-               column.For(co => co.IdCountry).Named("Delete").Action(co => { %>  
-                                    <td><img src="../Content/themes/images/delete_small.PNG" onclick="confirmDeleteCountry('<%= co.IdCountry  %>')" /></td> <% }); 
-           }).Attributes(id => "example").Empty("No countries available").Render();
-
-%>
+<% Html.RenderPartial("CountriesList"); %>
 </div>
 
 <div id="countryDialog-form" title="Edit Country">
