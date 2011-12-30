@@ -19,7 +19,7 @@
 <body>
 
     <header>
-        <h2>IndexBackEnd</h2>
+        <h2>Administration</h2>
         Welcome! <%= ((iCatalogSite.Models.UserAccountModel)Session["UserModel"]).UserName %>
     </header>
 
@@ -27,7 +27,7 @@
     <aside title="Menu">
     <ul>
         <li><%: Html.ActionLink("Paises", "CountriesPage", "Countries") %></li>
-        <li><%: Html.ActionLink("Provincias", "CitiesPage", "BackEnd") %></li>
+        <li><%: Html.ActionLink("Provincias", "CitiesPage", "Cities") %></li>
         <li><%: Html.ActionLink("Volver", "Index", "Home") %></li>
     </ul>
     </aside>

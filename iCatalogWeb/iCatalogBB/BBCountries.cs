@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Repository = iCatalogData.iCatalogdbDataContext;
-using Country = iCatalogData.Country;
+using RepoCountry = iCatalogData.Country;
 
 namespace iCatalogBB
 {
@@ -15,7 +15,7 @@ namespace iCatalogBB
             {
                 using (Repository r = new Repository())
                 {
-                    Country c = new Country();
+                    RepoCountry c = new RepoCountry();
                     c.CountryName = countryName;
                     r.Countries.InsertOnSubmit(c);
                     r.SubmitChanges();
@@ -33,7 +33,7 @@ namespace iCatalogBB
             {
                 using (Repository r = new Repository())
                 {
-                    Country c = r.Countries.Where<Country>(co => co.IdCountry.Equals(idCountry)).SingleOrDefault();
+                    RepoCountry c = r.Countries.Where<RepoCountry>(co => co.IdCountry.Equals(idCountry)).SingleOrDefault();
                     c.CountryName = countryName;
                     r.SubmitChanges();
                 }
@@ -50,7 +50,12 @@ namespace iCatalogBB
             {
                 using (Repository r = new Repository())
                 {
-                    return r.Countries.ToList();
+                    List<Country> lst = new List<Country>();
+                    foreach (RepoCountry aCountry in r.Countries.ToList())
+                    {
+                        lst.Add(new Country() { IdCountry = aCountry.IdCountry, CountryName = aCountry.CountryName });
+                    }
+                    return lst;
                 }
             }
             catch (Exception ex)
@@ -65,7 +70,14 @@ namespace iCatalogBB
             {
                 using (Repository r = new Repository())
                 {
-                    return r.Countries.Where<Country>(c => c.IdCountry.Equals(id)).SingleOrDefault();
+                    Country co = new Country();
+                    RepoCountry rco = r.Countries.Where<RepoCountry>(c => c.IdCountry.Equals(id)).SingleOrDefault();
+                    if (rco != null)
+                    {
+                        co.CountryName = rco.CountryName;
+                        co.IdCountry = rco.IdCountry;
+                    }
+                    return co;
                 }
             }
             catch (Exception ex)
@@ -74,13 +86,13 @@ namespace iCatalogBB
             }
         }
 
-        public bool CountryExist(string countryName)
+        public bool CountryExist(string countryName, int idCountry)
         {
             try
             {
                 using (Repository r = new Repository())
                 {
-                    return r.Countries.Any(c => c.CountryName.ToLower().Equals(countryName.ToLower()));
+                    return r.Countries.Any(c => c.CountryName.ToLower().Equals(countryName.ToLower()) && !c.IdCountry.Equals(idCountry));
                 }
             }
             catch (Exception ex)
@@ -95,7 +107,7 @@ namespace iCatalogBB
             {
                 using (Repository r = new Repository())
                 {
-                    Country c = r.Countries.Where<Country>(co => co.IdCountry.Equals(IdCountry)).SingleOrDefault();
+                    RepoCountry c = r.Countries.Where<RepoCountry>(co => co.IdCountry.Equals(IdCountry)).SingleOrDefault();
                     r.Countries.DeleteOnSubmit(c);
                     r.SubmitChanges();
                 }
@@ -105,5 +117,11 @@ namespace iCatalogBB
                 throw ex;
             }
         }
+    }
+
+    public class Country
+    {
+        public int IdCountry { get; set; }
+        public string CountryName { get; set; }
     }
 }

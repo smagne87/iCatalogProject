@@ -1,23 +1,22 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/BackEndMasterPage.Master" Inherits="System.Web.Mvc.ViewPage<iCatalogSite.Models.CountryModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/BackEndMasterPage.Master" Inherits="System.Web.Mvc.ViewPage<iCatalogSite.Models.CityModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Countries
+    Cities
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<header>
-    <h2>Countries</h2>
-</header>
+<h2>Cities</h2>
 <script type="text/javascript" charset="utf-8">
-    function editCountry(id, name) {
-        $("#countryhdn").val(id);
-        $("#countrytext").val(name);
-        $("#countryDialog-form").dialog("open");
+    function editCity(id, name, idco) {
+        $("#cityhdn").val(id);
+        $("#citytext").val(name);
+        $("#ddlCountriesList").val(idco);
+        $("#cityDialog-form").dialog("open");
     }
 
     function confirmDeleteCountry(id) {
-        $("#countryhdntoDelete").val(id);
+        $("#cityhdntoDelete").val(id);
         $("#dialog-confirm").dialog('open');
     }
 
@@ -30,12 +29,12 @@
             height: 180,
             modal: true,
             buttons: {
-                "Delete Country": function () {
-                    var id = $("#countryhdntoDelete").val();
-                    var json = JSON.stringify({ IdCountry: id });
+                "Delete City": function () {
+                    var id = $("#cityhdntoDelete").val();
+                    var json = JSON.stringify({ IdCity: id });
 
                     $.ajax({
-                        url: '/Countries/DeleteCountry',
+                        url: '/Cities/DeleteCity',
                         type: 'POST',
                         dataType: 'json',
                         data: json,
@@ -56,9 +55,10 @@
             }
         });
 
-        var countrytext = $("#countrytext"),
-            countryhdn = $("#countryhdn"),
-			allFields = $([]).add(countrytext).add(countryhdn),
+        var citytext = $("#citytext"),
+            cityhdn = $("#cityhdn"),
+            countrySelect = $("#ddlCountriesList"),
+			allFields = $([]).add(citytext).add(cityhdn).add(countrySelect),
 			tips = $(".validateTips");
 
         function updateTips(t) {
@@ -80,32 +80,44 @@
             }
         }
 
-        function getCountry() {
-            var id = countryhdn.val();
-            var name = countrytext.val();
-            return (name == "") ? null : { IdCountry: id, CountryName: name };
+        function checkSelectEmpty(o, n) {
+            if (o.val() == undefined || o.val() == "0") {
+                o.addClass("ui-state-error");
+                updateTips(n + " is Mandatory.");
+                return false;
+            } else {
+                return true;
+            }
         }
 
-        $("#countryDialog-form").dialog({
+        function getCity() {
+            var id = cityhdn.val();
+            var name = citytext.val();
+            var idco = countrySelect.val();
+            return (name == "") ? null : { IdCity: id, CityName: name, IdCountry: idco };
+        }
+
+        $("#cityDialog-form").dialog({
             autoOpen: false,
-            height: 250,
-            width: 300,
+            height: 300,
+            width: 350,
             modal: true,
             buttons: {
-                "Save Country": function () {
+                "Save City": function () {
                     var bValid = true;
                     allFields.removeClass("ui-state-error");
 
-                    bValid = bValid && checkEmpty(countrytext, "Country Name");
+                    bValid = bValid && checkEmpty(citytext, "City Name");
+                    bValid = bValid && checkSelectEmpty(countrySelect, "Country");
 
                     if (bValid) {
-                        var country = getCountry();
-                        var json = JSON.stringify(country);
+                        var city = getCity();
+                        var json = JSON.stringify(city);
 
                         $(this).dialog("close");
 
                         $.ajax({
-                            url: '/Countries/SaveCountry',
+                            url: '/Cities/SaveCity',
                             type: 'POST',
                             dataType: 'json',
                             data: json,
@@ -140,11 +152,11 @@
             }
         });
 
-        $("#create-country")
+        $("#create-city")
 			.button()
 			.click(function () {
-			    $("span.ui-dialog-title").text('New Country');
-			    $("#countryDialog-form").dialog("open");
+			    $("span.ui-dialog-title").text('New City');
+			    $("#cityDialog-form").dialog("open");
 			});
 
         function refreshTable() {
@@ -153,48 +165,54 @@
                 cache: false,
                 dataType: "html"
             });
-            $.get('<%= Url.Action("CountriesPage", "Countries") %>',
+            $.get('<%= Url.Action("CitiesPage", "Cities") %>',
                 function (response) {
                     $("#container").replaceWith(response);
                 });
         }
     });
 </script>
-
 <style>
 #example { width: 600px; }
 #container { width: 600px; }
 </style>
 <header>
     <ul>
-        <li><button id="create-country">New Country</button></li>
+        <li><button id="create-city">New City</button></li>
     </ul>
 </header>
 <div id="container">
-<% Html.RenderPartial("CountriesList"); %>
+<% Html.RenderPartial("CitiesList"); %>
 </div>
 
-<div id="countryDialog-form" title="Edit Country">
-    <form action="CountriesPage.aspx">
+<div id="cityDialog-form" title="Edit City">
+    <form action="CitiesPage.aspx">
     <fieldset>
         <legend></legend>
         <p class="validateTips">All form fields are required.</p>
-        <input type="hidden" name="countryhdn" id="countryhdn" />
+        <input type="hidden" name="cityhdn" id="cityhdn" />
         <div class="editor-label">
-            <label for="CountryName" id="lblCountryName">Country Name</label>
+            <label for="CityName" id="lblCityName">City Name</label>
         </div>
         <div class="editor-field">
-            <input type="text" name="countrytext" id="countrytext" class="text ui-widget-content ui-corner-all" />
+            <input type="text" name="citytext" id="citytext" class="text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="editor-label">
+            <label for="IdCountry" id="lblIdCountry">Country</label>
+        </div>
+        <div class="editor-field">
+            <%= Html.DropDownList("ddlCountriesList", (IEnumerable<SelectListItem>)ViewData["CountriesList"])%>
         </div>
     </fieldset>
     </form>
 </div>
-<div id="dialog-message" title="Country Saved">
+<div id="dialog-message" title="City Saved">
     <div id="message"></div>
 </div>
 
-<div id="dialog-confirm" title="Delete Country?">
+<div id="dialog-confirm" title="Delete City?">
 	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These item will be permanently deleted and cannot be recovered. Are you sure?</p>
-    <input type="hidden" name="countryhdntoDelete" id="countryhdntoDelete" />
+    <input type="hidden" name="cityhdntoDelete" id="cityhdntoDelete" />
 </div>
+
 </asp:Content>

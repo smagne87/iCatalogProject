@@ -19,24 +19,26 @@ namespace iCatalogSite.Models
 
         public void SaveCountry()
         {
-            if (IdCountry.Equals(0))
+            if (!_countriesContext.CountryExist(CountryName, IdCountry))
             {
-                _countriesContext.InsertCountry(CountryName);
+                if (IdCountry.Equals(0))
+                {
+                    _countriesContext.InsertCountry(CountryName);
+                }
+                else
+                {
+                    _countriesContext.UpdateCountry(IdCountry, CountryName);
+                }
             }
             else
             {
-                _countriesContext.UpdateCountry(IdCountry, CountryName);
+                throw new Exception("This Country Already Exists.");
             }
         }
 
-        public List<CountryModel> GetAllCountries()
+        public List<Country> GetAllCountries()
         {
-            List<CountryModel> lst = new List<CountryModel>();
-            foreach (iCatalogData.Country co in _countriesContext.GetAllCountries())
-            {
-                lst.Add(new CountryModel { IdCountry = co.IdCountry, CountryName = co.CountryName });
-            }
-            return lst;
+            return _countriesContext.GetAllCountries();
         }
 
         internal void DeleteCountry()

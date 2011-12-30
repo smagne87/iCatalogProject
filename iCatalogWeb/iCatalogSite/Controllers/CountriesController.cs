@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using iCatalogSite.Models;
 using System.Web.Script.Serialization;
+using iCatalogBB;
 
 namespace iCatalogSite.Controllers
 {
@@ -12,16 +13,6 @@ namespace iCatalogSite.Controllers
     {
         //
         // GET: /Countries/
-
-        public ActionResult EditCountry(int id)
-        {
-            ViewData["Title"] = "New Country";
-            if (id > 0)
-            {
-                ViewData["Title"] = "Edit Country";
-            }
-            return View();
-        }
 
         [HttpPost]
         public ActionResult SaveCountry(CountryModel model)
@@ -45,7 +36,7 @@ namespace iCatalogSite.Controllers
             GetAllCountries();
             if (Request.IsAjaxRequest())
             {
-                return PartialView("CountriesList", (List<iCatalogSite.Models.CountryModel>)ViewData["CountriesList"]);
+                return PartialView("CountriesList", (List<iCatalogBB.Country>)ViewData["CountriesList"]);
             }
             else
             {
@@ -72,9 +63,10 @@ namespace iCatalogSite.Controllers
 
         private void GetAllCountries()
         {
-            List<CountryModel> lst = new List<CountryModel>();
+            List<Country> lst = new List<Country>();
+            Country c = new Country();
             CountryModel cm = new CountryModel();
-            lst.Add(new CountryModel { IdCountry = 0, CountryName = "" });//This row will be deleted after the datatable is created.
+            lst.Add(new Country { IdCountry = 0, CountryName = "" });//This row will be deleted after the datatable is created.
             lst.AddRange(cm.GetAllCountries());
             ViewData["CountriesList"] = lst;
         }
