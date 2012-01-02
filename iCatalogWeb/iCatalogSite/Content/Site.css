@@ -74,3 +74,5 @@ ul
 {
 	list-style-type: none;
 }
+
+label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }

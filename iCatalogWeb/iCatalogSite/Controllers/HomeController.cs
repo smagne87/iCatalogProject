@@ -37,7 +37,7 @@ namespace iCatalogSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.validateUser())
+                if (model.validateUserPassword())
                 {
                     if (!string.IsNullOrEmpty(returnUrl))
                     {

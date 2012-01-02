@@ -160,6 +160,8 @@
       <Column Name="IsGeneralAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="IdCountry" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IdCity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
       <Association Name="User_Device" Member="Devices" ThisKey="IdUser" OtherKey="IdUser" Type="Device" />
       <Association Name="User_UserCatalog" Member="UserCatalogs" ThisKey="IdUser" OtherKey="IdUser" Type="UserCatalog" />
       <Association Name="City_User" Member="City" ThisKey="IdCity" OtherKey="IdCity" Type="City" IsForeignKey="true" />

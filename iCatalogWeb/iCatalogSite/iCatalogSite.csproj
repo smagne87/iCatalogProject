@@ -65,6 +65,7 @@
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -75,9 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\lavalamp_test.css" />
+    <Content Include="Content\themes\imgs\available.png" />
     <Content Include="Content\themes\imgs\delete_small.PNG" />
     <Content Include="Content\themes\imgs\icon-delete.gif" />
     <Content Include="Content\themes\imgs\icon_edicion.gif" />
+    <Content Include="Content\themes\imgs\loader.gif" />
+    <Content Include="Content\themes\imgs\not-available.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />

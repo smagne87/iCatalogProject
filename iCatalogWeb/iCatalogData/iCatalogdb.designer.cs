@@ -3538,6 +3538,10 @@ namespace iCatalogData
 		
 		private System.Nullable<int> _IdCity;
 		
+		private string _FirstName;
+		
+		private string _LastName;
+		
 		private EntitySet<Device> _Devices;
 		
 		private EntitySet<UserCatalog> _UserCatalogs;
@@ -3564,6 +3568,10 @@ namespace iCatalogData
     partial void OnIdCountryChanged();
     partial void OnIdCityChanging(System.Nullable<int> value);
     partial void OnIdCityChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
     #endregion
 		
 		public User()
@@ -3719,6 +3727,46 @@ namespace iCatalogData
 					this._IdCity = value;
 					this.SendPropertyChanged("IdCity");
 					this.OnIdCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="nvarchar(50)", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="nvarchar(50)", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
 				}
 			}
 		}

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BBCities.cs" />
     <Compile Include="BBCountries.cs" />
+    <Compile Include="BBUserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
