@@ -144,6 +144,9 @@
 			        contentType: 'application/json; charset=utf-8',
 			        success: function (data) {
 			            var message = data.Message;
+			            if (message.indexOf("Successfully") > 0) {
+			                $("#registerForm").submit();
+			            }
 			        }
 			    });
 			});
@@ -160,7 +163,7 @@
     });
 </script>
 <article style="float:left;">
-    <form id="registerForm">
+    <form id="registerForm" action="Index">
         <fieldset class="ui-corner-all">
             <div class="editor-label">
                 <label for="FirstName" id="lblFirstName">First Name</label>
