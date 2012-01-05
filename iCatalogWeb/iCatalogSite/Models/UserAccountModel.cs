@@ -26,8 +26,23 @@ namespace iCatalogSite.Models
 
         internal bool validateUserPassword()
         {
-            this.isGeneralAdmin = true;
-            return true;
+            bool result = false;
+            if (_contextUserAccount.validateUserPassword(UserName, Password))
+            {
+                result = true;
+                GetUserAccount();
+            }
+            return result;
+        }
+
+        private void GetUserAccount()
+        {
+            UserAccount user = _contextUserAccount.getUserAccountByUserName(UserName);
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            UserName = user.UserName;
+            Email = user.Email;
+            isGeneralAdmin = user.isGeneralAdmin;
         }
 
         internal bool existsUserName()

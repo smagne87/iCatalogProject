@@ -144,9 +144,6 @@
 			        contentType: 'application/json; charset=utf-8',
 			        success: function (data) {
 			            var message = data.Message;
-			            if (message.indexOf("Successfully") > 0) {
-			                $("#registerForm").submit();
-			            }
 			        }
 			    });
 			});

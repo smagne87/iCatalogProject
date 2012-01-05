@@ -63,6 +63,66 @@ namespace iCatalogBB
             }
         }
 
+        public bool validateUserPassword(string UserName, string Password)
+        {
+            UserAccount ua = getUserAccount(UserName);
+            bool result = false;
+            if (ua != null)
+            {
+                string encryptPassword = getEncryptedPassword(Password);
+                result = encryptPassword.Equals(ua.Password);
+            }
+            return result;
+        }
+
+        public UserAccount getUserAccountByUserName(string UserName)
+        {
+            return getUserAccount(UserName);
+        }
+
+        private UserAccount getUserAccount(string userName)
+        {
+            User u = getUserByUserName(userName);
+            UserAccount ua = null;
+            if (u != null)
+            {
+                ua = new UserAccount();
+                ua.IdUser = u.IdUser;
+                ua.UserName = u.UserName;
+                ua.Email = u.Email;
+                ua.FirstName = u.FirstName;
+                ua.LastName = u.LastName;
+                ua.Password = u.Password;
+                ua.isGeneralAdmin = u.IsGeneralAdmin.HasValue ? (bool)u.IsGeneralAdmin : false;
+                if (u.IdCity.HasValue)
+                {
+                    ua.IdCity = u.IdCity.Value;
+                    ua.CityName = u.City.CityName;
+                }
+                if (u.IdCountry.HasValue)
+                {
+                    ua.IdCountry = u.IdCountry.Value;
+                    ua.CountryName = u.Country.CountryName;
+                }
+            }
+            return ua;
+        }
+
+        private User getUserByUserName(string userName)
+        {
+            try
+            {
+                using (Repository r = new Repository())
+                {
+                    return r.Users.Where<User>(ru => ru.UserName.Equals(userName)).SingleOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private string getDecryptedPassword(string password)
         {
             return CryptorEngine.Decrypt(password, true);
@@ -76,6 +136,7 @@ namespace iCatalogBB
 
     public class UserAccount
     {
+        public int IdUser { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }

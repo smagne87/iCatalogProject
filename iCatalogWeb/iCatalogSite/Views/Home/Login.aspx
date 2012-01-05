@@ -6,36 +6,58 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Login</h2>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#loginForm").validate({
+            rules: {
+                Password: {
+                    required: true
+                },
+                UserName: {
+                    required: true
+                }
+            },
+            messages:
+            {
+                Password: {
+                    required: "Please specify your password"
+                },
+                UserName: {
+                    required: "Please specify your user name"
+                }
+            }
+        });
 
-<%using (Html.BeginForm("LogOn", "Home"))
-  {%>
-         <%: Html.ValidationSummary(true, "Login fail.") %> 
-        <fieldset>
-            <div class="editor-label">
-                <%: Html.LabelFor(m => m.UserName) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(m => m.UserName) %>
-                <%: Html.ValidationMessageFor(m => m.UserName) %>
-            </div>
-            <div class="editor-label">
-                <%: Html.LabelFor(m => m.Password) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.PasswordFor(m => m.Password) %>
-                <%: Html.ValidationMessageFor(m => m.Password) %>
-            </div>
-            <div class="editor-field">
-                <%: Html.CheckBoxFor(m => m.RememberMe) %>
-            </div>
-            <div class="editor-label">
-                <%: Html.LabelFor(m => m.RememberMe) %>
-            </div>
-            <input type="submit" value="Log on" />
+        $("#logIn").button()
+    });
+</script>
+
+<h2>Login</h2>
+<form id="loginForm" action="/Home/LogOn" method="post">
+    <fieldset class="ui-corner-all" style="width:350px;">
+        <p class="validateTips"></p>
+        <div class="editor-label">
+            <label for="UserName" id="lblUserName">User</label>
+        </div>
+        <div class="editor-field">
+            <input type="text" name="UserName" id="UserName" class="text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="editor-label">
+            <label for="Password" id="lblPassword">Password</label>
+        </div>
+        <div class="editor-field">
+            <input type="password" name="Password" id="Password" class="text ui-widget-content ui-corner-all" />
+        </div>
+        <div class="editor-field">
+            <label>Remember Me</label><input type="checkbox" name="rememberMe" id="rememberMe"/>
+        </div>
+        <div class="editor-label">
+            <button id="logIn">Log in</button>
+        </div>
+        <div class="editor-label">
             <%: Html.ActionLink("Forgot Password?", "ForgotPassword", "Home") %>
             <%: Html.ActionLink("Register!", "Register", "Home")%>
-        </fieldset>
-  <%
-  }%>
+        </div>
+    </fieldset>
+</form>
 </asp:Content>

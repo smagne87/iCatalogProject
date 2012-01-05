@@ -55,7 +55,7 @@ namespace iCatalogSite.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password is incorrect.");
+                    return Json(new { Message = "The user name or password is incorrect." });
                 }
             }
             return View(model);
