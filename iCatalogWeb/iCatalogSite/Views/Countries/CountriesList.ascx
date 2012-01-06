@@ -32,9 +32,9 @@
                column.For(co => co.IdCountry).Named("Id Country"); 
                column.For(co => co.CountryName).Named("Country");
                column.For(co => co.IdCountry).Named("Edit").Action(co => { %>  
-                                    <td><img src="../Content/themes/imgs/icon_edicion.gif" onclick="editCountry('<%= co.IdCountry  %>', '<%= co.CountryName  %>')" /></td> <% }); 
+                                    <td><img src="../Content/themes/images/icon_edicion.gif" onclick="editCountry('<%= co.IdCountry  %>', '<%= co.CountryName  %>')" /></td> <% }); 
                column.For(co => co.IdCountry).Named("Delete").Action(co => { %>  
-                                    <td><img src="../Content/themes/imgs/icon-delete.gif" onclick="confirmDeleteCountry('<%= co.IdCountry  %>')" /></td> <% });
-           }).Attributes(id => "example", @class => "table-list").Empty("No countries available").Render();
+                                    <td><img src="../Content/themes/images/icon-delete.gif" onclick="confirmDeleteCountry('<%= co.IdCountry  %>')" /></td> <% });
+           }).Attributes(id => "example", @class => "table-list", @cellpadding => "0", @cellspacing => "0").Empty("No countries available").Render();
 %>
 </div>

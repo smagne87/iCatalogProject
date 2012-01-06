@@ -34,10 +34,10 @@
                column.For(c => c.CountryName).Named("Country");
                column.For(c => c.IdCity).Named("Edit").Action(co =>
                { %>  
-                                    <td><img src="../Content/themes/imgs/icon_edicion.gif" onclick="editCity('<%= co.IdCity %>', '<%= co.CityName  %>', '<%= co.IdCountry  %>')" /></td> <% });
+                                    <td><img src="../Content/themes/images/icon_edicion.gif" onclick="editCity('<%= co.IdCity %>', '<%= co.CityName  %>', '<%= co.IdCountry  %>')" /></td> <% });
                column.For(c => c.IdCity).Named("Delete").Action(co =>
                { %>  
-                                    <td><img src="../Content/themes/imgs/icon-delete.gif" onclick="confirmDeleteCity('<%= co.IdCity  %>')" /></td> <% });
-           }).Attributes(id => "citiesGrid", @class => "table-list").Empty("No cities availables").Render();
+                                    <td><img src="../Content/themes/images/icon-delete.gif" onclick="confirmDeleteCity('<%= co.IdCity  %>')" /></td> <% });
+           }).Attributes(id => "citiesGrid", @class => "table-list", @cellpadding => "0", @cellspacing => "0").Empty("No cities availables").Render();
 %>
 </div>

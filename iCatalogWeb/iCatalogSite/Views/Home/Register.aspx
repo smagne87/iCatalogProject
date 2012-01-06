@@ -71,7 +71,7 @@
         $("#userName").keyup(function () {
             var user = $("#userName").val();
             if (user.length > 4) {
-                $("#status").html('<img src="../../Content/themes/imgs/loader.gif" align="absmiddle" style="width:16px; height:16px;" /> Checking User Name...');
+                $("#status").html('<img src="../../Content/themes/images/loader.gif" align="absmiddle" style="width:16px; height:16px;" /> Checking User Name...');
 
                 var json = JSON.stringify({ UserName: user });
 
@@ -85,11 +85,11 @@
                         var message = data.Message;
                         if (message == 'OK') {
                             $("#userName").removeClass("ui-state-error");
-                            $("#status").html('<img src="../../Content/themes/imgs/available.png" />');
+                            $("#status").html('<img src="../../Content/themes/images/available.png" />');
                         }
                         else {
                             $("#userName").addClass("ui-state-error");
-                            $("#status").html('<img src="../../Content/themes/imgs/not-available.png" />');
+                            $("#status").html('<img src="../../Content/themes/images/not-available.png" />');
                         }
                     }
                 });
@@ -102,7 +102,7 @@
         $("#email").keyup(function () {
             if ($("#registerForm").validate().element("#email")) {
                 var mail = $("#email").val();
-                $("#statusEmail").html('<img src="../../Content/themes/imgs/loader.gif" align="absmiddle" style="width:16px; height:16px;" /> Checking Email...');
+                $("#statusEmail").html('<img src="../../Content/themes/images/loader.gif" align="absmiddle" style="width:16px; height:16px;" /> Checking Email...');
 
                 var json = JSON.stringify({ Email: mail });
 
@@ -116,11 +116,11 @@
                         var message = data.Message;
                         if (message == 'OK') {
                             $("#email").removeClass("ui-state-error");
-                            $("#statusEmail").html('<img src="../../Content/themes/imgs/available.png" />');
+                            $("#statusEmail").html('<img src="../../Content/themes/images/available.png" />');
                         }
                         else {
                             $("#email").addClass("ui-state-error");
-                            $("#statusEmail").html('<img src="../../Content/themes/imgs/not-available.png" />');
+                            $("#statusEmail").html('<img src="../../Content/themes/images/not-available.png" />');
                         }
                     }
                 });
