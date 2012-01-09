@@ -39,7 +39,8 @@
                 },
                 userName: {
                     required: true,
-                    checkUserNameUnique: true
+                    checkUserNameUnique: true,
+                    minlength: 5
                 },
                 email: {
                     required: true,
@@ -58,7 +59,8 @@
                 },
                 userName: {
                     required: "Please specify your user name",
-                    checkUserNameUnique: "User Name Already Exists."
+                    checkUserNameUnique: "User Name Already Exists.",
+                    minlength: "Please enter at least 5 characters."
                 },
                 email: {
                     required: "Please specify your Email address.",
@@ -68,7 +70,7 @@
             }
         });
 
-        $("#userName").keyup(function () {
+        $("#userName").focusout(function () {
             var user = $("#userName").val();
             if (user.length > 4) {
                 $("#status").html('<img src="../../Content/themes/images/loader.gif" align="absmiddle" style="width:16px; height:16px;" /> Checking User Name...');
@@ -99,7 +101,7 @@
             }
         });
 
-        $("#email").keyup(function () {
+        $("#email").focusout(function () {
             if ($("#registerForm").validate().element("#email")) {
                 var mail = $("#email").val();
                 $("#statusEmail").html('<img src="../../Content/themes/images/loader.gif" align="absmiddle" style="width:16px; height:16px;" /> Checking Email...');
@@ -133,19 +135,21 @@
         $("#registerUser")
 			.button()
 			.click(function () {
-			    var user = getUser();
-			    var json = JSON.stringify(user);
+			    if ($("#registerForm").valid()) {
+			        var user = getUser();
+			        var json = JSON.stringify(user);
 
-			    $.ajax({
-			        url: '/UserAccount/RegisterUser',
-			        type: 'POST',
-			        dataType: 'json',
-			        data: json,
-			        contentType: 'application/json; charset=utf-8',
-			        success: function (data) {
-			            var message = data.Message;
-			        }
-			    });
+			        $.ajax({
+			            url: '/UserAccount/RegisterUser',
+			            type: 'POST',
+			            dataType: 'json',
+			            data: json,
+			            contentType: 'application/json; charset=utf-8',
+			            success: function (data) {
+			                var message = data.Message;
+			            }
+			        });
+			    }
 			});
 
         function getUser() {
@@ -160,6 +164,7 @@
     });
 </script>
 <article style="float:left;">
+    <a href="/CompanyAccount/RegisterCom">Ups, I'm a Company.</a>
     <form id="registerForm" action="Index">
         <fieldset class="ui-corner-all">
             <div class="editor-label">

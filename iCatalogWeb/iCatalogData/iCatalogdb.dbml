@@ -76,6 +76,8 @@
       <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="IdCountry" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IdCity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WebUrl" Type="System.String" DbType="NVarchar(100)" CanBeNull="false" />
+      <Column Name="CompanyUserName" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
       <Association Name="Company_CatalogHeader" Member="CatalogHeaders" ThisKey="IdCompany" OtherKey="IdCompany" Type="CatalogHeader" />
       <Association Name="Company_CategoryOne" Member="CategoryOnes" ThisKey="IdCompany" OtherKey="IdCompany" Type="CategoryOne" />
       <Association Name="Company_CategoryThree" Member="CategoryThrees" ThisKey="IdCompany" OtherKey="IdCompany" Type="CategoryThree" />

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Controllers\BackEndController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
+    <Compile Include="Controllers\CompanyAccountController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
@@ -70,6 +71,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CityModel.cs" />
+    <Compile Include="Models\CompanyAccountModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -462,6 +464,7 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\Login.aspx" />
     <Content Include="Views\Home\Register.aspx" />
+    <Content Include="Views\CompanyAccount\RegisterCom.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -525,7 +528,9 @@
       <Name>iCatalogData</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\ProfileUser\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1650,6 +1650,10 @@ namespace iCatalogData
 		
 		private System.Nullable<int> _IdCity;
 		
+		private string _WebUrl;
+		
+		private string _CompanyUserName;
+		
 		private EntitySet<CatalogHeader> _CatalogHeaders;
 		
 		private EntitySet<CategoryOne> _CategoryOnes;
@@ -1688,6 +1692,10 @@ namespace iCatalogData
     partial void OnIdCountryChanged();
     partial void OnIdCityChanging(System.Nullable<int> value);
     partial void OnIdCityChanged();
+    partial void OnWebUrlChanging(string value);
+    partial void OnWebUrlChanged();
+    partial void OnCompanyUserNameChanging(string value);
+    partial void OnCompanyUserNameChanged();
     #endregion
 		
 		public Company()
@@ -1868,6 +1876,46 @@ namespace iCatalogData
 					this._IdCity = value;
 					this.SendPropertyChanged("IdCity");
 					this.OnIdCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WebUrl", DbType="NVarchar(100)", CanBeNull=false)]
+		public string WebUrl
+		{
+			get
+			{
+				return this._WebUrl;
+			}
+			set
+			{
+				if ((this._WebUrl != value))
+				{
+					this.OnWebUrlChanging(value);
+					this.SendPropertyChanging();
+					this._WebUrl = value;
+					this.SendPropertyChanged("WebUrl");
+					this.OnWebUrlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyUserName", DbType="nvarchar(50)", CanBeNull=false)]
+		public string CompanyUserName
+		{
+			get
+			{
+				return this._CompanyUserName;
+			}
+			set
+			{
+				if ((this._CompanyUserName != value))
+				{
+					this.OnCompanyUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyUserName = value;
+					this.SendPropertyChanged("CompanyUserName");
+					this.OnCompanyUserNameChanged();
 				}
 			}
 		}
