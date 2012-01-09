@@ -54,6 +54,7 @@ namespace iCatalogBB
                     c.Email = company.Email;
                     c.Phone = company.Phone;
                     c.Address = company.Address;
+                    c.WebUrl = company.WebUrl;
                     r.Companies.InsertOnSubmit(c);
                     r.SubmitChanges();
                 }

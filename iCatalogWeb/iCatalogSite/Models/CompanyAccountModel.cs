@@ -73,6 +73,7 @@ namespace iCatalogSite.Models
             company.IdCountry = IdCountry;
             company.IdCity = IdCity;
             company.Password = Password;
+            company.WebUrl = WebUrl;
             _contextCompanyAccount.registerCompany(company);
         }
     }
