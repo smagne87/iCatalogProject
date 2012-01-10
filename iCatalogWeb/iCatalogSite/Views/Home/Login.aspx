@@ -28,12 +28,54 @@
             }
         });
 
+        $("#loginForm").submit(function () {
+            return false;
+        });
+
         $("#logIn").button()
+            .click(function () {
+                if ($("#loginForm").valid()) {
+                    var user = getUser();
+                    var json = JSON.stringify(user);
+
+                    $.ajax({
+                        url: '/Home/LogOn',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: json,
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (data.Message) {
+                                var message = data.Message;
+                                updateTips(message);
+                            }
+                            if (data.Url) {
+                                var url = data.Url;
+                                window.location = url;
+                            }
+                        }
+                    });
+                }
+            });
+
+        function updateTips(t) {
+            $(".validateTips").text(t);
+            $(".validateTips").addClass("ui-state-highlight");
+            setTimeout(function () {
+                $(".validateTips").removeClass("ui-state-highlight", 1500);
+            }, 500);
+        }
+
+        function getUser() {
+            var uname = $("#UserName").val();
+            var pass = $("#Password").val();
+            return (uname == "") ? null : { UserName: uname, Password: pass };
+        }
     });
 </script>
 
 <h2>Login</h2>
-<form id="loginForm" action="/Home/LogOn" method="post">
+<form id="loginForm">
     <fieldset class="ui-corner-all" style="width:350px;">
         <p class="validateTips"></p>
         <div class="editor-label">

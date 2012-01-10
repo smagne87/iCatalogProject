@@ -146,7 +146,10 @@
 			            data: json,
 			            contentType: 'application/json; charset=utf-8',
 			            success: function (data) {
-			                var message = data.Message;
+			                if (data.Url) {
+			                    var url = data.Url;
+			                    window.location = url;
+			                }
 			            }
 			        });
 			    }
@@ -165,7 +168,7 @@
 </script>
 <article style="float:left;">
     <a href="/CompanyAccount/RegisterCom">Ups, I'm a Company.</a>
-    <form id="registerForm" action="Index">
+    <form id="registerForm">
         <fieldset class="ui-corner-all">
             <div class="editor-label">
                 <label for="FirstName" id="lblFirstName">First Name</label>

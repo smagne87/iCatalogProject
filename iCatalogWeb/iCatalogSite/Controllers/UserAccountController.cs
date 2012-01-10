@@ -12,12 +12,22 @@ namespace iCatalogSite.Controllers
         //
         // GET: /UserAccount/
 
+        public ActionResult UserHome()
+        {
+            UserAccountModel model = (UserAccountModel)TempData["UserModel"];
+            return View(model);
+        }
+
         public ActionResult RegisterUser(UserAccountModel model)
         {
             string message = "User Register Successfully";
             try
             {
                 model.register();
+                Uri ur = null;
+                TempData.Add("UserModel", model);
+                Uri.TryCreate(Request.Url, "/UserAccount/UserHome", out ur);
+                return Json(new { Url = ur.AbsolutePath });
             }
             catch (Exception ex)
             {

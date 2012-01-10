@@ -13,12 +13,17 @@ namespace iCatalogSite.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
+            if (TempData["UserModel"] != null)
+            {
+                UserAccountModel model = (UserAccountModel)TempData["UserModel"];
+                return RedirectToAction("UserHome", "UserAccount", model);
+            }
             return View();
         }
 
         public ActionResult Login()
         {
-            return View();//probando provider
+            return View();
         }
 
         public ActionResult ForgotPassword()
@@ -34,30 +39,30 @@ namespace iCatalogSite.Controllers
         [HttpPost]
         public ActionResult LogOn(UserAccountModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (model.validateUserPassword())
             {
-                if (model.validateUserPassword())
+                Uri ur = null;
+                TempData.Add("UserModel", model);
+                if (!string.IsNullOrEmpty(returnUrl))
                 {
-                    if (!string.IsNullOrEmpty(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else if (model.isGeneralAdmin)
-                    {
-                        TempData.Add("UserModel", model);
-                        return RedirectToAction("IndexBackEnd", "BackEnd");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    Uri.TryCreate(Request.Url, returnUrl, out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+                else if (model.isGeneralAdmin)
+                {
+                    Uri.TryCreate(Request.Url, "/BackEnd/IndexBackEnd", out ur);
+                    return Json(new { Url = ur.AbsolutePath });
                 }
                 else
                 {
-                    return Json(new { Message = "The user name or password is incorrect." });
+                    Uri.TryCreate(Request.Url, "/UserAccount/UserHome", out ur);
+                    return Json(new { Url = ur.AbsolutePath });
                 }
             }
-            return View(model);
+            else
+            {
+                return Json(new { Message = "The user name or password is incorrect." });
+            }
         }
 
         public ActionResult ChangePassword(string Password)

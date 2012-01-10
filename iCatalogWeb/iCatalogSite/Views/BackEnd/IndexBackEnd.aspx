@@ -57,7 +57,6 @@
         $("#change-password")
 			.button()
 			.click(function () {
-			    $("span.ui-dialog-title").text('Change Password');
 			    $("#passwordDialog-form").dialog("open");
 			});
 

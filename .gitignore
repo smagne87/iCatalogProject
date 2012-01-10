@@ -1,3 +1,4 @@
+
 Thumbs.db
 *.obj
 *.exe
@@ -17,6 +18,7 @@ Thumbs.db
 *.cache
 *.ilk
 *.log
+*.dll
 [Bb]in
 [Dd]ebug*/
 *.lib
