@@ -7,5 +7,6 @@ namespace iCatalogData
 {
     public class Class1
     {
+        // comentario de prueba
     }
 }
