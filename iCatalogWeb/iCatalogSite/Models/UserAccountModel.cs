@@ -66,5 +66,10 @@ namespace iCatalogSite.Models
             user.isGeneralAdmin = false;
             _contextUserAccount.registerUser(user);
         }
+
+        internal void SavePassword(string userName, string newPassword)
+        {
+            _contextUserAccount.savePassword(userName, newPassword);
+        }
     }
 }

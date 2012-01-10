@@ -59,5 +59,20 @@ namespace iCatalogSite.Controllers
             }
             return View(model);
         }
+
+        public ActionResult ChangePassword(string Password)
+        {
+            UserAccountModel model = (UserAccountModel)Session["UserModel"];
+
+            try
+            {
+                model.SavePassword(model.UserName, Password);
+                return Json(new { Message = "the password has been changed successfully" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Message = ex.Message });
+            }
+        }
     }
 }

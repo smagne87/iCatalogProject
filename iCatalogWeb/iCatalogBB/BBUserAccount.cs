@@ -131,6 +131,23 @@ namespace iCatalogBB
         {
             return CryptorEngine.Encrypt(password, true);
         }
+
+        public void savePassword(string userName, string newPassword)
+        {
+            try
+            {
+                using (Repository r = new Repository())
+                {
+                    User user = r.Users.Where<User>(ru => ru.UserName.Equals(userName)).SingleOrDefault();
+                    user.Password = getEncryptedPassword(newPassword);
+                    r.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
     public class UserAccount
