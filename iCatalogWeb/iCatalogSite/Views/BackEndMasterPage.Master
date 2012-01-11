@@ -46,16 +46,6 @@
                 }
             });
         }); 
-        
-        $(function () {
-            $("#backEndMenu").lavaLamp({
-                fx: "backout",
-                speed: 700,
-                click: function (event, menuItem) {
-                    
-                }
-            });
-        });
     </script>
     <div id="art-page-background-simple-gradient">
     </div>
@@ -85,12 +75,14 @@
                         <li><a href="/BackEnd/IndexBackEnd"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
                         <li><a href="/Countries/CountriesPage"><span class="l"></span><span class="r"></span><span class="t">Countries</span></a></li>
                         <li><a href="/Cities/CitiesPage"><span class="l"></span><span class="r"></span><span class="t">Cities</span></a></li>
+                        <li><a href="/BackEnd/Users"><span class="l"></span><span class="r"></span><span class="t">Users</span></a></li>
+                        <li><a href="/BackEnd/Companies"><span class="l"></span><span class="r"></span><span class="t">Companies</span></a></li>
+                        <li><a href="/BackEnd/HelpDesk"><span class="l"></span><span class="r"></span><span class="t">Help Desk</span></a></li>
                         <li><a href="/Home/Index"><span class="l"></span><span class="r"></span><span class="t">Back</span></a></li>
                     </ul>
                 </div>
                 <header>
                     <h2>Administration</h2>
-                    Welcome! <%= ((iCatalogSite.Models.UserAccountModel)Session["UserModel"]).UserName %>
                 </header>
                 <article class="center">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
@@ -102,7 +94,7 @@
                         <div class="art-Footer-text">
                             <p><a href="#">Contact Us</a> | <a href="#">Terms of Use</a> | <a href="#">Trademarks</a>
                                 | <a href="#">Privacy Statement</a><br />
-                                Copyright &copy; 2009 ---. All Rights Reserved.</p>
+                                Copyright &copy; 2012 ---. All Rights Reserved.</p>
                         </div>
                     </div>
                     <div class="art-Footer-background"></div>

@@ -457,6 +457,7 @@
     <Content Include="media\unit_testing\unit_test.js" />
     <Content Include="Views\Cities\CitiesList.ascx" />
     <Content Include="Views\Cities\CitiesPage.aspx" />
+    <Content Include="Views\Shared\ChangePassword.ascx" />
     <Content Include="Views\Countries\CountriesPage.aspx" />
     <Content Include="Views\BackEnd\IndexBackEnd.aspx" />
     <Content Include="Views\Countries\CountriesList.ascx" />
@@ -465,6 +466,8 @@
     <Content Include="Views\Home\Login.aspx" />
     <Content Include="Views\Home\Register.aspx" />
     <Content Include="Views\CompanyAccount\RegisterCom.aspx" />
+    <Content Include="Views\UserAccount\MyDevices.aspx" />
+    <Content Include="Views\UserAccount\ProfileUser.aspx" />
     <Content Include="Views\UserAccount\UserHome.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -518,6 +521,7 @@
     <None Include="media\unit_testing\templates\js_data.php" />
     <None Include="media\unit_testing\templates\js_data_mixed_types.php" />
     <None Include="media\unit_testing\templates\two_tables.php" />
+    <Content Include="Views\MasterPageUserProfile.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iCatalogBB\iCatalogBB.csproj">

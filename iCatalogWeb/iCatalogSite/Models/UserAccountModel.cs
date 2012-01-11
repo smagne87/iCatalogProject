@@ -14,9 +14,14 @@ namespace iCatalogSite.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int IdCountry { get; set; }
+        public string CountryName { get; set; }
         public int IdCity { get; set; }
+        public string CityName { get; set; }
         public bool RememberMe { get; set; }
         public bool isGeneralAdmin { get; set; }
+        public string NewPassword { get; set; }
+        public int IdUser { get; set; }
+
         private BBUserAccount _contextUserAccount;
 
         public UserAccountModel()
@@ -38,11 +43,16 @@ namespace iCatalogSite.Models
         private void GetUserAccount()
         {
             UserAccount user = _contextUserAccount.getUserAccountByUserName(UserName);
+            IdUser = user.IdUser;
             FirstName = user.FirstName;
             LastName = user.LastName;
             UserName = user.UserName;
             Email = user.Email;
             isGeneralAdmin = user.isGeneralAdmin;
+            IdCountry = user.IdCountry;
+            CountryName = user.CountryName;
+            IdCity = user.IdCity;
+            CityName = user.CityName;
         }
 
         internal bool existsUserName()
@@ -67,9 +77,14 @@ namespace iCatalogSite.Models
             _contextUserAccount.registerUser(user);
         }
 
-        internal void SavePassword(string userName, string newPassword)
+        internal void SavePassword()
         {
-            _contextUserAccount.savePassword(userName, newPassword);
+            _contextUserAccount.savePassword(UserName, NewPassword);
+        }
+
+        internal void saveData()
+        {
+            _contextUserAccount.saveData(IdUser, FirstName, LastName, IdCity, IdCountry);
         }
     }
 }

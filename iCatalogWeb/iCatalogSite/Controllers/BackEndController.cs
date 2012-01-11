@@ -15,7 +15,6 @@ namespace iCatalogSite.Controllers
         public ActionResult IndexBackEnd()
         {
             UserAccountModel model = (UserAccountModel)TempData["UserModel"];
-            Session["UserModel"] = model;
             return View(model);
         }
     }

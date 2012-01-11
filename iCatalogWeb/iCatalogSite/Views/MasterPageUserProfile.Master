@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/MasterDefaultPage.Master"%>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pathname = window.location.pathname;
+        $("#tabMenu li").each(function () {
+            var a = $(this).find("a");
+            if (a.attr("href") == pathname) {
+                a.addClass(" active");
+            }
+        });
+    }); 
+</script>
+<div class="art-nav">
+    <div class="l"></div>
+    <div class="r"></div>
+    <ul class="art-menu" id="tabMenu">
+        <li><a href="/UserAccount/UserHome"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
+        <li><a href="/UserAccount/MyDevices"><span class="l"></span><span class="r"></span><span class="t">My Devices</span></a></li>
+        <li><a href="/UserAccount/ProfileUser"><span class="l"></span><span class="r"></span><span class="t">Profile</span></a></li>
+        <li><a href="/Home/Index"><span class="l"></span><span class="r"></span><span class="t">Back</span></a></li>
+    </ul>
+</div>
+<asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+</asp:ContentPlaceHolder>
+</asp:Content>

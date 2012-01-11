@@ -148,6 +148,29 @@ namespace iCatalogBB
                 throw ex;
             }
         }
+
+        public void saveData(int IdUser, string FirstName, string LastName, int IdCity, int IdCountry)
+        {
+            try
+            {
+                using (Repository r = new Repository())
+                {
+                    User user = r.Users.Where<User>(ru => ru.IdUser.Equals(IdUser)).SingleOrDefault();
+                    user.FirstName = FirstName;
+                    user.LastName = LastName;
+                    if (IdCountry != 0)
+                    {
+                        user.IdCity = IdCity;
+                        user.IdCountry = IdCountry;
+                    }
+                    r.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
     public class UserAccount

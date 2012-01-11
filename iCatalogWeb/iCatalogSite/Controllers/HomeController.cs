@@ -64,20 +64,5 @@ namespace iCatalogSite.Controllers
                 return Json(new { Message = "The user name or password is incorrect." });
             }
         }
-
-        public ActionResult ChangePassword(string Password)
-        {
-            UserAccountModel model = (UserAccountModel)Session["UserModel"];
-
-            try
-            {
-                model.SavePassword(model.UserName, Password);
-                return Json(new { Message = "the password has been changed successfully" });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Message = ex.Message });
-            }
-        }
     }
 }

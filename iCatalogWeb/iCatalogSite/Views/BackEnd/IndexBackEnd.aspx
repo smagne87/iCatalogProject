@@ -67,6 +67,7 @@
 #container { width: 600px; }
 </style>
 <header>
+    Welcome! <%= Model.UserName %>
     <ul>
         <li><button id="change-password">Change Password?</button></li>
     </ul>

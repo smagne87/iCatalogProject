@@ -262,7 +262,7 @@
                         <input type="checkbox" name="termsOfUse" id="termsOfUse"/>
                     </div>
                 </div>
-                <div style="clear:both;"></div>
+                <div class="cleared"></div>
             </div>
             <div class="editor-label" style="padding-left:40%; float:right;">
                 <button id="registerUser">Register</button>

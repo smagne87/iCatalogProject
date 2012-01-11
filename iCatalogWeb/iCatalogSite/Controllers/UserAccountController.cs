@@ -11,11 +11,93 @@ namespace iCatalogSite.Controllers
     {
         //
         // GET: /UserAccount/
+        public ActionResult SaveUserData(UserAccountModel model)
+        {
+            string message = "Personal data update successfully.";
+            try
+            {
+                model.saveData();
+                UserAccountModel oldmodel = null;
+                if (TempData["UserModel"] != null)
+                {
+                    oldmodel = (UserAccountModel)TempData["UserModel"];
+                }
+                else if (Session["UserModel"] != null)
+                {
+                    oldmodel = (UserAccountModel)Session["UserModel"];
+                }
+                model.UserName = oldmodel.UserName;
+                Session["UserModel"] = model;                
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+            return Json(new { Message = message });
+        }
+
+        public ActionResult ChangePassword(UserAccountModel model)
+        {
+            string message = "the password has been changed successfully";
+            try
+            {
+                if (model.validateUserPassword())
+                {
+                    model.SavePassword();
+                }
+                else
+                {
+                    message = "Invalid old Password.";
+                }
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+            return Json(new { Message = message });
+        }
 
         public ActionResult UserHome()
         {
-            UserAccountModel model = (UserAccountModel)TempData["UserModel"];
+            UserAccountModel model = null;
+            if (TempData["UserModel"] != null)
+            {
+                model = (UserAccountModel)TempData["UserModel"];
+                Session["UserModel"] = model;
+            }
+            else if (Session["UserModel"] != null)
+            {
+                model = (UserAccountModel)Session["UserModel"];
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home", new { returnUrl = Request.Url.AbsolutePath });
+            }
             return View(model);
+        }
+
+        public ActionResult ProfileUser()
+        {
+            UserAccountModel model = null;
+            if (TempData["UserModel"] != null)
+            {
+                model = (UserAccountModel)TempData["UserModel"];
+                Session["UserModel"] = model;
+            }
+            else if (Session["UserModel"] != null)
+            {
+                model = (UserAccountModel)Session["UserModel"];
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home", new { returnUrl = Request.Url.AbsolutePath });
+            }
+            return View(model);
+        }
+
+        public ActionResult MyDevices()
+        {
+            return View();
         }
 
         public ActionResult RegisterUser(UserAccountModel model)
