@@ -13,13 +13,6 @@ namespace iCatalogSite.Controllers
         //
         // GET: /CompanyAccount/
 
-        public JsonResult GetAllCitiesByCountryId(CityModel cm)
-        {
-            List<City> lst = new List<City>();
-            lst.AddRange(cm.GetAllCitiesByIdCountry());
-            return Json(lst, JsonRequestBehavior.AllowGet);
-        }
-
         private void GetAllCountries()
         {
             List<Country> lst = new List<Country>();

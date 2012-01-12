@@ -528,10 +528,6 @@
       <Project>{2497DC23-C20E-4795-9769-08EB38624AA1}</Project>
       <Name>iCatalogBB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\iCatalogData\iCatalogData.csproj">
-      <Project>{D7CE9840-716C-419B-B1AB-3E3274A3D367}</Project>
-      <Name>iCatalogData</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

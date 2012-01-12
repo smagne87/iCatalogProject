@@ -81,45 +81,40 @@ namespace iCatalogBB
 
         private UserAccount getUserAccount(string userName)
         {
-            User u = getUserByUserName(userName);
             UserAccount ua = null;
-            if (u != null)
-            {
-                ua = new UserAccount();
-                ua.IdUser = u.IdUser;
-                ua.UserName = u.UserName;
-                ua.Email = u.Email;
-                ua.FirstName = u.FirstName;
-                ua.LastName = u.LastName;
-                ua.Password = u.Password;
-                ua.isGeneralAdmin = u.IsGeneralAdmin.HasValue ? (bool)u.IsGeneralAdmin : false;
-                if (u.IdCity.HasValue)
-                {
-                    ua.IdCity = u.IdCity.Value;
-                    ua.CityName = u.City.CityName;
-                }
-                if (u.IdCountry.HasValue)
-                {
-                    ua.IdCountry = u.IdCountry.Value;
-                    ua.CountryName = u.Country.CountryName;
-                }
-            }
-            return ua;
-        }
-
-        private User getUserByUserName(string userName)
-        {
             try
             {
                 using (Repository r = new Repository())
                 {
-                    return r.Users.Where<User>(ru => ru.UserName.Equals(userName)).SingleOrDefault();
+                    User u = r.Users.Where<User>(ru => ru.UserName.Equals(userName)).SingleOrDefault();
+                    if (u != null)
+                    {
+                        ua = new UserAccount();
+                        ua.IdUser = u.IdUser;
+                        ua.UserName = u.UserName;
+                        ua.Email = u.Email;
+                        ua.FirstName = u.FirstName;
+                        ua.LastName = u.LastName;
+                        ua.Password = u.Password;
+                        ua.isGeneralAdmin = u.IsGeneralAdmin.HasValue ? (bool)u.IsGeneralAdmin : false;
+                        if (u.IdCity.HasValue)
+                        {
+                            ua.IdCity = u.IdCity.Value;
+                            ua.CityName = u.City.CityName;
+                        }
+                        if (u.IdCountry.HasValue)
+                        {
+                            ua.IdCountry = u.IdCountry.Value;
+                            ua.CountryName = u.Country.CountryName;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            return ua;
         }
 
         private string getDecryptedPassword(string password)

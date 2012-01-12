@@ -170,7 +170,7 @@
 
         $("#ddlCountriesList").change(function () {
             var idCountry = $(this).val();
-            $.getJSON("/CompanyAccount/GetAllCitiesByCountryId", { IdCountry: idCountry },
+            $.getJSON("/Cities/GetAllCitiesByCountryId", { IdCountry: idCountry },
                 function (data) {
                     var ddlCi = $("#ddlCitiesList");
                     ddlCi.empty();

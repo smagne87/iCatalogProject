@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using iCatalogSite.Models;
+using iCatalogBB;
 
 namespace iCatalogSite.Controllers
 {
@@ -78,6 +79,7 @@ namespace iCatalogSite.Controllers
 
         public ActionResult ProfileUser()
         {
+            GetAllCountries();
             UserAccountModel model = null;
             if (TempData["UserModel"] != null)
             {
@@ -150,6 +152,14 @@ namespace iCatalogSite.Controllers
                 message = ex.Message;
             }
             return Json(new { Message = message });
+        }
+
+        private void GetAllCountries()
+        {
+            List<Country> lst = new List<Country>();
+            CountryModel cm = new CountryModel();
+            lst.AddRange(cm.GetAllCountries());
+            ViewData["CountriesList"] = new SelectList(lst, "IdCountry", "CountryName");
         }
     }
 }
