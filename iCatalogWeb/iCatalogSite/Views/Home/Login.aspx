@@ -79,26 +79,35 @@
     <fieldset class="ui-corner-all" style="width:350px;">
         <p class="validateTips"></p>
         <div class="editor-label">
-            <label for="UserName" id="lblUserName">User</label>
+            <h3>User</h3>
         </div>
         <div class="editor-field">
             <input type="text" name="UserName" id="UserName" class="text ui-widget-content ui-corner-all" />
         </div>
         <div class="editor-label">
-            <label for="Password" id="lblPassword">Password</label>
+            <h3>Password</h3>
         </div>
         <div class="editor-field">
             <input type="password" name="Password" id="Password" class="text ui-widget-content ui-corner-all" />
         </div>
         <div class="editor-field">
-            <label>Remember Me</label><input type="checkbox" name="rememberMe" id="rememberMe"/>
         </div>
         <div class="editor-label">
-            <button id="logIn">Log in</button>
+            <div style="float:left; width:65%;">
+                <button id="logIn">Log in</button>
+                <div style="float:right;" class="rememberMe">
+                    <h3>
+                        <input type="checkbox" name="rememberMe" id="rememberMe" style="margin:10px;"/>Remember Me
+                    </h3>
+                </div>
+            </div>
+            <div class="cleared"></div>
         </div>
-        <div class="editor-label">
+        <div class="cajaForgot">
+            <h6>
             <%: Html.ActionLink("Forgot Password?", "ForgotPassword", "Home") %>
             <%: Html.ActionLink("Register!", "Register", "Home")%>
+            </h6>
         </div>
     </fieldset>
 </form>

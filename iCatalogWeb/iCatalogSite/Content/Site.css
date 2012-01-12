@@ -81,3 +81,24 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
 .icons {margin: 0; padding: 0; float:left; margin-left:5px;}
 .icons div {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left; list-style: none;}
 .icons span.ui-icon {float: left; margin: 0 4px;}
+
+.cajaForgot h6
+{
+    margin:10px 0px;
+    
+}
+
+.cajaForgot h6 a
+{
+    color:#3383BB !important;
+}
+
+.cajaForgot h6 a:hover
+{
+    color:#599FCF !important;
+}
+
+.rememberMe h3
+{
+    margin:0px;
+}

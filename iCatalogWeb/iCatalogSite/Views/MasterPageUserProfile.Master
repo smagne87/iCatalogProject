@@ -21,7 +21,7 @@
         <li><a href="/UserAccount/UserHome"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
         <li><a href="/UserAccount/MyDevices"><span class="l"></span><span class="r"></span><span class="t">My Devices</span></a></li>
         <li><a href="/UserAccount/ProfileUser"><span class="l"></span><span class="r"></span><span class="t">Profile</span></a></li>
-        <li><a href="/Home/Index"><span class="l"></span><span class="r"></span><span class="t">Back</span></a></li>
+        <li><a href="/Home/Index"><span class="l"></span><span class="r"></span><span class="t">Log out</span></a></li>
     </ul>
 </div>
 <asp:ContentPlaceHolder ID="MainContent" runat="server">
