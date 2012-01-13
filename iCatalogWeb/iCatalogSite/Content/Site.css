@@ -75,7 +75,7 @@ ul
 	list-style-type: none;
 }
 
-label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+label.error { color: red; padding:7px 5px; display:none !important; }
 
 /*style para los divs de los iconos.*/
 .icons {margin: 0; padding: 0; float:left; margin-left:5px;}
@@ -98,7 +98,33 @@ label.error { float: none; color: red; padding-left: .5em; vertical-align: top; 
     color:#599FCF !important;
 }
 
-.rememberMe h3
+.caja-checkBoxTexto h3
 {
     margin:0px;
+}
+
+.caja-checkBoxTexto input
+{
+    margin:10px;
+}
+
+input.text
+{
+    padding:7px 5px;
+    width:200px;
+}
+select
+{
+    padding:7px 5px;
+    width:200px;
+}
+
+.watermark 
+{
+    color: #999 !important;
+}
+
+input.error
+{
+    border: 2px solid red;
 }

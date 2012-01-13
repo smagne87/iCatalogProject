@@ -93,20 +93,20 @@
         <div class="editor-field">
         </div>
         <div class="editor-label">
-            <div style="float:left; width:65%;">
+            <div style="float:left;">
                 <button id="logIn">Log in</button>
-                <div style="float:right;" class="rememberMe">
-                    <h3>
-                        <input type="checkbox" name="rememberMe" id="rememberMe" style="margin:10px;"/>Remember Me
-                    </h3>
-                </div>
+            </div>
+            <div style="float:left;" class="caja-checkBoxTexto">
+                <h3>
+                    <input type="checkbox" name="rememberMe" id="rememberMe" />Remember Me
+                </h3>
             </div>
             <div class="cleared"></div>
         </div>
         <div class="cajaForgot">
             <h6>
-            <%: Html.ActionLink("Forgot Password?", "ForgotPassword", "Home") %>
-            <%: Html.ActionLink("Register!", "Register", "Home")%>
+                <%: Html.ActionLink("Forgot Password?", "ForgotPassword", "Home") %>
+                <%: Html.ActionLink("Register!", "Register", "Home")%>
             </h6>
         </div>
     </fieldset>

@@ -10,6 +10,23 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var typesArr = ["text", "tel", "number", "url", "password", "email"];
+
+        $("input").each(function () {
+            if ($.inArray($(this).attr("type"), typesArr) >= 0) {
+                if ($(this).attr("placeholder") == undefined) {
+                    $(this).watermark($(this).attr("watermarktext"), { className: "watermark", userNative: false });
+                    $(this).addClass("watermark");
+                }
+            }
+        });
+
+        $("input").focusin(function () {
+            if ($(this).val() != "") {
+                $(this).removeClass("watermark");
+            }
+        });
+
         $.validator.addMethod("checkUserNameUnique", function (value, element) {
             var result = true;
             if ($("#userName").attr("class").indexOf("ui-state-error") > 0) {
@@ -102,8 +119,8 @@
         });
 
         $("#email").focusout(function () {
-            if ($("#registerForm").validate().element("#email")) {
-                var mail = $("#email").val();
+            var mail = $("#email").val();
+            if (mail.indexOf("@") > 0) {
                 $("#statusEmail").html('<img src="../../Content/themes/images/loader.gif" align="absmiddle" style="width:16px; height:16px;" /> Checking Email...');
 
                 var json = JSON.stringify({ Email: mail });
@@ -166,50 +183,54 @@
 
     });
 </script>
-<article style="float:left;">
-    <a href="/CompanyAccount/RegisterCom">Ups, I'm a Company.</a>
+<article>
+    <h3>
+        <a href="/CompanyAccount/RegisterCom">Ups, I'm a Company.</a>
+    </h3>
     <form id="registerForm">
         <fieldset class="ui-corner-all">
             <div class="editor-label">
-                <label for="FirstName" id="lblFirstName">First Name</label>
+                <h3>First Name</h3>
             </div>
             <div class="editor-field">
-                <input type="text" name="firstName" id="firstName" class="text ui-widget-content ui-corner-all" />
+                <input type="text" name="firstName" watermarktext="First Name" id="firstName" class="text ui-widget-content ui-corner-all" />
             </div>
             <div class="editor-label">
-                <label for="LastName" id="lblLastName">Last Name</label>
+                <h3>Last Name</h3>
             </div>
             <div class="editor-field">
-                <input type="text" name="lastName" id="lastName" class="text ui-widget-content ui-corner-all" />
+                <input type="text" name="lastName" id="lastName" watermarktext="Last Name" class="text ui-widget-content ui-corner-all" />
             </div>
             <div class="editor-label">
-                <label for="UserName" id="lblUserName">User Name</label>
+                <h3>User Name</h3>
             </div>
             <div class="editor-field">
-                <input type="text" name="userName" id="userName" class="text ui-widget-content ui-corner-all" />
+                <input type="text" name="userName" id="userName" watermarktext="User Name" class="text ui-widget-content ui-corner-all" />
                 <div id="status"></div>
             </div>
             <div class="editor-label">
-                <label for="Password" id="lblPassword">Password</label>
+                <h3>Password</h3>
             </div>
             <div class="editor-field">
-                <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all" />
+                <input type="password" name="password" id="password" watermarktext="Password" class="text ui-widget-content ui-corner-all" />
             </div>
             <div class="editor-label">
-                <label for="Email" id="lblEmail">E-Mail</label>
+                <h3>E-Mail</h3>
             </div>
             <div class="editor-field">
-                <input type="email" name="email" id="email" class="text ui-widget-content ui-corner-all" />
+                <input type="text" name="email" id="email" watermarktext="example: info@icatalog.com" class="text ui-widget-content ui-corner-all" />
                 <div id="statusEmail"></div>
             </div>
             <div class="editor-label">
-                <label for="AceptTerms" id="lblAceptTerms">I have read and accept the Terms of Use.</label>
-            </div>
-            <div class="editor-field">
-                <input type="checkbox" name="termsOfUse" id="termsOfUse"/>
-            </div>
-            <div class="editor-label">
-                <button id="registerUser">Register</button>
+                <div style="float:left;">
+                    <button id="registerUser">Register</button>
+                </div>
+                <div style="float:left;" class="caja-checkBoxTexto">
+                    <h3>
+                        <input type="checkbox" name="termsOfUse" id="termsOfUse"/>I have read and accept the Terms of Use.
+                    </h3>
+                </div>
+                <div class="cleared"></div>
             </div>
         </fieldset>
     </form>

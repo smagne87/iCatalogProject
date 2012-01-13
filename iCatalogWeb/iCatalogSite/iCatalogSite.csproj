@@ -146,6 +146,7 @@
     <Content Include="media\js\jquery.easing.min.js" />
     <Content Include="media\js\jquery.js" />
     <Content Include="media\js\jquery.lavalamp.js" />
+    <Content Include="media\js\jquery.watermark.js" />
     <Content Include="media\js\json.js" />
     <Content Include="media\js\json2.js" />
     <Content Include="media\js\script.js" />
