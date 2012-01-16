@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="iCatalog" Class="iCatalogdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SEBA-PC;Initial Catalog=iCatalog;Integrated Security=True" SettingsObjectName="iCatalogData.Properties.Settings" SettingsPropertyName="iCatalogConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=OWNER-VAIO\SQLEXPRESS;Initial Catalog=iCatalog;Integrated Security=True" SettingsObjectName="iCatalogData.Properties.Settings" SettingsPropertyName="iCatalogConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CatalogDetail" Member="CatalogDetails">
     <Type Name="CatalogDetail">
       <Column Name="IdCatalogDetail" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -98,15 +98,6 @@
       <Association Name="Country_User" Member="Users" ThisKey="IdCountry" OtherKey="IdCountry" Type="User" />
     </Type>
   </Table>
-  <Table Name="dbo.Devices" Member="Devices">
-    <Type Name="Device">
-      <Column Name="IdDevice" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DeviceCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="DeviceDescription" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IdUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="User_Device" Member="User" ThisKey="IdUser" OtherKey="IdUser" Type="User" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Files" Member="Files">
     <Type Name="File">
       <Column Name="IdFile" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -164,8 +155,8 @@
       <Column Name="IdCity" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FirstName" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
       <Column Name="LastName" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
-      <Association Name="User_Device" Member="Devices" ThisKey="IdUser" OtherKey="IdUser" Type="Device" />
       <Association Name="User_UserCatalog" Member="UserCatalogs" ThisKey="IdUser" OtherKey="IdUser" Type="UserCatalog" />
+      <Association Name="User_Device" Member="Devices" ThisKey="IdUser" OtherKey="IdUser" Type="Device" />
       <Association Name="City_User" Member="City" ThisKey="IdCity" OtherKey="IdCity" Type="City" IsForeignKey="true" />
       <Association Name="Country_User" Member="Country" ThisKey="IdCountry" OtherKey="IdCountry" Type="Country" IsForeignKey="true" />
     </Type>
@@ -179,6 +170,17 @@
       <Column Name="IdCompany" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Visibility_CatalogHeader" Member="CatalogHeaders" ThisKey="IdVisibility" OtherKey="IdVisibility" Type="CatalogHeader" />
       <Association Name="Company_Visibility" Member="Company" ThisKey="IdCompany" OtherKey="IdCompany" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Devices" Member="Devices">
+    <Type Name="Device">
+      <Column Name="IdDevice" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DeviceCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DeviceDescription" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IdUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastSync" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsAssociated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="User_Device" Member="User" ThisKey="IdUser" OtherKey="IdUser" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
