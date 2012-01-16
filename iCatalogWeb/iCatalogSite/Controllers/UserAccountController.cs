@@ -99,6 +99,19 @@ namespace iCatalogSite.Controllers
 
         public ActionResult MyDevices()
         {
+            GetAllDevices();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("DevicesList", (List<iCatalogBB.Device>)ViewData["DevicesList"]);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult RemoveDevice()
+        {
             return View();
         }
 
@@ -160,6 +173,16 @@ namespace iCatalogSite.Controllers
             CountryModel cm = new CountryModel();
             lst.AddRange(cm.GetAllCountries());
             ViewData["CountriesList"] = new SelectList(lst, "IdCountry", "CountryName");
+        }
+
+        private void GetAllDevices()
+        {
+            List<Device> lst = new List<Device>();
+            Device c = new Device();
+            DeviceModel dm = new DeviceModel();
+            lst.Add(new Device { IdDevice = 0, DeviceDescription = "" });//This row will be deleted after the datatable is created.
+            lst.AddRange(dm.GetAllDevices());
+            ViewData["DevicesList"] = lst;
         }
     }
 }
