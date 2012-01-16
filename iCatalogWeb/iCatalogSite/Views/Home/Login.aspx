@@ -59,7 +59,7 @@
                     var json = JSON.stringify(user);
 
                     $.ajax({
-                        url: '/Home/LogOn',
+                        url: '/UserAccount/LogOn',
                         type: 'POST',
                         dataType: 'json',
                         data: json,
@@ -134,7 +134,7 @@
                             var json = JSON.stringify(com);
 
                             $.ajax({
-                                url: '/Home/LogOn',
+                                url: '/CompanyAccount/LogOn',
                                 type: 'POST',
                                 dataType: 'json',
                                 data: json,
@@ -156,7 +156,7 @@
         function getComUser() {
             var uname = $("#comUserName").val();
             var pass = $("#comPassword").val();
-            return (uname == "") ? null : { UserName: uname, Password: pass };
+            return (uname == "") ? null : { CompanyUserName: uname, Password: pass };
         }
 
         function updateTips(t) {

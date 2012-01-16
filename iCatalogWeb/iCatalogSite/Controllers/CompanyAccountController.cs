@@ -13,6 +13,25 @@ namespace iCatalogSite.Controllers
         //
         // GET: /CompanyAccount/
 
+        public ActionResult CompanyHome()
+        {
+            CompanyAccountModel model = null;
+            if (TempData["UserModel"] != null)
+            {
+                model = (CompanyAccountModel)TempData["UserModel"];
+                Session["UserModel"] = model;
+            }
+            else if (Session["UserModel"] != null)
+            {
+                model = (CompanyAccountModel)Session["UserModel"];
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home", new { returnUrl = Request.Url.AbsolutePath });
+            }
+            return View(model);
+        }
+
         private void GetAllCountries()
         {
             List<Country> lst = new List<Country>();
@@ -79,6 +98,30 @@ namespace iCatalogSite.Controllers
                 message = ex.Message;
             }
             return Json(new { Message = message });
+        }
+
+        [HttpPost]
+        public ActionResult LogOn(CompanyAccountModel model, string returnUrl)
+        {
+            if (model.validateUserPassword())
+            {
+                Uri ur = null;
+                TempData.Add("UserModel", model);
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    Uri.TryCreate(Request.Url, returnUrl, out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+                else
+                {
+                    Uri.TryCreate(Request.Url, "/CompanyAccount/CompanyHome", out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+            }
+            else
+            {
+                return Json(new { Message = "The company user name or password is incorrect." });
+            }
         }
 
     }

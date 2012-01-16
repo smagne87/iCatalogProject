@@ -462,6 +462,7 @@
     <Content Include="media\unit_testing\unit_test.js" />
     <Content Include="Views\Cities\CitiesList.ascx" />
     <Content Include="Views\Cities\CitiesPage.aspx" />
+    <Content Include="Views\CompanyAccount\CompanyHome.aspx" />
     <Content Include="Views\Products\ProductsPage.aspx" />
     <Content Include="Views\Shared\ChangePassword.ascx" />
     <Content Include="Views\Countries\CountriesPage.aspx" />
@@ -528,6 +529,7 @@
     <None Include="media\unit_testing\templates\js_data_mixed_types.php" />
     <None Include="media\unit_testing\templates\two_tables.php" />
     <Content Include="Views\MasterPageUserProfile.Master" />
+    <Content Include="Views\MasterPageCompanyProfile.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iCatalogBB\iCatalogBB.csproj">
