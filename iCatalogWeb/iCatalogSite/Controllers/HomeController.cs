@@ -31,11 +31,6 @@ namespace iCatalogSite.Controllers
             return View();
         }
 
-        public ActionResult Register()
-        {
-            return View();
-        }
-
         [HttpPost]
         public ActionResult LogOn(UserAccountModel model, string returnUrl)
         {

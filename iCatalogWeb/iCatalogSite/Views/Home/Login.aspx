@@ -205,7 +205,7 @@
                 <div class="cajaForgot">
                     <h6>
                         <%: Html.ActionLink("Forgot Password?", "ForgotPassword", "Home") %>
-                        <%: Html.ActionLink("Register!", "Register", "Home")%>
+                        <%: Html.ActionLink("Register!", "Register", "UserAccount")%>
                     </h6>
                 </div>
             </fieldset>

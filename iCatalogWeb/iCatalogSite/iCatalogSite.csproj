@@ -470,7 +470,7 @@
     <Content Include="Views\Home\ForgotPassword.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\Login.aspx" />
-    <Content Include="Views\Home\Register.aspx" />
+    <Content Include="Views\UserAccount\Register.aspx" />
     <Content Include="Views\CompanyAccount\RegisterCom.aspx" />
     <Content Include="Views\UserAccount\MyDevices.aspx" />
     <Content Include="Views\UserAccount\ProfileUser.aspx" />

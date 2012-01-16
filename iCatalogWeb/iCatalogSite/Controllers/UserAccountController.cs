@@ -12,6 +12,12 @@ namespace iCatalogSite.Controllers
     {
         //
         // GET: /UserAccount/
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         public ActionResult SaveUserData(UserAccountModel model)
         {
             string message = "Personal data update successfully.";
