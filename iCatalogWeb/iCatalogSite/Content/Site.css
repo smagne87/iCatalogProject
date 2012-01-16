@@ -128,3 +128,13 @@ input.error
 {
     border: 2px solid red;
 }
+
+.tooltip {
+	display:none;
+	background:transparent url(themes/images/black_arrow.png);
+	font-size:12px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;	
+}

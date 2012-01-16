@@ -87,6 +87,7 @@
     <Content Include="Content\themes\images\02.png" />
     <Content Include="Content\themes\images\03.png" />
     <Content Include="Content\themes\images\available.png" />
+    <Content Include="Content\themes\images\black_arrow.png" />
     <Content Include="Content\themes\images\Block-h.png" />
     <Content Include="Content\themes\images\Block-s.png" />
     <Content Include="Content\themes\images\Block-v.png" />
@@ -148,6 +149,7 @@
     <Content Include="media\js\jquery.easing.min.js" />
     <Content Include="media\js\jquery.js" />
     <Content Include="media\js\jquery.lavalamp.js" />
+    <Content Include="media\js\jquery.tools.min.js" />
     <Content Include="media\js\jquery.watermark.js" />
     <Content Include="media\js\json.js" />
     <Content Include="media\js\json2.js" />
