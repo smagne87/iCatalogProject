@@ -73,6 +73,7 @@
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\CompanyAccountModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\DeviceModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -467,6 +468,7 @@
     <Content Include="Views\Home\Login.aspx" />
     <Content Include="Views\Home\Register.aspx" />
     <Content Include="Views\CompanyAccount\RegisterCom.aspx" />
+    <Content Include="Views\UserAccount\DevicesList.ascx" />
     <Content Include="Views\UserAccount\MyDevices.aspx" />
     <Content Include="Views\UserAccount\ProfileUser.aspx" />
     <Content Include="Views\UserAccount\UserHome.aspx" />
