@@ -54,9 +54,6 @@ namespace iCatalogData
     partial void InsertCountry(Country instance);
     partial void UpdateCountry(Country instance);
     partial void DeleteCountry(Country instance);
-    partial void InsertDevice(Device instance);
-    partial void UpdateDevice(Device instance);
-    partial void DeleteDevice(Device instance);
     partial void InsertFile(File instance);
     partial void UpdateFile(File instance);
     partial void DeleteFile(File instance);
@@ -75,6 +72,9 @@ namespace iCatalogData
     partial void InsertVisibility(Visibility instance);
     partial void UpdateVisibility(Visibility instance);
     partial void DeleteVisibility(Visibility instance);
+    partial void InsertDevice(Device instance);
+    partial void UpdateDevice(Device instance);
+    partial void DeleteDevice(Device instance);
     #endregion
 		
 		public iCatalogdbDataContext() : 
@@ -171,14 +171,6 @@ namespace iCatalogData
 			}
 		}
 		
-		public System.Data.Linq.Table<Device> Devices
-		{
-			get
-			{
-				return this.GetTable<Device>();
-			}
-		}
-		
 		public System.Data.Linq.Table<File> Files
 		{
 			get
@@ -224,6 +216,14 @@ namespace iCatalogData
 			get
 			{
 				return this.GetTable<Visibility>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Device> Devices
+		{
+			get
+			{
+				return this.GetTable<Device>();
 			}
 		}
 	}
@@ -2354,181 +2354,6 @@ namespace iCatalogData
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Devices")]
-	public partial class Device : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdDevice;
-		
-		private string _DeviceCode;
-		
-		private string _DeviceDescription;
-		
-		private System.Nullable<int> _IdUser;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdDeviceChanging(int value);
-    partial void OnIdDeviceChanged();
-    partial void OnDeviceCodeChanging(string value);
-    partial void OnDeviceCodeChanged();
-    partial void OnDeviceDescriptionChanging(string value);
-    partial void OnDeviceDescriptionChanged();
-    partial void OnIdUserChanging(System.Nullable<int> value);
-    partial void OnIdUserChanged();
-    #endregion
-		
-		public Device()
-		{
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdDevice", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdDevice
-		{
-			get
-			{
-				return this._IdDevice;
-			}
-			set
-			{
-				if ((this._IdDevice != value))
-				{
-					this.OnIdDeviceChanging(value);
-					this.SendPropertyChanging();
-					this._IdDevice = value;
-					this.SendPropertyChanged("IdDevice");
-					this.OnIdDeviceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeviceCode", DbType="NVarChar(20)")]
-		public string DeviceCode
-		{
-			get
-			{
-				return this._DeviceCode;
-			}
-			set
-			{
-				if ((this._DeviceCode != value))
-				{
-					this.OnDeviceCodeChanging(value);
-					this.SendPropertyChanging();
-					this._DeviceCode = value;
-					this.SendPropertyChanged("DeviceCode");
-					this.OnDeviceCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeviceDescription", DbType="NVarChar(50)")]
-		public string DeviceDescription
-		{
-			get
-			{
-				return this._DeviceDescription;
-			}
-			set
-			{
-				if ((this._DeviceDescription != value))
-				{
-					this.OnDeviceDescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._DeviceDescription = value;
-					this.SendPropertyChanged("DeviceDescription");
-					this.OnDeviceDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUser", DbType="Int")]
-		public System.Nullable<int> IdUser
-		{
-			get
-			{
-				return this._IdUser;
-			}
-			set
-			{
-				if ((this._IdUser != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdUserChanging(value);
-					this.SendPropertyChanging();
-					this._IdUser = value;
-					this.SendPropertyChanged("IdUser");
-					this.OnIdUserChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Device", Storage="_User", ThisKey="IdUser", OtherKey="IdUser", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.Devices.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.Devices.Add(this);
-						this._IdUser = value.IdUser;
-					}
-					else
-					{
-						this._IdUser = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Files")]
 	public partial class File : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3590,9 +3415,9 @@ namespace iCatalogData
 		
 		private string _LastName;
 		
-		private EntitySet<Device> _Devices;
-		
 		private EntitySet<UserCatalog> _UserCatalogs;
+		
+		private EntitySet<Device> _Devices;
 		
 		private EntityRef<City> _City;
 		
@@ -3624,8 +3449,8 @@ namespace iCatalogData
 		
 		public User()
 		{
-			this._Devices = new EntitySet<Device>(new Action<Device>(this.attach_Devices), new Action<Device>(this.detach_Devices));
 			this._UserCatalogs = new EntitySet<UserCatalog>(new Action<UserCatalog>(this.attach_UserCatalogs), new Action<UserCatalog>(this.detach_UserCatalogs));
+			this._Devices = new EntitySet<Device>(new Action<Device>(this.attach_Devices), new Action<Device>(this.detach_Devices));
 			this._City = default(EntityRef<City>);
 			this._Country = default(EntityRef<Country>);
 			OnCreated();
@@ -3819,19 +3644,6 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Device", Storage="_Devices", ThisKey="IdUser", OtherKey="IdUser")]
-		public EntitySet<Device> Devices
-		{
-			get
-			{
-				return this._Devices;
-			}
-			set
-			{
-				this._Devices.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_UserCatalog", Storage="_UserCatalogs", ThisKey="IdUser", OtherKey="IdUser")]
 		public EntitySet<UserCatalog> UserCatalogs
 		{
@@ -3842,6 +3654,19 @@ namespace iCatalogData
 			set
 			{
 				this._UserCatalogs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Device", Storage="_Devices", ThisKey="IdUser", OtherKey="IdUser")]
+		public EntitySet<Device> Devices
+		{
+			get
+			{
+				return this._Devices;
+			}
+			set
+			{
+				this._Devices.Assign(value);
 			}
 		}
 		
@@ -3933,18 +3758,6 @@ namespace iCatalogData
 			}
 		}
 		
-		private void attach_Devices(Device entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_Devices(Device entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
-		}
-		
 		private void attach_UserCatalogs(UserCatalog entity)
 		{
 			this.SendPropertyChanging();
@@ -3952,6 +3765,18 @@ namespace iCatalogData
 		}
 		
 		private void detach_UserCatalogs(UserCatalog entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_Devices(Device entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_Devices(Device entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
@@ -4182,6 +4007,229 @@ namespace iCatalogData
 		{
 			this.SendPropertyChanging();
 			entity.Visibility = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Devices")]
+	public partial class Device : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IdDevice;
+		
+		private string _DeviceCode;
+		
+		private string _DeviceDescription;
+		
+		private System.Nullable<int> _IdUser;
+		
+		private System.Nullable<System.DateTime> _LastSync;
+		
+		private System.Nullable<bool> _IsAssociated;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdDeviceChanging(int value);
+    partial void OnIdDeviceChanged();
+    partial void OnDeviceCodeChanging(string value);
+    partial void OnDeviceCodeChanged();
+    partial void OnDeviceDescriptionChanging(string value);
+    partial void OnDeviceDescriptionChanged();
+    partial void OnIdUserChanging(System.Nullable<int> value);
+    partial void OnIdUserChanged();
+    partial void OnLastSyncChanging(System.Nullable<System.DateTime> value);
+    partial void OnLastSyncChanged();
+    partial void OnIsAssociatedChanging(System.Nullable<bool> value);
+    partial void OnIsAssociatedChanged();
+    #endregion
+		
+		public Device()
+		{
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdDevice", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IdDevice
+		{
+			get
+			{
+				return this._IdDevice;
+			}
+			set
+			{
+				if ((this._IdDevice != value))
+				{
+					this.OnIdDeviceChanging(value);
+					this.SendPropertyChanging();
+					this._IdDevice = value;
+					this.SendPropertyChanged("IdDevice");
+					this.OnIdDeviceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeviceCode", DbType="NVarChar(20)")]
+		public string DeviceCode
+		{
+			get
+			{
+				return this._DeviceCode;
+			}
+			set
+			{
+				if ((this._DeviceCode != value))
+				{
+					this.OnDeviceCodeChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceCode = value;
+					this.SendPropertyChanged("DeviceCode");
+					this.OnDeviceCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeviceDescription", DbType="NVarChar(50)")]
+		public string DeviceDescription
+		{
+			get
+			{
+				return this._DeviceDescription;
+			}
+			set
+			{
+				if ((this._DeviceDescription != value))
+				{
+					this.OnDeviceDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._DeviceDescription = value;
+					this.SendPropertyChanged("DeviceDescription");
+					this.OnDeviceDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUser", DbType="Int")]
+		public System.Nullable<int> IdUser
+		{
+			get
+			{
+				return this._IdUser;
+			}
+			set
+			{
+				if ((this._IdUser != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdUserChanging(value);
+					this.SendPropertyChanging();
+					this._IdUser = value;
+					this.SendPropertyChanged("IdUser");
+					this.OnIdUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastSync", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastSync
+		{
+			get
+			{
+				return this._LastSync;
+			}
+			set
+			{
+				if ((this._LastSync != value))
+				{
+					this.OnLastSyncChanging(value);
+					this.SendPropertyChanging();
+					this._LastSync = value;
+					this.SendPropertyChanged("LastSync");
+					this.OnLastSyncChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAssociated", DbType="Bit")]
+		public System.Nullable<bool> IsAssociated
+		{
+			get
+			{
+				return this._IsAssociated;
+			}
+			set
+			{
+				if ((this._IsAssociated != value))
+				{
+					this.OnIsAssociatedChanging(value);
+					this.SendPropertyChanging();
+					this._IsAssociated = value;
+					this.SendPropertyChanged("IsAssociated");
+					this.OnIsAssociatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Device", Storage="_User", ThisKey="IdUser", OtherKey="IdUser", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.Devices.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.Devices.Add(this);
+						this._IdUser = value.IdUser;
+					}
+					else
+					{
+						this._IdUser = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

@@ -117,7 +117,7 @@
     });
 </script>
 <div class="ui-widget ui-helper-clearfix icons">
-    <div class="ui-state-default ui-corner-all" title="Edit Location Data">
+    <div class="ui-state-default ui-corner-all" title="Change Password">
         <span id="iconChangePassword" class="ui-icon ui-icon-key"></span>
     </div>
 </div>

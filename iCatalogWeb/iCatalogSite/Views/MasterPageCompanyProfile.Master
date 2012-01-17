@@ -19,8 +19,9 @@
     <div class="r"></div>
     <ul class="art-menu" id="tabMenu">
         <li><a href="/CompanyAccount/CompanyHome"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
-        <li><a href="/UserAccount/MyDevices"><span class="l"></span><span class="r"></span><span class="t">My Devices</span></a></li>
-        <li><a href="/UserAccount/ProfileUser"><span class="l"></span><span class="r"></span><span class="t">Profile</span></a></li>
+        <li><a href="/CompanyAccount/MyiCatalogs"><span class="l"></span><span class="r"></span><span class="t">My iCatalogs</span></a></li>
+        <li><a href="/CompanyAccount/MyStatistics"><span class="l"></span><span class="r"></span><span class="t">My Statistics</span></a></li>
+        <li><a href="/CompanyAccount/ProfileCompany"><span class="l"></span><span class="r"></span><span class="t">Profile</span></a></li>
         <li><a href="/Home/Index"><span class="l"></span><span class="r"></span><span class="t">Log out</span></a></li>
     </ul>
 </div>
