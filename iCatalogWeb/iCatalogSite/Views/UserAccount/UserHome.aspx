@@ -8,6 +8,8 @@
 
 <h2>Home</h2>
 
-Welcome! <%: Model.FirstName + " " + Model.LastName %>
+<h3>
+    Welcome! <%: Model.FirstName + " " + Model.LastName %>
+</h3>
 
 </asp:Content>

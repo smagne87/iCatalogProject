@@ -12,6 +12,12 @@ namespace iCatalogSite.Controllers
     {
         //
         // GET: /UserAccount/
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         public ActionResult SaveUserData(UserAccountModel model)
         {
             string message = "Personal data update successfully.";
@@ -175,6 +181,7 @@ namespace iCatalogSite.Controllers
             ViewData["CountriesList"] = new SelectList(lst, "IdCountry", "CountryName");
         }
 
+<<<<<<< HEAD
         private void GetAllDevices()
         {
             List<Device> lst = new List<Device>();
@@ -183,6 +190,35 @@ namespace iCatalogSite.Controllers
             lst.Add(new Device { IdDevice = 0, DeviceDescription = "" });//This row will be deleted after the datatable is created.
             lst.AddRange(dm.GetAllDevices());
             ViewData["DevicesList"] = lst;
+=======
+        [HttpPost]
+        public ActionResult LogOn(UserAccountModel model, string returnUrl)
+        {
+            if (model.validateUserPassword())
+            {
+                Uri ur = null;
+                TempData.Add("UserModel", model);
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    Uri.TryCreate(Request.Url, returnUrl, out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+                else if (model.isGeneralAdmin)
+                {
+                    Uri.TryCreate(Request.Url, "/BackEnd/IndexBackEnd", out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+                else
+                {
+                    Uri.TryCreate(Request.Url, "/UserAccount/UserHome", out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+            }
+            else
+            {
+                return Json(new { Message = "The user name or password is incorrect." });
+            }
+>>>>>>> a5b36e675e68e9b07e1d7ccc9dcfc26136517774
         }
     }
 }

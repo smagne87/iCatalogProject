@@ -91,6 +91,7 @@
     <Content Include="Content\themes\images\02.png" />
     <Content Include="Content\themes\images\03.png" />
     <Content Include="Content\themes\images\available.png" />
+    <Content Include="Content\themes\images\black_arrow.png" />
     <Content Include="Content\themes\images\Block-h.png" />
     <Content Include="Content\themes\images\Block-s.png" />
     <Content Include="Content\themes\images\Block-v.png" />
@@ -152,6 +153,7 @@
     <Content Include="media\js\jquery.easing.min.js" />
     <Content Include="media\js\jquery.js" />
     <Content Include="media\js\jquery.lavalamp.js" />
+    <Content Include="media\js\jquery.tools.min.js" />
     <Content Include="media\js\jquery.watermark.js" />
     <Content Include="media\js\json.js" />
     <Content Include="media\js\json2.js" />
@@ -464,6 +466,7 @@
     <Content Include="media\unit_testing\unit_test.js" />
     <Content Include="Views\Cities\CitiesList.ascx" />
     <Content Include="Views\Cities\CitiesPage.aspx" />
+    <Content Include="Views\CompanyAccount\CompanyHome.aspx" />
     <Content Include="Views\Products\ProductsPage.aspx" />
     <Content Include="Views\Shared\ChangePassword.ascx" />
     <Content Include="Views\Countries\CountriesPage.aspx" />
@@ -472,7 +475,7 @@
     <Content Include="Views\Home\ForgotPassword.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\Login.aspx" />
-    <Content Include="Views\Home\Register.aspx" />
+    <Content Include="Views\UserAccount\Register.aspx" />
     <Content Include="Views\CompanyAccount\RegisterCom.aspx" />
     <Content Include="Views\UserAccount\DevicesList.ascx" />
     <Content Include="Views\UserAccount\MyDevices.aspx" />
@@ -531,6 +534,7 @@
     <None Include="media\unit_testing\templates\js_data_mixed_types.php" />
     <None Include="media\unit_testing\templates\two_tables.php" />
     <Content Include="Views\MasterPageUserProfile.Master" />
+    <Content Include="Views\MasterPageCompanyProfile.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iCatalogBB\iCatalogBB.csproj">

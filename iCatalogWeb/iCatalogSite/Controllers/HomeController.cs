@@ -30,39 +30,5 @@ namespace iCatalogSite.Controllers
         {
             return View();
         }
-
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult LogOn(UserAccountModel model, string returnUrl)
-        {
-            if (model.validateUserPassword())
-            {
-                Uri ur = null;
-                TempData.Add("UserModel", model);
-                if (!string.IsNullOrEmpty(returnUrl))
-                {
-                    Uri.TryCreate(Request.Url, returnUrl, out ur);
-                    return Json(new { Url = ur.AbsolutePath });
-                }
-                else if (model.isGeneralAdmin)
-                {
-                    Uri.TryCreate(Request.Url, "/BackEnd/IndexBackEnd", out ur);
-                    return Json(new { Url = ur.AbsolutePath });
-                }
-                else
-                {
-                    Uri.TryCreate(Request.Url, "/UserAccount/UserHome", out ur);
-                    return Json(new { Url = ur.AbsolutePath });
-                }
-            }
-            else
-            {
-                return Json(new { Message = "The user name or password is incorrect." });
-            }
-        }
     }
 }

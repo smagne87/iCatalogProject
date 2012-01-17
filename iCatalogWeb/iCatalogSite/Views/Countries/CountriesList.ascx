@@ -23,6 +23,8 @@
         });
         oTable.fnDraw(true);
         oTable.fnDeleteRow(0); //this resolves the error when the grid is empty.
+        $(".dataTables_filter input").addClass("text");
+        $(".dataTables_filter input").addClass("ui-widget-content");
     }
 </script>
 <div id="container">

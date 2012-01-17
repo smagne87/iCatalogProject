@@ -67,26 +67,8 @@
 #container { width: 600px; }
 </style>
 <header>
-    Welcome! <%= Model.UserName %>
-    <ul>
-        <li><button id="change-password">Change Password?</button></li>
-    </ul>
+    <h3>
+        Welcome! <%= Model.UserName %>
+    </h3>
 </header>
-<div id="passwordDialog-form" title="Change Password">
-    <form action="IndexBackEnd.aspx">
-    <fieldset>
-        <legend></legend>
-        <p class="validateTips">All form fields are required.</p>
-        <div class="editor-label">
-            <label for="Change Password" id="lblChangePassword">Change Password?</label>
-        </div>
-        <div class="editor-field">
-            <input type="password" name="passwordtext" id="passwordtext" class="text ui-widget-content ui-corner-all" />
-        </div>
-    </fieldset>
-    </form>
-</div>
-<div id="dialog-message" title="New Password Saved">
-    <div id="message"></div>
-</div>
 </asp:Content>
