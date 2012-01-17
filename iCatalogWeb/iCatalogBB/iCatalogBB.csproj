@@ -44,11 +44,8 @@
     <Compile Include="BBCities.cs" />
     <Compile Include="BBCompanyAccount.cs" />
     <Compile Include="BBCountries.cs" />
-<<<<<<< HEAD
     <Compile Include="BBDevices.cs" />
-=======
     <Compile Include="BBProducts.cs" />
->>>>>>> 5f2c3c937a258e292a6b7bb6078ace797a071951
     <Compile Include="BBUserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
