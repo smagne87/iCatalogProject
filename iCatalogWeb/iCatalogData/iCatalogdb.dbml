@@ -69,15 +69,15 @@
   <Table Name="dbo.Companies" Member="Companies">
     <Type Name="Company">
       <Column Name="IdCompany" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="IdCountry" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IdCity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="WebUrl" Type="System.String" DbType="NVarchar(100)" CanBeNull="false" />
-      <Column Name="CompanyUserName" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdCountry" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdCity" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="WebUrl" Type="System.String" DbType="NVarchar(100)" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CompanyUserName" Type="System.String" DbType="nvarchar(50)" CanBeNull="false" UpdateCheck="Never" />
       <Association Name="Company_CatalogHeader" Member="CatalogHeaders" ThisKey="IdCompany" OtherKey="IdCompany" Type="CatalogHeader" />
       <Association Name="Company_CategoryOne" Member="CategoryOnes" ThisKey="IdCompany" OtherKey="IdCompany" Type="CategoryOne" />
       <Association Name="Company_CategoryThree" Member="CategoryThrees" ThisKey="IdCompany" OtherKey="IdCompany" Type="CategoryThree" />

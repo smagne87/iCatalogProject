@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<dynamic>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<iCatalogSite.Models.UserAccountModel>" %>
 <script type="text/javascript" charset="utf-8">
     $(function () {
         var oldPasswordtext = $("#oldPasswordtext"), newPasswordtext = $("#newPasswordtext"),
@@ -13,19 +13,22 @@
             return (userName == "") ? null : { UserName: userName, Password: oldpas, NewPassword: newpas };
         }
 
-        function updateTips(t) {
-            tips
-				.text(t)
-				.addClass("ui-state-highlight");
-            setTimeout(function () {
-                tips.removeClass("ui-state-highlight", 1500);
-            }, 500);
+        function updateTips(t, o) {
+            $(o).attr("title", t);
+            $(o).tooltip(
+                    {
+                        offset: [50, 0],
+                        position: 'middle right',
+                        events: {
+                            input: "focus mouseover,blur mouseout"
+                        }
+                    });
         }
 
         function checkEmpty(o, n) {
             if (o.val() == "") {
-                o.addClass("ui-state-error");
-                updateTips(n + " is Mandatory.");
+                o.addClass("error");
+                updateTips(n + " is Mandatory.", o);
                 return false;
             } else {
                 return true;
@@ -34,9 +37,10 @@
 
         function checkEquals(n, r, desn, desr) {
             if (n.val() != r.val()) {
-                n.addClass("ui-state-error");
-                r.addClass("ui-state-error");
-                updateTips(desn + " and " + desr + " must be equals.");
+                n.addClass("error");
+                r.addClass("error");
+                updateTips(desn + " and " + desr + " must be equals.", n);
+                updateTips(desn + " and " + desr + " must be equals.", r);
                 return false;
             } else {
                 return true;
@@ -45,9 +49,10 @@
 
         function checkNotEquals(n, r, desn, desr) {
             if (n.val() == r.val()) {
-                n.addClass("ui-state-error");
-                r.addClass("ui-state-error");
-                updateTips(desn + " and " + desr + " must be differents.");
+                n.addClass("error");
+                r.addClass("error");
+                updateTips(desn + " and " + desr + " must be equals.", n);
+                updateTips(desn + " and " + desr + " must be equals.", r);
                 return false;
             } else {
                 return true;
@@ -56,13 +61,13 @@
 
         $("#passwordDialog-form").dialog({
             autoOpen: false,
-            height: 370,
+            height: 420,
             width: 400,
             modal: true,
             buttons: {
                 "Change Password": function () {
                     var bValid = true;
-                    allFields.removeClass("ui-state-error");
+                    allFields.removeClass("error");
 
                     bValid = bValid && checkEmpty(oldPasswordtext, "Old Password");
                     bValid = bValid && checkEmpty(newPasswordtext, "New Password");
@@ -83,7 +88,7 @@
                             success: function (data) {
                                 // get the result and do some magic with it
                                 var message = data.Message;
-                                $("#message").html(message);
+                                $("#messagePassword").html(message);
                                 $("#dialog-message").dialog("open");
                             }
                         });
@@ -116,9 +121,9 @@
 		});
     });
 </script>
-<div class="ui-widget ui-helper-clearfix icons">
+<div class="ui-widget ui-helper-clearfix icons" id="iconChangePassword">
     <div class="ui-state-default ui-corner-all" title="Change Password">
-        <span id="iconChangePassword" class="ui-icon ui-icon-key"></span>
+        <span class="ui-icon ui-icon-key"></span>
     </div>
 </div>
 <div class="cleared"></div>
@@ -127,9 +132,9 @@
         <fieldset>
             <legend></legend>
             <p class="validateTips">All form fields are required.</p>
-            <input type="hidden" id="userNameHdn" value="<%: Model.UserName != null ? Model.UserName : Model.CompanyUserName %>" />
+            <input type="hidden" id="userNameHdn" value="<%: Model.UserName %>" />
             <div class="editor-label">
-                <label for="Change Password" id="lblUserName"><%: Model.UserName != null ? Model.UserName : Model.CompanyUserName %></label>
+                <label for="Change Password" id="lblUserName"><%: Model.UserName %></label>
             </div>
             <div class="editor-label">
                 <label for="Change Password" id="Label1">Old Password</label>
@@ -153,6 +158,6 @@
     </form>
 </div>
 <div id="dialog-message" title="New Password Saved">
-    <div id="message"></div>
+    <div id="messagePassword"></div>
 </div>
 

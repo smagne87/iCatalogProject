@@ -89,6 +89,7 @@ namespace iCatalogBB
                         ca.Password = c.Password;
                         ca.Phone = c.Phone;
                         ca.WebUrl = c.WebUrl;
+                        ca.Address = c.Address;
                         if (c.IdCity.HasValue)
                         {
                             ca.IdCity = c.IdCity.Value;
@@ -129,6 +130,48 @@ namespace iCatalogBB
         private string getEncryptedPassword(string password)
         {
             return CryptorEngine.Encrypt(password, true);
+        }
+
+        public void saveData(int IdCompany, string CompanyName, string Phone, string WebUrl, string Address, int IdCity, int IdCountry)
+        {
+            try
+            {
+                using (Repository r = new Repository())
+                {
+                    Company com = r.Companies.Where<Company>(c => c.IdCompany.Equals(IdCompany)).SingleOrDefault();
+                    com.CompanyName = CompanyName;
+                    com.Phone = Phone;
+                    com.WebUrl = WebUrl;
+                    com.Address = Address;
+                    if (IdCountry != 0)
+                    {
+                        com.IdCity = IdCity;
+                        com.IdCountry = IdCountry;
+                    }
+                    r.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void savePassword(string CompanyUserName, string NewPassword)
+        {
+            try
+            {
+                using (Repository r = new Repository())
+                {
+                    Company comp = r.Companies.Where<Company>(c => c.CompanyUserName.Equals(CompanyUserName)).SingleOrDefault();
+                    comp.Password = getEncryptedPassword(NewPassword);
+                    r.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 

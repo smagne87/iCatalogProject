@@ -1732,7 +1732,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
 		public string CompanyName
 		{
 			get
@@ -1752,7 +1752,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
 		public string Email
 		{
 			get
@@ -1772,7 +1772,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
 		public string Password
 		{
 			get
@@ -1792,7 +1792,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
 		public string Address
 		{
 			get
@@ -1812,7 +1812,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
 		public string Phone
 		{
 			get
@@ -1832,7 +1832,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCountry", DbType="Int")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCountry", DbType="Int", UpdateCheck=UpdateCheck.Never)]
 		public System.Nullable<int> IdCountry
 		{
 			get
@@ -1856,7 +1856,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCity", DbType="Int")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCity", DbType="Int", UpdateCheck=UpdateCheck.Never)]
 		public System.Nullable<int> IdCity
 		{
 			get
@@ -1880,7 +1880,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WebUrl", DbType="NVarchar(100)", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WebUrl", DbType="NVarchar(100)", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string WebUrl
 		{
 			get
@@ -1900,7 +1900,7 @@ namespace iCatalogData
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyUserName", DbType="nvarchar(50)", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyUserName", DbType="nvarchar(50)", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string CompanyUserName
 		{
 			get

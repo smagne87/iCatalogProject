@@ -16,10 +16,14 @@ namespace iCatalogSite.Models
         public string Address { get; set; }
         public string Phone { get; set; }
         public int IdCountry { get; set; }
-        //public string CountryName { get; set; }
+        public string CountryName { get; set; }
         public int IdCity { get; set; }
-        //public string CityName { get; set; }
+        public string CityName { get; set; }
         public string WebUrl { get; set; }
+        public string Street { get; set; }
+        public string NumberST { get; set; }
+        public string PostalCode { get; set; }
+        public string NewPassword { get; set; }
 
         private BBCompanyAccount _contextCompanyAccount;
         
@@ -49,7 +53,38 @@ namespace iCatalogSite.Models
             Phone = company.Phone;
             Address = company.Address;
             IdCountry = company.IdCountry;
+            CountryName = company.CountryName;
             IdCity = company.IdCity;
+            CityName = company.CityName;
+            if (!string.IsNullOrEmpty(Address))
+            {
+                string[] arrAddress = Address.Split(' ');
+                bool pasoNum = false;
+                int num = 0;
+                for (int i = 0; i < arrAddress.Length; i++)
+                {
+                    if (int.TryParse(arrAddress[i], out num) && !pasoNum)
+                    {
+                        NumberST = arrAddress[i];
+                        pasoNum = true;
+                    }
+                    else if (pasoNum)
+                    {
+                        PostalCode = arrAddress[i];
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(Street))
+                        {
+                            Street += arrAddress[i];
+                        }
+                        else
+                        {
+                            Street += " " + arrAddress[i];
+                        }
+                    }
+                }
+            }
         }
 
         internal bool existsCompanyUserName()
@@ -75,6 +110,20 @@ namespace iCatalogSite.Models
             company.Password = Password;
             company.WebUrl = WebUrl;
             _contextCompanyAccount.registerCompany(company);
+        }
+
+        internal void saveData()
+        {
+            if (!string.IsNullOrEmpty(Street))
+            {
+                Address = string.Format("{0} {1} {2}", Street, NumberST, PostalCode);
+            }
+            _contextCompanyAccount.saveData(IdCompany, CompanyName, Phone, WebUrl, Address, IdCity, IdCountry);
+        }
+
+        internal void SavePassword()
+        {
+            _contextCompanyAccount.savePassword(CompanyUserName, NewPassword);
         }
     }
 }

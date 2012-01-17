@@ -12,6 +12,62 @@ namespace iCatalogSite.Controllers
     {
         //
         // GET: /CompanyAccount/
+        public ActionResult ProfileCompany()
+        {
+            GetAllCountries();
+            CompanyAccountModel model = null;
+            if (TempData["UserModel"] != null)
+            {
+                model = (CompanyAccountModel)TempData["UserModel"];
+                Session["UserModel"] = model;
+            }
+            else if (Session["UserModel"] != null)
+            {
+                model = (CompanyAccountModel)Session["UserModel"];
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home", new { returnUrl = Request.Url.AbsolutePath });
+            }
+            return View(model);
+        }
+
+        public ActionResult SaveUserData(CompanyAccountModel model)
+        {
+            string message = "Data update successfully.";
+            try
+            {
+                model.saveData();
+                CompanyAccountModel oldmodel = null;
+                if (TempData["UserModel"] != null)
+                {
+                    oldmodel = (CompanyAccountModel)TempData["UserModel"];
+                }
+                else if (Session["UserModel"] != null)
+                {
+                    oldmodel = (CompanyAccountModel)Session["UserModel"];
+                }
+                if (!string.IsNullOrEmpty(model.Street))
+                {
+                    model.Address = string.Format("{0} {1} {2}", model.Street, model.NumberST, model.PostalCode);
+                }
+                model.CompanyUserName = oldmodel.CompanyUserName;
+                Session["UserModel"] = model;
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+            return Json(new { Message = message });
+        }
+
+        private void GetAllCountries()
+        {
+            List<Country> lst = new List<Country>();
+            CountryModel cm = new CountryModel();
+            lst.AddRange(cm.GetAllCountries());
+            ViewData["CountriesList"] = new SelectList(lst, "IdCountry", "CountryName");
+        }
 
         public ActionResult CompanyHome()
         {
@@ -32,12 +88,9 @@ namespace iCatalogSite.Controllers
             return View(model);
         }
 
-        private void GetAllCountries()
+        public ActionResult MyiCatalogs()
         {
-            List<Country> lst = new List<Country>();
-            CountryModel cm = new CountryModel();
-            lst.AddRange(cm.GetAllCountries());
-            ViewData["CountriesList"] = new SelectList(lst, "IdCountry", "CountryName");
+            return View();
         }
 
         public ActionResult RegisterCom()
@@ -122,6 +175,27 @@ namespace iCatalogSite.Controllers
             {
                 return Json(new { Message = "The company user name or password is incorrect." });
             }
+        }
+
+        public ActionResult ChangePassword(CompanyAccountModel model)
+        {
+            string message = "the password has been changed successfully";
+            try
+            {
+                if (model.validateUserPassword())
+                {
+                    model.SavePassword();
+                }
+                else
+                {
+                    message = "Invalid old Password.";
+                }
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+            return Json(new { Message = message });
         }
 
     }
