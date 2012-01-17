@@ -23,5 +23,10 @@ namespace iCatalogSite.Models
         {
             return _devicesContext.GetAllDevices();
         }
+
+        public void RemoveDevice(int idDevice)
+        {
+            _devicesContext.DeleteDevice(idDevice);
+        }
     }
 }

@@ -6,8 +6,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <h1>My Devices</h1>
-<script type="text/javascript" >
-    function confirmDeleteDevice(id) { 
+<script type="text/javascript" charset="utf-8">
+    function confirmDeleteDevice(id) {
         $("#devicehdntoDelete").val(id);
         $("#dialog-confirm").dialog('open');
     }
@@ -45,6 +45,28 @@
                 }
             }
         });
+
+        $("#dialog-message").dialog({
+            autoOpen: false,
+            modal: true,
+            buttons: {
+                Ok: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        function refreshTable() {
+            $.ajaxSetup({
+                async: false,
+                cache: false,
+                dataType: "html"
+            });
+            $.get('<%= Url.Action("MyDevices", "UserAccount") %>',
+                function (response) {
+                    $("#container").replaceWith(response);
+                });
+        }
+    });
 </script>
 
 <div id="container">
@@ -54,6 +76,9 @@
 <div id="deviceDialog-form" title="My Devices">
     <form action="MyDevices.aspx">
     </form>
+</div>
+<div id="dialog-message" title="Device Removed">
+    <div id="message"></div>
 </div>
 <div id="dialog-confirm" title="Remove Devices?">
 	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These item will be remove from my Devices. Are you sure?</p>

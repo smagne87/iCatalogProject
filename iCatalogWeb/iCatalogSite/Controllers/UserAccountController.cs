@@ -117,9 +117,21 @@ namespace iCatalogSite.Controllers
             }
         }
 
-        public ActionResult RemoveDevice()
+        public ActionResult RemoveDevice(int idDevice)
         {
-            return View();
+            string message = string.Empty;
+            try
+            {
+                DeviceModel model = new DeviceModel();
+                model.RemoveDevice(idDevice);
+
+                message = "The Device has been remove!";
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+            return Json(new { Message = message });
         }
 
         public ActionResult RegisterUser(UserAccountModel model)

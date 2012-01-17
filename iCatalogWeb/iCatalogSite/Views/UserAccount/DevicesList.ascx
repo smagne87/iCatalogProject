@@ -17,11 +17,14 @@
             "iDisplayLength": 5,
             "bRetrieve": true,
             "bDestroy": true,
+            "sDom": '<"toolbar">frtip',
             "aaSorting": [[1, "asc"]],
-            "aoColumns": [{ "bSortable": true }, { "bSortable": false }, { "bSortable": false }, { "bSortable": false}]
+            "aoColumns": [{ "bSortable": true }, { "bSortable": true }, { "bSortable": false }, { "bSortable": false}]
         });
         oTable.fnDraw(true);
         oTable.fnDeleteRow(0); //this resolves the error when the grid is empty.
+        $(".dataTables_filter input").addClass("text");
+        $(".dataTables_filter input").addClass("ui-widget-content");
     }
 </script>
 <div id="container">
@@ -31,8 +34,9 @@
                column.For(co => co.DeviceCode).Named("Device Code"); 
                column.For(co => co.DeviceDescription).Named("Device Description");
                column.For(co => co.LastSync).Named("Last Syncronization");               
-               column.For(co => co.IdDevice).Named("Delete").Action(co => { %>  
-                                    <td><img src="../Content/themes/images/icon-delete.gif" onclick="confirmDeleteDevice('<%= co.DeviceCode  %>')" /></td> <% });
+               column.For(co => co.IdDevice).Named("Delete").Action(co => 
+               { %>  
+                                    <td><img src="../Content/themes/images/icon-delete.gif" onclick="confirmDeleteDevice('<%= co.IdDevice %>')" /></td> <% });
            }).Attributes(id => "example", @class => "table-list", @cellpadding => "0", @cellspacing => "0").Empty("No Devices available").Render();
 %>
 </div>

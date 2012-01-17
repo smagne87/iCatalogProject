@@ -74,11 +74,8 @@
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\CompanyAccountModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\DeviceModel.cs" />
-=======
     <Compile Include="Models\ProductModel.cs" />
->>>>>>> 5f2c3c937a258e292a6b7bb6078ace797a071951
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

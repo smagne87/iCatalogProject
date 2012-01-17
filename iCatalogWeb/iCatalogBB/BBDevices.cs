@@ -36,7 +36,8 @@ namespace iCatalogBB
                     List<Device> lst = new List<Device>();
                     foreach (RepositoryDevice aDevice in r.Devices.ToList())
                     {
-                        lst.Add(new Device() { DeviceCode = aDevice.DeviceCode, DeviceDescription = aDevice.DeviceDescription, IdDevice = (int)aDevice.IdDevice, LastSync = aDevice.LastSync });
+                        if(aDevice.IsAssociated.HasValue && aDevice.IsAssociated.Value)
+                            lst.Add(new Device() { DeviceCode = aDevice.DeviceCode, DeviceDescription = aDevice.DeviceDescription, IdDevice = (int)aDevice.IdDevice, LastSync = aDevice.LastSync });
                     }
                     return lst;
                 }
