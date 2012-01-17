@@ -11,7 +11,7 @@
     $(document).ready(function () {
         var oTable;
         defineTable();
-    });
+    }); 
     function defineTable() {
         oTable = $('#example').dataTable({
             "iDisplayLength": 5,

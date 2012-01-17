@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <h1>My Devices</h1>
 <script type="text/javascript" >
-    function confirmDeleteDevice(id) {
+    function confirmDeleteDevice(id) { 
         $("#devicehdntoDelete").val(id);
         $("#dialog-confirm").dialog('open');
     }
