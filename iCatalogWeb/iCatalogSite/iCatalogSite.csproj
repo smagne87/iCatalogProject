@@ -66,6 +66,7 @@
     <Compile Include="Controllers\CompanyAccountController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -73,7 +74,11 @@
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\CompanyAccountModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\DeviceModel.cs" />
+=======
+    <Compile Include="Models\ProductModel.cs" />
+>>>>>>> 5f2c3c937a258e292a6b7bb6078ace797a071951
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -459,6 +464,7 @@
     <Content Include="media\unit_testing\unit_test.js" />
     <Content Include="Views\Cities\CitiesList.ascx" />
     <Content Include="Views\Cities\CitiesPage.aspx" />
+    <Content Include="Views\Products\ProductsPage.aspx" />
     <Content Include="Views\Shared\ChangePassword.ascx" />
     <Content Include="Views\Countries\CountriesPage.aspx" />
     <Content Include="Views\BackEnd\IndexBackEnd.aspx" />
