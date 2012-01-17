@@ -30,6 +30,7 @@ namespace iCatalogBB
         {
             try
             {
+                //GeallDevices
                 using (Repository r = new Repository())
                 {
                     List<Device> lst = new List<Device>();
