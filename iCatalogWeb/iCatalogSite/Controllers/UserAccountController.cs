@@ -105,6 +105,7 @@ namespace iCatalogSite.Controllers
 
         public ActionResult MyDevices()
         {
+            //GetAllDevices
             GetAllDevices();
             if (Request.IsAjaxRequest())
             {
