@@ -167,14 +167,32 @@
                 tips.removeClass("ui-state-highlight", 1500);
             }, 500);
         }
+        $('#tabs').tabs({
+            select: function (event, ui) {
+                $("input").val("");
+                if ($("input.error").tooltip().length != 0) {
+                    $("input.error").each(function () {
+                        $(this).tooltip().getTip().remove();
+                        $(this).data('tooltip', null); //tooltip destruction
+                    });
+                }
+                $("input").removeClass("error");
+                $("input[type='checkbox']").attr('checked', false);
+                tips.removeClass("ui-state-highlight");
+                tips.text("");
+            }
+        });
     });
 </script>
 
 <h2>Login</h2>
-<div>
-    <p class="validateTips"></p>
-    <div style="float:left;">
-        <h3>Users</h3>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabUser">User</a></li>
+		<li><a href="#tabCompany">Company</a></li>
+    </ul>
+    <div style="float:left;" id="tabUser">
+        <p class="validateTips"></p>
         <form id="loginForm">
             <fieldset class="ui-corner-all" style="width:350px;">
                 <div class="editor-label">
@@ -211,8 +229,8 @@
             </fieldset>
         </form>
     </div>
-    <div style="float:left; margin:0px 10px;">
-        <h3>Companies</h3>
+    <div style="float:right;" id="tabCompany">
+        <p class="validateTips"></p>
         <form id="loginComForm">
             <fieldset class="ui-corner-all" style="width:350px;">
                 <div class="editor-label">
