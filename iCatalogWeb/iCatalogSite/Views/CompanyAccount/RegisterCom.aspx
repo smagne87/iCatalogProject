@@ -67,7 +67,7 @@
             {
                 webUrl: "Invalid url format",
                 companyName: "Please specify your first name",
-                termsOfUse: "*",
+                termsOfUse: "Accept terms of use",
                 password: {
                     required: "Please specify your password",
                     minlength: "Please enter at least 5 characters."
@@ -81,6 +81,22 @@
                     required: "Please specify your Email address.",
                     email: "Your email address must be in the format of name@domain.com",
                     checkMailUnique: "Email Address Already Exists."
+                }
+            },
+            invalidHandler: function (form, validator) {
+                for (var i = 0; i < validator.errorList.length; i++) {
+                    var field = validator.errorList[i];
+                    var ele = field.element;
+                    var message = field.message;
+                    $(ele).attr("title", field.message);
+                    $(ele).tooltip(
+                    {
+                        offset: [50, 0],
+                        position: 'middle right',
+                        events: {
+                            input: "focus mouseover,blur mouseout"
+                        }
+                    });
                 }
             }
         });

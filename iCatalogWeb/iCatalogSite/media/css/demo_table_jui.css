@@ -132,6 +132,11 @@ table.display thead th div.DataTables_sort_wrapper span {
 	float: left;
 }
 
+.dataTables_length select
+{
+    width:60px !important;
+}
+
 .dataTables_filter {
 	width: 50%;
 	float: right;

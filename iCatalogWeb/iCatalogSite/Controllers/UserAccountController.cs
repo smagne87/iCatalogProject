@@ -12,6 +12,12 @@ namespace iCatalogSite.Controllers
     {
         //
         // GET: /UserAccount/
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         public ActionResult SaveUserData(UserAccountModel model)
         {
             string message = "Personal data update successfully.";
@@ -99,7 +105,33 @@ namespace iCatalogSite.Controllers
 
         public ActionResult MyDevices()
         {
-            return View();
+            //GetAllDevices
+            GetAllDevices();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("DevicesList", (List<iCatalogBB.Device>)ViewData["DevicesList"]);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult RemoveDevice(int idDevice)
+        {
+            string message = string.Empty;
+            try
+            {
+                DeviceModel model = new DeviceModel();
+                model.RemoveDevice(idDevice);
+
+                message = "The Device has been remove!";
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+            return Json(new { Message = message });
         }
 
         public ActionResult RegisterUser(UserAccountModel model)
@@ -160,6 +192,45 @@ namespace iCatalogSite.Controllers
             CountryModel cm = new CountryModel();
             lst.AddRange(cm.GetAllCountries());
             ViewData["CountriesList"] = new SelectList(lst, "IdCountry", "CountryName");
+        }
+
+        private void GetAllDevices()
+        {
+            List<Device> lst = new List<Device>();
+            Device c = new Device();
+            DeviceModel dm = new DeviceModel();
+            lst.Add(new Device { IdDevice = 0, DeviceDescription = "" });//This row will be deleted after the datatable is created.
+            lst.AddRange(dm.GetAllDevices());
+            ViewData["DevicesList"] = lst;
+        }
+
+        [HttpPost]
+        public ActionResult LogOn(UserAccountModel model, string returnUrl)
+        {
+            if (model.validateUserPassword())
+            {
+                Uri ur = null;
+                TempData.Add("UserModel", model);
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    Uri.TryCreate(Request.Url, returnUrl, out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+                else if (model.isGeneralAdmin)
+                {
+                    Uri.TryCreate(Request.Url, "/BackEnd/IndexBackEnd", out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+                else
+                {
+                    Uri.TryCreate(Request.Url, "/UserAccount/UserHome", out ur);
+                    return Json(new { Url = ur.AbsolutePath });
+                }
+            }
+            else
+            {
+                return Json(new { Message = "The user name or password is incorrect." });
+            }
         }
     }
 }
