@@ -226,7 +226,7 @@
                 <select name="CategoryThree" id="CategoryThree" class="text ui-widget-content ui-corner-all" />
             </div>
             <div class="editor-label">
-                <label for="Company" id="Label5">
+                <label for="Company" id="lblCompany">
                     Company</label>
             </div>
             <div class="editor-field">

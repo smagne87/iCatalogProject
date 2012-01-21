@@ -14,7 +14,7 @@ namespace iCatalogSite.Controllers
         // GET: /Products/
 
         [HttpPost]
-        public ActionResult SaveCountry(ProductModel model)
+        public ActionResult SaveProduct(ProductModel model)
         {
             string message = string.Empty;
             try
