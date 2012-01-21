@@ -32,6 +32,9 @@ namespace iCatalogSite.Controllers
 
         public ActionResult ProductsPage()
         {
+            GetAllCategoriesOne();
+            GetAllCategoriesTwo();
+            GetAllCategoriesThree();
             GetAllProducts();
             if (Request.IsAjaxRequest())
             {
@@ -41,6 +44,21 @@ namespace iCatalogSite.Controllers
             {
                 return View();
             }
+        }
+
+        private void GetAllCategoriesThree()
+        {
+
+        }
+
+        private void GetAllCategoriesTwo()
+        {
+
+        }
+
+        private void GetAllCategoriesOne()
+        {
+
         }
 
         [HttpPost]

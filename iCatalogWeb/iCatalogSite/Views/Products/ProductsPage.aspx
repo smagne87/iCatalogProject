@@ -209,21 +209,21 @@
                     Category One</label>
             </div>
             <div class="editor-field">
-                <select name="CategoryOne" id="CategoryOne" class="text ui-widget-content ui-corner-all" />
+                <%= Html.DropDownList("ddlCategoryOne", (IEnumerable<SelectListItem>)ViewData["CategoriesOneList"], "<Select Category One>")%>
             </div>
             <div class="editor-label">
                 <label for="CategoryTwo" id="lblCategoryTwo">
                     Category Two</label>
             </div>
             <div class="editor-field">
-                <select name="CategoryTwo" id="CategoryTwo" class="text ui-widget-content ui-corner-all" />
+                <%= Html.DropDownList("ddlCategoryTwo", (IEnumerable<SelectListItem>)ViewData["CategoriesTwoList"], "<Select Category Two>")%>
             </div>
             <div class="editor-label">
                 <label for="CategoryThree" id="lblCategoryThree">
                     Category Three</label>
             </div>
             <div class="editor-field">
-                <select name="CategoryThree" id="CategoryThree" class="text ui-widget-content ui-corner-all" />
+                <%= Html.DropDownList("ddlCategoryThree", (IEnumerable<SelectListItem>)ViewData["CategoriesThreeList"], "<Select Category Three>")%>
             </div>
             <div class="editor-label">
                 <label for="Company" id="lblCompany">
