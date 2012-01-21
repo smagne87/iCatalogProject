@@ -9,13 +9,18 @@ namespace iCatalogBB
 {
     public class BBProducts
     {
-        public void InsertProduct(string productName)
+        public void InsertProduct(int? idCategoryOne, int? idCategoryThree, int? idCategoryTwo, int? idCompany, string productDescription, string productName)
         {
             try
             {
                 using (Repository r = new Repository())
                 {
                     RepoProduct p = new RepoProduct();
+                    p.IdCategoryOne = idCategoryOne;
+                    p.IdCategoryThree = idCategoryThree;
+                    p.IdCategoryTwo = idCategoryTwo;
+                    p.IdCompany = idCompany;
+                    p.ProductDescription = productDescription;                   
                     p.ProductName = productName;
                     r.Products.InsertOnSubmit(p);
                     r.SubmitChanges();
@@ -27,13 +32,18 @@ namespace iCatalogBB
             }
         }
 
-        public void UpdateProduct(int idProduct, string productName)
+        public void UpdateProduct(int idProduct, int? idCategoryOne, int? idCategoryThree, int? idCategoryTwo, int? idCompany, string productDescription, string productName)
         {
             try
             {
                 using (Repository r = new Repository())
                 {
                     RepoProduct p = r.Products.Where<RepoProduct>(pr => pr.IdProduct.Equals(idProduct)).SingleOrDefault();
+                    p.IdCategoryOne = idCategoryOne;
+                    p.IdCategoryThree = idCategoryThree;
+                    p.IdCategoryTwo = idCategoryTwo;
+                    p.IdCompany = idCompany;
+                    p.ProductDescription = productDescription;
                     p.ProductName = productName;
                     r.SubmitChanges();
                 }

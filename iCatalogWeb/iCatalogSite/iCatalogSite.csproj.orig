@@ -74,7 +74,10 @@
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\CompanyAccountModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Models\DeviceModel.cs" />
+>>>>>>> b04493e02309cf8c1e5deba9a5a4a036b6d8f6f7
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,7 +91,10 @@
     <Content Include="Content\themes\images\02.png" />
     <Content Include="Content\themes\images\03.png" />
     <Content Include="Content\themes\images\available.png" />
+<<<<<<< HEAD
+=======
     <Content Include="Content\themes\images\black_arrow.png" />
+>>>>>>> b04493e02309cf8c1e5deba9a5a4a036b6d8f6f7
     <Content Include="Content\themes\images\Block-h.png" />
     <Content Include="Content\themes\images\Block-s.png" />
     <Content Include="Content\themes\images\Block-v.png" />
@@ -150,7 +156,10 @@
     <Content Include="media\js\jquery.easing.min.js" />
     <Content Include="media\js\jquery.js" />
     <Content Include="media\js\jquery.lavalamp.js" />
+<<<<<<< HEAD
+=======
     <Content Include="media\js\jquery.tools.min.js" />
+>>>>>>> b04493e02309cf8c1e5deba9a5a4a036b6d8f6f7
     <Content Include="media\js\jquery.watermark.js" />
     <Content Include="media\js\json.js" />
     <Content Include="media\js\json2.js" />
@@ -463,22 +472,31 @@
     <Content Include="media\unit_testing\unit_test.js" />
     <Content Include="Views\Cities\CitiesList.ascx" />
     <Content Include="Views\Cities\CitiesPage.aspx" />
+<<<<<<< HEAD
+    <Content Include="Views\Products\ProductsPage.aspx" />
+    <Content Include="Views\Shared\ChangePassword.ascx" />
+=======
     <Content Include="Views\CompanyAccount\CompanyHome.aspx" />
     <Content Include="Views\CompanyAccount\MyiCatalogs.aspx" />
     <Content Include="Views\CompanyAccount\ProfileCompany.aspx" />
-    <Content Include="Views\Products\ProductsList.ascx" />
     <Content Include="Views\Products\ProductsPage.aspx" />
+>>>>>>> b04493e02309cf8c1e5deba9a5a4a036b6d8f6f7
     <Content Include="Views\Countries\CountriesPage.aspx" />
     <Content Include="Views\BackEnd\IndexBackEnd.aspx" />
     <Content Include="Views\Countries\CountriesList.ascx" />
     <Content Include="Views\Home\ForgotPassword.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Home\Login.aspx" />
+<<<<<<< HEAD
+    <Content Include="Views\Home\Register.aspx" />
+    <Content Include="Views\CompanyAccount\RegisterCom.aspx" />
+=======
     <Content Include="Views\CompanyAccount\ChangePassword.ascx" />
     <Content Include="Views\UserAccount\ChangePassword.ascx" />
     <Content Include="Views\UserAccount\Register.aspx" />
     <Content Include="Views\CompanyAccount\RegisterCom.aspx" />
     <Content Include="Views\UserAccount\DevicesList.ascx" />
+>>>>>>> b04493e02309cf8c1e5deba9a5a4a036b6d8f6f7
     <Content Include="Views\UserAccount\MyDevices.aspx" />
     <Content Include="Views\UserAccount\ProfileUser.aspx" />
     <Content Include="Views\UserAccount\UserHome.aspx" />
@@ -535,7 +553,10 @@
     <None Include="media\unit_testing\templates\js_data_mixed_types.php" />
     <None Include="media\unit_testing\templates\two_tables.php" />
     <Content Include="Views\MasterPageUserProfile.Master" />
+<<<<<<< HEAD
+=======
     <Content Include="Views\MasterPageCompanyProfile.Master" />
+>>>>>>> b04493e02309cf8c1e5deba9a5a4a036b6d8f6f7
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iCatalogBB\iCatalogBB.csproj">

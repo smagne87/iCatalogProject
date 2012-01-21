@@ -9,7 +9,13 @@ namespace iCatalogSite.Models
     public class ProductModel
     {
         public int IdProduct { get; set; }
+        public int? IdCategoryOne { get; set; }
+        public int? IdCategoryThree { get; set; }
+        public int? IdCategoryTwo { get; set; }
+        public int? IdCompany { get; set; }
+        public string ProductDescription { get; set; }
         public string ProductName { get; set; }
+
         private BBProducts _productsContext;
 
         public ProductModel()
@@ -23,16 +29,16 @@ namespace iCatalogSite.Models
             {
                 if (IdProduct.Equals(0))
                 {
-                    _productsContext.InsertProduct(ProductName);
+                    _productsContext.InsertProduct(IdCategoryOne, IdCategoryThree, IdCategoryTwo, IdCompany, ProductDescription, ProductName);
                 }
                 else
                 {
-                    _productsContext.UpdateProduct(IdProduct, ProductName);
+                    _productsContext.UpdateProduct(IdProduct, IdCategoryOne, IdCategoryThree, IdCategoryTwo, IdCompany, ProductDescription, ProductName);
                 }
             }
             else
             {
-                throw new Exception("This Country Already Exists.");
+                throw new Exception("This Product Already Exists.");
             }
         }
 

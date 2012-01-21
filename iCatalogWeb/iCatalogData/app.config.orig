@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+    </configSections>
+    <connectionStrings>
+        <add name="iCatalogData.Properties.Settings.iCatalogConnectionString"
+<<<<<<< HEAD
+            connectionString="Data Source=SEBA-PC;Initial Catalog=iCatalog;Integrated Security=True"
+=======
+            connectionString="Data Source=(Local);Initial Catalog=iCatalog;Integrated Security=True"
+>>>>>>> b04493e02309cf8c1e5deba9a5a4a036b6d8f6f7
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
+</configuration>
