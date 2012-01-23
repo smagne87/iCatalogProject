@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BackEndController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\CompanyAccountController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\CompanyAccountModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
@@ -461,6 +463,9 @@
     <Content Include="media\unit_testing\tests_onhold\6_delayed_rendering\sPaginationType.js" />
     <Content Include="media\unit_testing\tests_onhold\6_delayed_rendering\_zero_config.js" />
     <Content Include="media\unit_testing\unit_test.js" />
+    <Content Include="Views\Categories\CategoriesList.ascx" />
+    <Content Include="Views\Categories\CategoriesOne.aspx" />
+    <Content Include="Views\Categories\CategoryOne.aspx" />
     <Content Include="Views\Cities\CitiesList.ascx" />
     <Content Include="Views\Cities\CitiesPage.aspx" />
     <Content Include="Views\CompanyAccount\CompanyHome.aspx" />

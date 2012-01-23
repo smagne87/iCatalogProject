@@ -38,7 +38,7 @@ namespace iCatalogSite.Controllers
             GetAllProducts();
             if (Request.IsAjaxRequest())
             {
-                return PartialView("ProductsList", (List<Product>)ViewData["CountriesList"]);
+                return PartialView("ProductsList", (List<Product>)ViewData["ProductsList"]);
             }
             else
             {

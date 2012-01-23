@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BBCategories.cs" />
     <Compile Include="BBCities.cs" />
     <Compile Include="BBCompanyAccount.cs" />
     <Compile Include="BBCountries.cs" />

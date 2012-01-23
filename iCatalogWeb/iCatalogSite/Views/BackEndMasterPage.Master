@@ -27,7 +27,6 @@
         <li><a href="/BackEnd/IndexBackEnd"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
         <li><a href="/Countries/CountriesPage"><span class="l"></span><span class="r"></span><span class="t">Countries</span></a></li>
         <li><a href="/Cities/CitiesPage"><span class="l"></span><span class="r"></span><span class="t">Cities</span></a></li>
-        <li><a href="/Products/ProductsPage"><span class="l"></span><span class="r"></span><span class="t">Products</span></a></li>
         <li><a href="/BackEnd/Users"><span class="l"></span><span class="r"></span><span class="t">Users</span></a></li>
         <li><a href="/BackEnd/Companies"><span class="l"></span><span class="r"></span><span class="t">Companies</span></a></li>
         <li><a href="/BackEnd/HelpDesk"><span class="l"></span><span class="r"></span><span class="t">Help Desk</span></a></li>

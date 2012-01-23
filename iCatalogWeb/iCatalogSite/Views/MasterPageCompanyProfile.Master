@@ -20,6 +20,15 @@
     <ul class="art-menu" id="tabMenu">
         <li><a href="/CompanyAccount/CompanyHome"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
         <li><a href="/CompanyAccount/MyiCatalogs"><span class="l"></span><span class="r"></span><span class="t">My iCatalogs</span></a></li>
+        <li><a href="/Products/ProductsPage"><span class="l"></span><span class="r"></span><span class="t">My Products</span></a></li>
+        <li>
+            <a href="#"><span class="l"></span><span class="r"></span><span class="t">Categories</span></a>
+            <ul>
+                <li><a href="/Categories/CategoriesOne">Category One</a></li>
+                <li><a href="/Categories/CategoryTwo">Category Two</a></li>
+                <li><a href="/Categories/CategoryThree">Category Three</a></li>
+            </ul>
+        </li>
         <li><a href="/CompanyAccount/MyStatistics"><span class="l"></span><span class="r"></span><span class="t">My Statistics</span></a></li>
         <li><a href="/CompanyAccount/ProfileCompany"><span class="l"></span><span class="r"></span><span class="t">Profile</span></a></li>
         <li><a href="/Home/Index"><span class="l"></span><span class="r"></span><span class="t">Log out</span></a></li>

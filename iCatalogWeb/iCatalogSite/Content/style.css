@@ -778,8 +778,8 @@ font-weight: normal;
 .art-BlockContent-body a:link
 {
 	color: #627B8D;
-font-family: Arial, Helvetica, Sans-Serif;
-text-decoration: underline;
+    font-family: Arial, Helvetica, Sans-Serif;
+    text-decoration: underline;
 }
 
 .art-BlockContent-body a:visited, .art-BlockContent-body a.visited
