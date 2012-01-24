@@ -149,9 +149,7 @@
     <Content Include="media\images\sort_desc_disabled.png" />
     <Content Include="media\js\jquery.dataTables.js" />
     <Content Include="media\js\jquery.dataTables.min.js" />
-    <Content Include="media\js\jquery.easing.min.js" />
     <Content Include="media\js\jquery.js" />
-    <Content Include="media\js\jquery.lavalamp.js" />
     <Content Include="media\js\jquery.tools.min.js" />
     <Content Include="media\js\jquery.watermark.js" />
     <Content Include="media\js\json.js" />
@@ -466,6 +464,7 @@
     <Content Include="Views\Categories\CategoriesList.ascx" />
     <Content Include="Views\Categories\CategoriesOne.aspx" />
     <Content Include="Views\Categories\CategoryOne.aspx" />
+    <Content Include="Views\Categories\CategoryList.ascx" />
     <Content Include="Views\Cities\CitiesList.ascx" />
     <Content Include="Views\Cities\CitiesPage.aspx" />
     <Content Include="Views\CompanyAccount\CompanyHome.aspx" />
@@ -523,7 +522,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="media\images\Sorting icons.psd" />
-    <None Include="media\js\jquery.dataTables.min.js.gz" />
     <None Include="media\unit_testing\controller.php" />
     <None Include="media\unit_testing\performance\large.php" />
     <None Include="media\unit_testing\templates\-complex_header.php" />

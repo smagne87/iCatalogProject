@@ -34,7 +34,7 @@ namespace iCatalogBB
             {
                 throw ex;
             }
-            return lst.Distinct().ToList();
+            return lst.Distinct(new DistinctCategoryOne()).ToList();
         }
 
         public List<CategoryOne> getAllCategoryOneByCategoryName(string CategoryOneName, int idCompany)
@@ -131,7 +131,7 @@ namespace iCatalogBB
                 using (Repository r = new Repository())
                 {
                     List<RCategoryOne> c = r.CategoryOnes.Where(ca => ca.CategoryName.Equals(categoryName) && ca.IdCompany.Equals(idCompany)).ToList();
-                    if (c.Count < 0)
+                    if (c.Count > 0)
                     {
                         r.CategoryOnes.DeleteAllOnSubmit(c);
                         r.SubmitChanges();
@@ -201,7 +201,7 @@ namespace iCatalogBB
             {
                 throw ex;
             }
-            return lst.Distinct().ToList();
+            return lst.Distinct(new DistinctCategoryTwo()).ToList();
         }
 
         public List<CategoryTwo> getAllCategoryTwoByCategoryName(string CategoryTwoName, int idCompany)
@@ -368,7 +368,7 @@ namespace iCatalogBB
             {
                 throw ex;
             }
-            return lst.Distinct().ToList();
+            return lst.Distinct(new DistinctCategoryThree()).ToList();
         }
 
         public List<CategoryThree> getAllCategoryThreeByCategoryName(string CategoryThreeName, int idCompany)
@@ -538,5 +538,44 @@ namespace iCatalogBB
         public string CategoryThreeDescription { get; set; }
         public int IdCompany { get; set; }
         public string CompanyName { get; set; }
+    }
+
+    public class DistinctCategoryOne : IEqualityComparer<CategoryOne>
+    {
+        public bool Equals(CategoryOne x, CategoryOne y)
+        {
+            return x.CategoryOneName.Equals(y.CategoryOneName);
+        }
+
+        public int GetHashCode(CategoryOne obj)
+        {
+            return obj.CategoryOneName.GetHashCode();
+        }
+    }
+
+    public class DistinctCategoryTwo : IEqualityComparer<CategoryTwo>
+    {
+        public bool Equals(CategoryTwo x, CategoryTwo y)
+        {
+            return x.CategoryTwoName.Equals(y.CategoryTwoName);
+        }
+
+        public int GetHashCode(CategoryTwo obj)
+        {
+            return obj.CategoryTwoName.GetHashCode();
+        }
+    }
+
+    public class DistinctCategoryThree : IEqualityComparer<CategoryThree>
+    {
+        public bool Equals(CategoryThree x, CategoryThree y)
+        {
+            return x.CategoryThreeName.Equals(y.CategoryThreeName);
+        }
+
+        public int GetHashCode(CategoryThree obj)
+        {
+            return obj.CategoryThreeName.GetHashCode();
+        }
     }
 }

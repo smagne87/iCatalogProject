@@ -111,16 +111,6 @@
                 // Password type?
                 if ($input.data(dataPassword)) {
                     elem.attributes["type"].value = "password";
-//                    if (($input.attr("type") || "") === "text") {
-//                        var $pwd = $input.data(dataPassword) || [],
-//                    						$wrap = $input.parent() || [];
-
-//                        if (($pwd.length) && ($wrap.length)) {
-//                            $wrap[0].removeChild($input[0]); // Can't use jQuery methods, because they destroy data
-//                            $wrap[0].appendChild($pwd[0]);
-//                            $input = $pwd;
-//                        }
-//                    }
                 }
 
                 if (maxLen) {
