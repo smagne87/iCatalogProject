@@ -1,18 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPageCompanyProfile.Master" Inherits="System.Web.Mvc.ViewPage<iCatalogSite.Models.CategoryOneModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPageCompanyProfile.Master" Inherits="System.Web.Mvc.ViewPage<iCatalogSite.Models.CategoryTwoModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Categories One
+    Categories Two
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Categories One</h2>
+<h2>Categories Two</h2>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#create-categoryOne").button()
+        $("#create-categoryTwo").button()
         .click(function () {
             var idcompany = $("#companyId").val();
-            var url = window.location.toString().replace(window.location.pathname, "/Categories/CategoryOne?IdCompany=" + idcompany);
+            var url = window.location.toString().replace(window.location.pathname, "/Categories/CategoryTwo?IdCompany=" + idcompany);
             window.location.href = url;
         });
 
@@ -25,10 +25,10 @@
                 "Delete Category": function () {
                     var idcom = $("#catIdComhdntoDelete").val();
                     var catName = $("#catNamehdntoDelete").val();
-                    var json = JSON.stringify({ CategoryOneName: catName, IdCompany: idcom });
+                    var json = JSON.stringify({ CategoryTwoName: catName, IdCompany: idcom });
 
                     $.ajax({
-                        url: '/Categories/DeleteAllCategoryOne',
+                        url: '/Categories/DeleteAllCategoryTwo',
                         type: 'POST',
                         dataType: 'json',
                         data: json,
@@ -55,7 +55,7 @@
                 cache: false,
                 dataType: "html"
             });
-            $.get('/Categories/CategoriesOne',
+            $.get('/Categories/CategoriesTwo',
                 function (response) {
                     $("#container").replaceWith(response);
                 });
@@ -64,7 +64,7 @@
     });
 
     function editCategory(catName, idcompany) {
-        var url = window.location.toString().replace(window.location.pathname, "/Categories/CategoryOne?IdCompany=" + idcompany + "&CategoryOneName=" + catName);
+        var url = window.location.toString().replace(window.location.pathname, "/Categories/CategoryTwo?IdCompany=" + idcompany + "&CategoryTwoName=" + catName);
         window.location.href = url;
     }
 
@@ -80,10 +80,10 @@
 </style>
 <header>
     <input type="hidden" id="companyId" value="<%= ViewData["IdCompany"] %>" />
-    <button id="create-categoryOne">New Category One</button>
+    <button id="create-categoryTwo">New Category Two</button>
 </header>
 <div id="container">
-<% Html.RenderPartial("CategoriesOneList"); %>
+<% Html.RenderPartial("CategoriesTwoList"); %>
 </div>
 
 <div id="dialog-confirm" title="Delete Category?">

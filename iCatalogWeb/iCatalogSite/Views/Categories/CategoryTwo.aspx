@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPageCompanyProfile.Master" Inherits="System.Web.Mvc.ViewPage<iCatalogSite.Models.CategoryOneModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPageCompanyProfile.Master" Inherits="System.Web.Mvc.ViewPage<iCatalogSite.Models.CategoryTwoModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Category One
+    Category Two
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Category One</h2>
+<h2>Category Two</h2>
 <script type="text/javascript">
     function editCategory(id, name, desc) {
         $("#catIdhdn").val(id);
@@ -21,12 +21,12 @@
     }
 
     $(document).ready(function () {
-        if (window.location.search.indexOf("CategoryOneName") > 0) {
-            $("#catOneNameDetail").text($("#catOneName").val());
-            $("#catOneName").hide();
+        if (window.location.search.indexOf("CategoryTwoName") > 0) {
+            $("#catTwoNameDetail").text($("#catTwoName").val());
+            $("#catTwoName").hide();
         }
         else {
-            $("#catOneNameDetail").hide();
+            $("#catTwoNameDetail").hide();
         }
     });
 
@@ -41,10 +41,10 @@
             buttons: {
                 "Delete Category": function () {
                     var id = $("#cathdntoDelete").val();
-                    var json = JSON.stringify({ IdCategoryOne: id });
+                    var json = JSON.stringify({ IdCategoryTwo: id });
 
                     $.ajax({
-                        url: '/Categories/DeleteSingleCategoryOne',
+                        url: '/Categories/DeleteSingleCategoryTwo',
                         type: 'POST',
                         dataType: 'json',
                         data: json,
@@ -67,7 +67,7 @@
 
         var catDescText = $("#catDescText"),
             catIdhdn = $("#catIdhdn"),
-            catOneName = $("#catOneName"),
+            catTwoName = $("#catTwoName"),
             companyId = $("#companyId"),
 			allFields = $([]).add(catDescText).add(catIdhdn);
 
@@ -95,10 +95,10 @@
 
         function getCat() {
             var id = catIdhdn.val();
-            var name = catOneName.val();
+            var name = catTwoName.val();
             var desc = catDescText.val();
             var idcom = companyId.val()
-            return (name == "") ? null : { IdCategoryOne: id, CategoryOneName: name, CategoryOneDescription: desc, IdCompany: idcom };
+            return (name == "") ? null : { IdCategoryTwo: id, CategoryTwoName: name, CategoryTwoDescription: desc, IdCompany: idcom };
         }
 
         $("#categoryDialog-form").dialog({
@@ -120,7 +120,7 @@
                         $(this).dialog("close");
 
                         $.ajax({
-                            url: '/Categories/CategoryOneSave',
+                            url: '/Categories/CategoryTwoSave',
                             type: 'POST',
                             dataType: 'json',
                             data: json,
@@ -158,25 +158,25 @@
 
         $("#backButton").button()
             .click(function () {
-                var url = window.location.toString().replace(window.location.pathname, "/Categories/CategoriesOne");
+                var url = window.location.toString().replace(window.location.pathname, "/Categories/CategoriesTwo");
                 url = url.substring(0, url.indexOf("?"));
                 window.location = url;
             });
 
-        $("#create-categoryOne").button()
+        $("#create-categoryTwo").button()
 			.button()
 			.click(function () {
 			    var bValid = true;
 			    allFields.removeClass("error");
 
-			    bValid = bValid && checkEmpty(catOneName, "Category Name");
+			    bValid = bValid && checkEmpty(catTwoName, "Category Name");
 
 			    if (bValid) {
-			        $("#catName").text(catOneName.val());
-			        catOneName.removeClass("error");
-			        $("#catOneNameDetail").text(catOneName.val());
-			        $("#catOneNameDetail").show();
-			        catOneName.hide();
+			        $("#catName").text(catTwoName.val());
+			        catTwoName.removeClass("error");
+			        $("#catTwoNameDetail").text(catTwoName.val());
+			        $("#catTwoNameDetail").show();
+			        catTwoName.hide();
 			        $("span.ui-dialog-title").text('New Category');
 			        $("#categoryDialog-form").dialog("open");
 			    }
@@ -188,7 +188,7 @@
                 cache: false,
                 dataType: "html"
             });
-            $.get('/Categories/CategoryOne?IdCompany=' + companyId.val() + '&CategoryOneName=' + catOneName.val(),
+            $.get('/Categories/CategoryTwo?IdCompany=' + companyId.val() + '&CategoryTwoName=' + catTwoName.val(),
                 function (response) {
                     $("#container").replaceWith(response);
                 });
@@ -205,18 +205,18 @@
         <h3>Category Name</h3>
     </div>
     <div class="editor-field">
-        <input type="text" name="catOneName" id="catOneName" class="text ui-widget-content ui-corner-all"  value="<%= ViewData["CategoryOneName"] %>"  />
+        <input type="text" name="catTwoName" id="catTwoName" class="text ui-widget-content ui-corner-all"  value="<%= ViewData["CategoryTwoName"] %>"  />
         <h3>
-            <label id="catOneNameDetail"></label>
+            <label id="catTwoNameDetail"></label>
         </h3>
     </div>
     <div class="editor-label">
         <button id="backButton">Back</button>
-        <button id="create-categoryOne">New Category One</button>
+        <button id="create-categoryTwo">New Category Two</button>
     </div>
 </header>
 <div id="container">
-<% Html.RenderPartial("CategoryOneList"); %>
+<% Html.RenderPartial("CategoryTwoList"); %>
 </div>
 
 <div id="categoryDialog-form" title="Edit Category">
@@ -226,13 +226,13 @@
         <p class="validateTips">All form fields are required.</p>
         <input type="hidden" name="catIdhdn" id="catIdhdn" />
         <div class="editor-label">
-            <label for="CategoryOneName" id="lblCategoryOneName">Category Name</label>
+            <label for="CategoryTwoName" id="lblCategoryTwoName">Category Name</label>
         </div>
         <div class="editor-label">
-            <label for="CategoryOneName" id="catName"></label>
+            <label for="CategoryTwoName" id="catName"></label>
         </div>
         <div class="editor-label">
-            <label for="CategoryOneName" id="Label1">Category Description</label>
+            <label for="CategoryTwoName" id="Label1">Category Description</label>
         </div>
         <div class="editor-field">
             <input type="text" name="catDescText" id="catDescText" class="text ui-widget-content ui-corner-all" />

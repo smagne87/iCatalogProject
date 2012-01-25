@@ -25,8 +25,8 @@
             <a href="#"><span class="l"></span><span class="r"></span><span class="t">Categories</span></a>
             <ul>
                 <li><a href="/Categories/CategoriesOne">Category One</a></li>
-                <li><a href="/Categories/CategoryTwo">Category Two</a></li>
-                <li><a href="/Categories/CategoryThree">Category Three</a></li>
+                <li><a href="/Categories/CategoriesTwo">Category Two</a></li>
+                <li><a href="/Categories/CategoriesThree">Category Three</a></li>
             </ul>
         </li>
         <li><a href="/CompanyAccount/MyStatistics"><span class="l"></span><span class="r"></span><span class="t">My Statistics</span></a></li>
