@@ -32,6 +32,10 @@ namespace iCatalogSite.Controllers
 
         public ActionResult ProductsPage()
         {
+            if (Session["UserModel"] == null)
+            {
+                return RedirectToAction("Login", "Home", new { returnUrl = Request.Url.AbsolutePath });
+            }
             GetAllCategoriesOne();
             GetAllCategoriesTwo();
             GetAllCategoriesThree();
@@ -48,17 +52,14 @@ namespace iCatalogSite.Controllers
 
         private void GetAllCategoriesThree()
         {
-
         }
 
         private void GetAllCategoriesTwo()
         {
-
         }
 
         private void GetAllCategoriesOne()
         {
-
         }
 
         [HttpPost]
@@ -80,13 +81,18 @@ namespace iCatalogSite.Controllers
 
         private void GetAllProducts()
         {
-            List<Product> lst = new List<Product>();
-            Product c = new Product();
-            ProductModel pm = new ProductModel();
-            lst.Add(new Product { IdProduct = 0, ProductName = "" });//This row will be deleted after the datatable is created.
-            lst.AddRange(pm.GetAllProducts());
-            ViewData["ProductsList"] = lst;
+            if (Session["UserModel"] != null)
+            {
+                List<Product> lst = new List<Product>();
+                CompanyAccountModel ca = (CompanyAccountModel)Session["UserModel"];
+                Product c = new Product();
+                ProductModel pm = new ProductModel();
+                pm.IdCompany = ca.IdCompany;
+                lst.Add(new Product { IdProduct = 0, ProductName = "" });//This row will be deleted after the datatable is created.
+                lst.AddRange(pm.GetAllProducts());
+                ViewData["ProductsList"] = lst;
+                ViewData["IdCompany"] = ca.IdCompany;
+            }
         }
-
     }
 }

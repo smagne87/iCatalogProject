@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/BackEndMasterPage.Master"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPageCompanyProfile.Master"
     Inherits="System.Web.Mvc.ViewPage<iCatalogSite.Models.ProductModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -63,19 +63,22 @@
 			allFields = $([]).add(productName).add(producthdn),
 			tips = $(".validateTips");
 
-        function updateTips(t) {
-            tips
-				.text(t)
-				.addClass("ui-state-highlight");
-            setTimeout(function () {
-                tips.removeClass("ui-state-highlight", 1500);
-            }, 500);
+        function updateTips(t, o) {
+            $(o).attr("title", t);
+            $(o).tooltip(
+                    {
+                        offset: [50, 0],
+                        position: 'middle right',
+                        events: {
+                            input: "focus mouseover,blur mouseout"
+                        }
+                    });
         }
 
         function checkEmpty(o, n) {
             if (o.val() == "") {
                 o.addClass("ui-state-error");
-                updateTips(n + " is Mandatory.");
+                updateTips(n + " is Mandatory.", o);
                 return false;
             } else {
                 return true;
@@ -92,8 +95,8 @@
 
         $("#productDialog-form").dialog({
             autoOpen: false,
-            height: 250,
-            width: 300,
+            height: 625,
+            width: 500,
             modal: true,
             buttons: {
                 "Save Product": function () {
@@ -176,9 +179,7 @@
         }
     </style>
     <header>
-    <ul>
-        <li><button id="create-product">New Product</button></li>
-    </ul>
+    <button id="create-product">New Product</button>
 </header>
     <div id="container">
         <% Html.RenderPartial("ProductsList"); %>
@@ -191,47 +192,46 @@
                 All form fields are required.</p>
             <input type="hidden" name="producthdn" id="producthdn" />
             <div class="editor-label">
-                <label for="ProductName" id="lblProductName">
-                    Product Name</label>
+                <h3>Company</h3>
+            </div>
+            <div class="editor-label">
+                <h3>Company</h3>
+            </div>
+            <div class="editor-label">
+                <h3>Product Name</h3>
             </div>
             <div class="editor-field">
                 <input type="text" name="ProductName" id="ProductName" class="text ui-widget-content ui-corner-all" />
             </div>
             <div class="editor-label">
-                <label for="ProductDescription" id="lblProductDescription">
-                    Product Description</label>
+                <h3>Product Description</h3>
             </div>
             <div class="editor-field">
                 <input type="text" name="ProductDescription" id="ProductDescription" class="text ui-widget-content ui-corner-all" />
             </div>
             <div class="editor-label">
-                <label for="CategoryOne" id="lblCategoryOne">
-                    Category One</label>
+                <h3>Category One</h3>
             </div>
             <div class="editor-field">
-                <%= Html.DropDownList("ddlCategoryOne", (IEnumerable<SelectListItem>)ViewData["CategoriesOneList"], "<Select Category One>")%>
-            </div>
+                <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryOne", "CategoryOneName"), "<Select Category One>")%>
+                <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryOne", "CategoryOneName"), "<Select Category One>")%>
+<%--                <%= Html.DropDownList("ddlCategoryOne", (IEnumerable<SelectListItem>)ViewData["CategoriesOneList"], "<Select Category One>")%>
+--%>            </div>
             <div class="editor-label">
-                <label for="CategoryTwo" id="lblCategoryTwo">
-                    Category Two</label>
+                <h3>Category Two</h3>
             </div>
             <div class="editor-field">
-                <%= Html.DropDownList("ddlCategoryTwo", (IEnumerable<SelectListItem>)ViewData["CategoriesTwoList"], "<Select Category Two>")%>
-            </div>
+                <%= Html.DropDownList("ddlCategoryTwo", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryTwo", "CategoryTwoName"), "<Select Category Two>")%>
+                <%= Html.DropDownList("ddlCategoryTwo", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryTwo", "CategoryTwoName"), "<Select Category Two>")%>
+<%--                <%= Html.DropDownList("ddlCategoryTwo", (IEnumerable<SelectListItem>)ViewData["CategoriesTwoList"], "<Select Category Two>")%>
+--%>            </div>
             <div class="editor-label">
-                <label for="CategoryThree" id="lblCategoryThree">
-                    Category Three</label>
+                <h3>Category Three</h3>
             </div>
             <div class="editor-field">
-                <%= Html.DropDownList("ddlCategoryThree", (IEnumerable<SelectListItem>)ViewData["CategoriesThreeList"], "<Select Category Three>")%>
-            </div>
-            <div class="editor-label">
-                <label for="Company" id="lblCompany">
-                    Company</label>
-            </div>
-            <div class="editor-field">
-                <select name="Company" id="Company" class="text ui-widget-content ui-corner-all" />
-            </div>
+                <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryThree", "CategoryThreeName"), "<Select CategoryThree>")%>
+                <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryThree", "CategoryThreeName"), "<Select Category Three>")%>
+<%--                <%= Html.DropDownList("ddlCategoryThree", (IEnumerable<SelectListItem>)ViewData["CategoriesThreeList"], "<Select Category Three>")%>--%>            </div>
         </fieldset>
         </form>
     </div>

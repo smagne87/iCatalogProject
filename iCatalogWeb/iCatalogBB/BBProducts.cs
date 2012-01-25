@@ -127,6 +127,26 @@ namespace iCatalogBB
                 throw ex;
             }
         }
+
+        public List<Product> GetAllProductsByIdCompany(int IdCompany)
+        {
+            try
+            {
+                using (Repository r = new Repository())
+                {
+                    List<Product> lst = new List<Product>();
+                    foreach (RepoProduct aProduct in r.Products.Where<RepoProduct>(p=>p.IdCompany.Equals(IdCompany)).ToList())
+                    {
+                        lst.Add(new Product() { IdProduct = aProduct.IdProduct, ProductName = aProduct.ProductName });
+                    }
+                    return lst;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
     public class Product

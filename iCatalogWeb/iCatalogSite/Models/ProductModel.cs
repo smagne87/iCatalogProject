@@ -12,7 +12,7 @@ namespace iCatalogSite.Models
         public int? IdCategoryOne { get; set; }
         public int? IdCategoryThree { get; set; }
         public int? IdCategoryTwo { get; set; }
-        public int? IdCompany { get; set; }
+        public int IdCompany { get; set; }
         public string ProductDescription { get; set; }
         public string ProductName { get; set; }
 
@@ -45,6 +45,11 @@ namespace iCatalogSite.Models
         public List<Product> GetAllProducts()
         {
             return _productsContext.GetAllProducts();
+        }
+
+        public List<Product> GetAllProductsByIdCompany()
+        {
+            return _productsContext.GetAllProductsByIdCompany(IdCompany);
         }
 
         internal void DeleteProduct()
