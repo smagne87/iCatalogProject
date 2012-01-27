@@ -10,6 +10,7 @@
 </header>
 
 <script type="text/javascript" charset="utf-8">
+
     function editProduct(id, name, description) {
         $("#producthdn").val(id);
         $("#ProductName").val(name);
@@ -23,6 +24,8 @@
     }
 
     $(function () {
+        var ddlCategoryOne = $("#ddlCategoryOne"), ddlCategoryTwo = $("#ddlCategoryTwo"), ddlCategoryThree = $("#ddlCategoryThree"), hdnIdCompany = $("#hdnIdCompany");
+
         $("#dialog:ui-dialog").dialog("destroy");
 
         $("#dialog-confirm").dialog({
@@ -165,6 +168,60 @@
                     $("#container").replaceWith(response);
                 });
         }
+
+        $("#ddlCategoriesOne").change(function () {
+            var categoryOneName = $("#ddlCategoriesOne option:selected").text();
+            $.getJSON("/Categories/GetAllCategoryOneByCategoryOneName", { CategoryOneName: categoryOneName, IdCompany: hdnIdCompany.val() },
+                function (data) {
+                    ddlCategoryOne.empty();
+                    ddlCategoryOne.append($('<option/>', {
+                        value: 0,
+                        text: "<Select City>"
+                    }));
+                    $.each(data, function (index, itemData) {
+                        ddlCategoryOne.append($('<option/>', {
+                            value: itemData.IdCategoryOne,
+                            text: itemData.CategoryOneDescription
+                        }));
+                    });
+                });
+        });
+
+        $("#ddlCategoriesTwo").change(function () {
+            var categoryTwoName = $("#ddlCategoriesTwo option:selected").text();
+            $.getJSON("/Categories/GetAllCategoryTwoByCategoryTwoName", { CategoryTwoName: categoryTwoName, IdCompany: hdnIdCompany.val() },
+                function (data) {
+                    ddlCategoryTwo.empty();
+                    ddlCategoryTwo.append($('<option/>', {
+                        value: 0,
+                        text: "<Select City>"
+                    }));
+                    $.each(data, function (index, itemData) {
+                        ddlCategoryTwo.append($('<option/>', {
+                            value: itemData.IdCategoryTwo,
+                            text: itemData.CategoryTwoDescription
+                        }));
+                    });
+                });
+        });
+
+        $("#ddlCategoriesThree").change(function () {
+            var categoryThreeName = $("#ddlCategoriesThree option:selected").text();
+            $.getJSON("/Categories/GetAllCategoryThreeByCategoryThreeName", { CategoryThreeName: categoryThreeName, IdCompany: hdnIdCompany.val() },
+                function (data) {
+                    ddlCategoryThree.empty();
+                    ddlCategoryThree.append($('<option/>', {
+                        value: 0,
+                        text: "<Select City>"
+                    }));
+                    $.each(data, function (index, itemData) {
+                        ddlCategoryThree.append($('<option/>', {
+                            value: itemData.IdCategoryThree,
+                            text: itemData.CategoryThreeDescription
+                        }));
+                    });
+                });
+        });
     });
 </script>
 
@@ -179,8 +236,9 @@
         }
     </style>
     <header>
-    <button id="create-product">New Product</button>
-</header>
+        <button id="create-product">New Product</button>
+        <input type="hidden" id="hdnIdCompany" value="<%= ViewData["IdCompany"] %>" />
+    </header>
     <div id="container">
         <% Html.RenderPartial("ProductsList"); %>
     </div>
@@ -195,7 +253,7 @@
                 <h3>Company</h3>
             </div>
             <div class="editor-label">
-                <h3>Company</h3>
+                <h3><%= ViewData["CompanyName"] %></h3>
             </div>
             <div class="editor-label">
                 <h3>Product Name</h3>
@@ -213,25 +271,23 @@
                 <h3>Category One</h3>
             </div>
             <div class="editor-field">
-                <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryOne", "CategoryOneName"), "<Select Category One>")%>
-                <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryOne", "CategoryOneName"), "<Select Category One>")%>
-<%--                <%= Html.DropDownList("ddlCategoryOne", (IEnumerable<SelectListItem>)ViewData["CategoriesOneList"], "<Select Category One>")%>
---%>            </div>
+                <%= Html.DropDownList("ddlCategoriesOne", (IEnumerable<SelectListItem>)ViewData["CategoriesOneList"], "<Select Category One>")%>
+                <%= Html.DropDownList("ddlCategoryOne", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryOne", "CategoryOneName"), "<Select Category One>")%>
+            </div>
             <div class="editor-label">
                 <h3>Category Two</h3>
             </div>
             <div class="editor-field">
+                <%= Html.DropDownList("ddlCategoriesTwo", (IEnumerable<SelectListItem>)ViewData["CategoriesTwoList"], "<Select Category Two>")%>
                 <%= Html.DropDownList("ddlCategoryTwo", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryTwo", "CategoryTwoName"), "<Select Category Two>")%>
-                <%= Html.DropDownList("ddlCategoryTwo", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryTwo", "CategoryTwoName"), "<Select Category Two>")%>
-<%--                <%= Html.DropDownList("ddlCategoryTwo", (IEnumerable<SelectListItem>)ViewData["CategoriesTwoList"], "<Select Category Two>")%>
---%>            </div>
+            </div>
             <div class="editor-label">
                 <h3>Category Three</h3>
             </div>
             <div class="editor-field">
-                <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryThree", "CategoryThreeName"), "<Select CategoryThree>")%>
+                <%= Html.DropDownList("ddlCategoriesThree", (IEnumerable<SelectListItem>)ViewData["CategoriesThreeList"], "<Select Category Three>")%>
                 <%= Html.DropDownList("ddlCategoryThree", new SelectList(Enumerable.Empty<SelectListItem>(), "IdCategoryThree", "CategoryThreeName"), "<Select Category Three>")%>
-<%--                <%= Html.DropDownList("ddlCategoryThree", (IEnumerable<SelectListItem>)ViewData["CategoriesThreeList"], "<Select Category Three>")%>--%>            </div>
+            </div>
         </fieldset>
         </form>
     </div>

@@ -14,6 +14,14 @@ namespace iCatalogSite.Controllers
         // GET: /Categories/
 
         #region CategoryOne
+
+        public JsonResult GetAllCategoryOneByCategoryOneName(CategoryOneModel cm)
+        {
+            List<CategoryOne> lst = new List<CategoryOne>();
+            lst.AddRange(cm.getAllCategoryOneByCategoryName());
+            return Json(lst, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult CategoriesOne()
         {
             getCategoriesOne();
@@ -217,6 +225,12 @@ namespace iCatalogSite.Controllers
             }
         }
 
+        public JsonResult GetAllCategoryTwoByCategoryOneName(CategoryTwoModel cm)
+        {
+            List<CategoryTwo> lst = new List<CategoryTwo>();
+            lst.AddRange(cm.getAllCategoryTwoByCategoryName());
+            return Json(lst, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         #region CategoryThree
@@ -320,6 +334,12 @@ namespace iCatalogSite.Controllers
             }
         }
 
+        public JsonResult GetAllCategoryThreeByCategoryOneName(CategoryThreeModel cm)
+        {
+            List<CategoryThree> lst = new List<CategoryThree>();
+            lst.AddRange(cm.getAllCategoryThreeByCategoryName());
+            return Json(lst, JsonRequestBehavior.AllowGet);
+        }
         #endregion
     }
 }

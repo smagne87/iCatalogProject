@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using iCatalogSite.Models;
 using Product = iCatalogBB.Product;
+using iCatalogBB;
 
 namespace iCatalogSite.Controllers
 {
@@ -52,14 +53,41 @@ namespace iCatalogSite.Controllers
 
         private void GetAllCategoriesThree()
         {
+            if (Session["UserModel"] != null)
+            {
+                CompanyAccountModel ca = (CompanyAccountModel)Session["UserModel"];
+                List<CategoryThree> lst = new List<CategoryThree>();
+                CategoryThreeModel cm = new CategoryThreeModel();
+                cm.IdCompany = ca.IdCompany;
+                lst.AddRange(cm.getAllCategoryThreeByIdCompany());
+                ViewData["CategoriesThreeList"] = new SelectList(lst, "IdCategoryThree", "CategoryThreeName");
+            }
         }
 
         private void GetAllCategoriesTwo()
         {
+            if (Session["UserModel"] != null)
+            {
+                CompanyAccountModel ca = (CompanyAccountModel)Session["UserModel"];
+                List<CategoryTwo> lst = new List<CategoryTwo>();
+                CategoryTwoModel cm = new CategoryTwoModel();
+                cm.IdCompany = ca.IdCompany;
+                lst.AddRange(cm.getAllCategoryTwoByIdCompany());
+                ViewData["CategoriesTwoList"] = new SelectList(lst, "IdCategoryTwo", "CategoryTwoName");
+            }
         }
 
         private void GetAllCategoriesOne()
         {
+            if (Session["UserModel"] != null)
+            {
+                CompanyAccountModel ca = (CompanyAccountModel)Session["UserModel"];
+                List<CategoryOne> lst = new List<CategoryOne>();
+                CategoryOneModel cm = new CategoryOneModel();
+                cm.IdCompany = ca.IdCompany;
+                lst.AddRange(cm.getAllCategoryOneByIdCompany());
+                ViewData["CategoriesOneList"] = new SelectList(lst, "IdCategoryOne", "CategoryOneName");
+            }
         }
 
         [HttpPost]
@@ -92,6 +120,7 @@ namespace iCatalogSite.Controllers
                 lst.AddRange(pm.GetAllProducts());
                 ViewData["ProductsList"] = lst;
                 ViewData["IdCompany"] = ca.IdCompany;
+                ViewData["CompanyName"] = ca.CompanyName;
             }
         }
     }
