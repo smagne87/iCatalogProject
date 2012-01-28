@@ -20,6 +20,7 @@ namespace iCatalogSite.Controllers
             string message = string.Empty;
             try
             {
+                model.IdCompany = ((CompanyAccountModel)Session["UserModel"]).IdCompany;
                 model.SaveProduct();
 
                 message = "The Product Was Saved!";
