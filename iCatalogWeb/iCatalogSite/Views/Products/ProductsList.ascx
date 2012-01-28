@@ -40,7 +40,14 @@
                column.For(co => co.IdProduct).Named("Edit").Action(co =>
                                 { %>
                     <td>
-                        <img src="../Content/themes/images/icon_edicion.gif" onclick="editProduct('<%= co.IdProduct  %>', '<%= co.ProductName  %>')" />
+                        <img src="../Content/themes/images/icon_edicion.gif" onclick="editProduct(
+                        '<%= co.IdProduct  %>', 
+                        '<%= co.ProductName  %>'), 
+                        '<%= co.ProductDescription %>',
+                        '<%= co.IdCategoryOne %>',
+                        '<%= co.IdCategoryTwo %>',
+                        '<%= co.IdCategoryThree %>'"
+                        />
                     </td>
                     <% });
                column.For(co => co.IdProduct).Named("Delete").Action(co =>
