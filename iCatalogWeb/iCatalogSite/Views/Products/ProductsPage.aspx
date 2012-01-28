@@ -176,7 +176,7 @@
                     ddlCategoryOne.empty();
                     ddlCategoryOne.append($('<option/>', {
                         value: 0,
-                        text: "<Select City>"
+                        text: "<Select Category One>"
                     }));
                     $.each(data, function (index, itemData) {
                         ddlCategoryOne.append($('<option/>', {
@@ -194,7 +194,7 @@
                     ddlCategoryTwo.empty();
                     ddlCategoryTwo.append($('<option/>', {
                         value: 0,
-                        text: "<Select City>"
+                        text: "<Select Category Two>"
                     }));
                     $.each(data, function (index, itemData) {
                         ddlCategoryTwo.append($('<option/>', {
@@ -212,7 +212,7 @@
                     ddlCategoryThree.empty();
                     ddlCategoryThree.append($('<option/>', {
                         value: 0,
-                        text: "<Select City>"
+                        text: "<Select Category Three>"
                     }));
                     $.each(data, function (index, itemData) {
                         ddlCategoryThree.append($('<option/>', {
