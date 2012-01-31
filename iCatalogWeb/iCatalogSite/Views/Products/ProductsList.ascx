@@ -38,17 +38,24 @@
                column.For(co => co.IdProduct).Named("Id Product");
                column.For(co => co.ProductName).Named("Name");
                column.For(co => co.IdProduct).Named("Edit").Action(co =>
-               { %>
-    <td>
-        <img src="../Content/themes/images/icon_edicion.gif" onclick="editProduct('<%= co.IdProduct  %>', '<%= co.ProductName  %>')" />
-    </td>
-    <% });
+                                { %>
+                    <td>
+                        <img src="../Content/themes/images/icon_edicion.gif" onclick="editProduct(
+                        '<%= co.IdProduct  %>', 
+                        '<%= co.ProductName  %>'), 
+                        '<%= co.ProductDescription %>',
+                        '<%= co.IdCategoryOne %>',
+                        '<%= co.IdCategoryTwo %>',
+                        '<%= co.IdCategoryThree %>'"
+                        />
+                    </td>
+                    <% });
                column.For(co => co.IdProduct).Named("Delete").Action(co =>
                { %>
-    <td>
-        <img src="../Content/themes/images/icon-delete.gif" onclick="confirmDeleteProduct('<%= co.IdProduct  %>')" />
-    </td>
-    <% });
+                    <td>
+                        <img src="../Content/themes/images/icon-delete.gif" onclick="confirmDeleteProduct('<%= co.IdProduct  %>')" />
+                    </td>
+                    <% });
            }).Attributes(id => "example", @class => "table-list", @cellpadding => "0", @cellspacing => "0").Empty("No products available").Render();
     %>
 </div>

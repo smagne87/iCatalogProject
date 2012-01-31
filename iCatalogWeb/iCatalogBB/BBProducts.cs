@@ -192,7 +192,7 @@ namespace iCatalogBB
         public string CategoryThreeName { get; set; }
         public string CategoryThreeDescription { get; set; }
         public int IdCompany { get; set; }
-        public string CompanyName { get; set; }
+        public string CompanyName { get; set; }      
 
     }
 }

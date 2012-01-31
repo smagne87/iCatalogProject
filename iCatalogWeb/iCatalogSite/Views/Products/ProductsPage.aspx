@@ -11,10 +11,13 @@
 
 <script type="text/javascript" charset="utf-8">
 
-    function editProduct(id, name, description) {
+    function editProduct(id, name, description, idCategoryOne, idCategoryTwo, idCategoryThree) {
         $("#producthdn").val(id);
         $("#ProductName").val(name);
         $("#ProductDescription").val(description);
+        $("#ddlCategoryOne").val(idCategoryOne);
+        $("#ddlCategoryTwo").val(idCategoryTwo);
+        $("#ddlCategoryThree").val(idCategoryThree);
         $("#productDialog-form").dialog("open");
     }
 
@@ -93,7 +96,7 @@
             var name = productName.val();
             var description = productDescription.val();
             var empty = name == "" || description == "";
-            return (empty) ? null : { IdProduct: id, ProductName: name, ProductDescription: description };
+            return (empty) ? null : { IdProduct: id, ProductName: name, ProductDescription: description, IdCategoryOne: ddlCategoryOne.val() == 0 ? null : ddlCategoryOne.val(), IdCategoryTwo: ddlCategoryTwo.val() == 0 ? null : ddlCategoryTwo.val(), IdCategoryThree: ddlCategoryThree.val() == 0 ? null : ddlCategoryThree.val() };
         }
 
         $("#productDialog-form").dialog({
@@ -176,7 +179,7 @@
                     ddlCategoryOne.empty();
                     ddlCategoryOne.append($('<option/>', {
                         value: 0,
-                        text: "<Select City>"
+                        text: "<Select Category One>"
                     }));
                     $.each(data, function (index, itemData) {
                         ddlCategoryOne.append($('<option/>', {
@@ -194,7 +197,7 @@
                     ddlCategoryTwo.empty();
                     ddlCategoryTwo.append($('<option/>', {
                         value: 0,
-                        text: "<Select City>"
+                        text: "<Select Category Two>"
                     }));
                     $.each(data, function (index, itemData) {
                         ddlCategoryTwo.append($('<option/>', {
@@ -212,7 +215,7 @@
                     ddlCategoryThree.empty();
                     ddlCategoryThree.append($('<option/>', {
                         value: 0,
-                        text: "<Select City>"
+                        text: "<Select Category Three>"
                     }));
                     $.each(data, function (index, itemData) {
                         ddlCategoryThree.append($('<option/>', {

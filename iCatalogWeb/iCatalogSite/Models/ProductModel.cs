@@ -11,13 +11,13 @@ namespace iCatalogSite.Models
         public int IdProduct { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-        public int IdCategoryOne { get; set; }
+        public int? IdCategoryOne { get; set; }
         public string CategoryOneName { get; set; }
         public string CategoryOneDescription { get; set; }
-        public int IdCategoryTwo { get; set; }
+        public int? IdCategoryTwo { get; set; }
         public string CategoryTwoName { get; set; }
         public string CategoryTwoDescription { get; set; }
-        public int IdCategoryThree { get; set; }
+        public int? IdCategoryThree { get; set; }
         public string CategoryThreeName { get; set; }
         public string CategoryThreeDescription { get; set; }
         public int IdCompany { get; set; }
@@ -27,7 +27,7 @@ namespace iCatalogSite.Models
 
         public ProductModel()
         {
-            _productsContext = new BBProducts();
+            _productsContext = new BBProducts();            
         }
 
         public void SaveProduct()
