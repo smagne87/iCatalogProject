@@ -1,0 +1,1298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="iCatalogDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="iCatalogDatabaseModelStoreContainer">
+          <EntitySet Name="CatalogDetail" EntityType="iCatalogDatabaseModel.Store.CatalogDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CatalogHeader" EntityType="iCatalogDatabaseModel.Store.CatalogHeader" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="iCatalogDatabaseModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CategoryItem" EntityType="iCatalogDatabaseModel.Store.CategoryItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cities" EntityType="iCatalogDatabaseModel.Store.Cities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Companies" EntityType="iCatalogDatabaseModel.Store.Companies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Countries" EntityType="iCatalogDatabaseModel.Store.Countries" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Devices" EntityType="iCatalogDatabaseModel.Store.Devices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Files" EntityType="iCatalogDatabaseModel.Store.Files" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="iCatalogDatabaseModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductsFiles" EntityType="iCatalogDatabaseModel.Store.ProductsFiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserCatalogs" EntityType="iCatalogDatabaseModel.Store.UserCatalogs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="iCatalogDatabaseModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Visibility" EntityType="iCatalogDatabaseModel.Store.Visibility" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="CatalogHeader_CatalogDetail" Association="iCatalogDatabaseModel.Store.CatalogHeader_CatalogDetail">
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+            <End Role="CatalogDetail" EntitySet="CatalogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="CatalogHeader_UserCatalog" Association="iCatalogDatabaseModel.Store.CatalogHeader_UserCatalog">
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+            <End Role="UserCatalogs" EntitySet="UserCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryOne_Product" Association="iCatalogDatabaseModel.Store.CategoryOne_Product">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="City_Company" Association="iCatalogDatabaseModel.Store.City_Company">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="City_User" Association="iCatalogDatabaseModel.Store.City_User">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Company_CatalogHeader" Association="iCatalogDatabaseModel.Store.Company_CatalogHeader">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+          </AssociationSet>
+          <AssociationSet Name="Company_CategoryOne" Association="iCatalogDatabaseModel.Store.Company_CategoryOne">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="Company_File" Association="iCatalogDatabaseModel.Store.Company_File">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="Company_Product" Association="iCatalogDatabaseModel.Store.Company_Product">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Company_Visibility" Association="iCatalogDatabaseModel.Store.Company_Visibility">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Visibility" EntitySet="Visibility" />
+          </AssociationSet>
+          <AssociationSet Name="Country_City" Association="iCatalogDatabaseModel.Store.Country_City">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="Country_Company" Association="iCatalogDatabaseModel.Store.Country_Company">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="Country_User" Association="iCatalogDatabaseModel.Store.Country_User">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="File_ProductsFile" Association="iCatalogDatabaseModel.Store.File_ProductsFile">
+            <End Role="Files" EntitySet="Files" />
+            <End Role="ProductsFiles" EntitySet="ProductsFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryItem_Category" Association="iCatalogDatabaseModel.Store.FK_CategoryItem_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryItem" EntitySet="CategoryItem" />
+          </AssociationSet>
+          <AssociationSet Name="Product_CatalogDetail" Association="iCatalogDatabaseModel.Store.Product_CatalogDetail">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="CatalogDetail" EntitySet="CatalogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="Product_ProductsFile" Association="iCatalogDatabaseModel.Store.Product_ProductsFile">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductsFiles" EntitySet="ProductsFiles" />
+          </AssociationSet>
+          <AssociationSet Name="User_Device" Association="iCatalogDatabaseModel.Store.User_Device">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="User_UserCatalog" Association="iCatalogDatabaseModel.Store.User_UserCatalog">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserCatalogs" EntitySet="UserCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="Visibility_CatalogHeader" Association="iCatalogDatabaseModel.Store.Visibility_CatalogHeader">
+            <End Role="Visibility" EntitySet="Visibility" />
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CatalogDetail">
+          <Key>
+            <PropertyRef Name="IdCatalogDetail" />
+          </Key>
+          <Property Name="IdCatalogDetail" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdCatalogHeader" Type="int" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="PageOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="CatalogHeader">
+          <Key>
+            <PropertyRef Name="IdCatalogHeader" />
+          </Key>
+          <Property Name="IdCatalogHeader" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CatalogCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CatalogDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateTo" Type="datetime" />
+          <Property Name="DateFrom" Type="datetime" />
+          <Property Name="Pages" Type="int" />
+          <Property Name="IdCompany" Type="int" />
+          <Property Name="IdVisibility" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdCompany" Type="int" />
+        </EntityType>
+        <EntityType Name="CategoryItem">
+          <Key>
+            <PropertyRef Name="IdCategoryItem" />
+          </Key>
+          <Property Name="IdCategoryItem" Type="int" Nullable="false" />
+          <Property Name="IdCategory" Type="int" />
+          <Property Name="CategoryItemName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdCountry" Type="int" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="IdCompany" />
+          </Key>
+          <Property Name="IdCompany" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdCountry" Type="int" />
+          <Property Name="IdCity" Type="int" />
+          <Property Name="WebUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyUserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="IdCountry" />
+          </Key>
+          <Property Name="IdCountry" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="IdDevice" />
+          </Key>
+          <Property Name="IdDevice" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="DeviceDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="LastSync" Type="datetime" />
+          <Property Name="IsAssociated" Type="bit" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="IdFile" />
+          </Key>
+          <Property Name="IdFile" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="File" Type="image" />
+          <Property Name="IdCompany" Type="int" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdCategory" Type="int" />
+          <Property Name="IdCompany" Type="int" />
+        </EntityType>
+        <EntityType Name="ProductsFiles">
+          <Key>
+            <PropertyRef Name="IdProductFile" />
+          </Key>
+          <Property Name="IdProductFile" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="IdFile" Type="int" />
+        </EntityType>
+        <EntityType Name="UserCatalogs">
+          <Key>
+            <PropertyRef Name="IdUserCatalog" />
+          </Key>
+          <Property Name="IdUserCatalog" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdCatalogHeader" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsGeneralAdmin" Type="bit" />
+          <Property Name="IdCountry" Type="int" />
+          <Property Name="IdCity" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Visibility">
+          <Key>
+            <PropertyRef Name="IdVisibility" />
+          </Key>
+          <Property Name="IdVisibility" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VisibilityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VisibilityDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="PercentOfVisibilityPages" Type="money" />
+          <Property Name="IdCompany" Type="int" />
+        </EntityType>
+        <Association Name="CatalogHeader_CatalogDetail">
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.Store.CatalogHeader" Multiplicity="0..1" />
+          <End Role="CatalogDetail" Type="iCatalogDatabaseModel.Store.CatalogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogHeader">
+              <PropertyRef Name="IdCatalogHeader" />
+            </Principal>
+            <Dependent Role="CatalogDetail">
+              <PropertyRef Name="IdCatalogHeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CatalogHeader_UserCatalog">
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.Store.CatalogHeader" Multiplicity="0..1" />
+          <End Role="UserCatalogs" Type="iCatalogDatabaseModel.Store.UserCatalogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogHeader">
+              <PropertyRef Name="IdCatalogHeader" />
+            </Principal>
+            <Dependent Role="UserCatalogs">
+              <PropertyRef Name="IdCatalogHeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryOne_Product">
+          <End Role="Category" Type="iCatalogDatabaseModel.Store.Category" Multiplicity="0..1" />
+          <End Role="Products" Type="iCatalogDatabaseModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="City_Company">
+          <End Role="Cities" Type="iCatalogDatabaseModel.Store.Cities" Multiplicity="0..1" />
+          <End Role="Companies" Type="iCatalogDatabaseModel.Store.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="City_User">
+          <End Role="Cities" Type="iCatalogDatabaseModel.Store.Cities" Multiplicity="0..1" />
+          <End Role="Users" Type="iCatalogDatabaseModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Company_CatalogHeader">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Store.Companies" Multiplicity="0..1" />
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.Store.CatalogHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="IdCompany" />
+            </Principal>
+            <Dependent Role="CatalogHeader">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Company_CategoryOne">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Store.Companies" Multiplicity="0..1" />
+          <End Role="Category" Type="iCatalogDatabaseModel.Store.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="IdCompany" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Company_File">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Store.Companies" Multiplicity="0..1" />
+          <End Role="Files" Type="iCatalogDatabaseModel.Store.Files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="IdCompany" />
+            </Principal>
+            <Dependent Role="Files">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Company_Product">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Store.Companies" Multiplicity="0..1" />
+          <End Role="Products" Type="iCatalogDatabaseModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="IdCompany" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Company_Visibility">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Store.Companies" Multiplicity="0..1" />
+          <End Role="Visibility" Type="iCatalogDatabaseModel.Store.Visibility" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="IdCompany" />
+            </Principal>
+            <Dependent Role="Visibility">
+              <PropertyRef Name="IdCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country_City">
+          <End Role="Countries" Type="iCatalogDatabaseModel.Store.Countries" Multiplicity="0..1" />
+          <End Role="Cities" Type="iCatalogDatabaseModel.Store.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="IdCountry" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country_Company">
+          <End Role="Countries" Type="iCatalogDatabaseModel.Store.Countries" Multiplicity="0..1" />
+          <End Role="Companies" Type="iCatalogDatabaseModel.Store.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="IdCountry" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Country_User">
+          <End Role="Countries" Type="iCatalogDatabaseModel.Store.Countries" Multiplicity="0..1" />
+          <End Role="Users" Type="iCatalogDatabaseModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="IdCountry" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="File_ProductsFile">
+          <End Role="Files" Type="iCatalogDatabaseModel.Store.Files" Multiplicity="0..1" />
+          <End Role="ProductsFiles" Type="iCatalogDatabaseModel.Store.ProductsFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Files">
+              <PropertyRef Name="IdFile" />
+            </Principal>
+            <Dependent Role="ProductsFiles">
+              <PropertyRef Name="IdFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryItem_Category">
+          <End Role="Category" Type="iCatalogDatabaseModel.Store.Category" Multiplicity="0..1" />
+          <End Role="CategoryItem" Type="iCatalogDatabaseModel.Store.CategoryItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="CategoryItem">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_CatalogDetail">
+          <End Role="Products" Type="iCatalogDatabaseModel.Store.Products" Multiplicity="0..1" />
+          <End Role="CatalogDetail" Type="iCatalogDatabaseModel.Store.CatalogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="CatalogDetail">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_ProductsFile">
+          <End Role="Products" Type="iCatalogDatabaseModel.Store.Products" Multiplicity="0..1" />
+          <End Role="ProductsFiles" Type="iCatalogDatabaseModel.Store.ProductsFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="IdProduct" />
+            </Principal>
+            <Dependent Role="ProductsFiles">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_Device">
+          <End Role="Users" Type="iCatalogDatabaseModel.Store.Users" Multiplicity="0..1" />
+          <End Role="Devices" Type="iCatalogDatabaseModel.Store.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_UserCatalog">
+          <End Role="Users" Type="iCatalogDatabaseModel.Store.Users" Multiplicity="0..1" />
+          <End Role="UserCatalogs" Type="iCatalogDatabaseModel.Store.UserCatalogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="UserCatalogs">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Visibility_CatalogHeader">
+          <End Role="Visibility" Type="iCatalogDatabaseModel.Store.Visibility" Multiplicity="0..1" />
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.Store.CatalogHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visibility">
+              <PropertyRef Name="IdVisibility" />
+            </Principal>
+            <Dependent Role="CatalogHeader">
+              <PropertyRef Name="IdVisibility" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="iCatalogDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="iCatalogDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CatalogDetail" EntityType="iCatalogDatabaseModel.CatalogDetail" />
+          <EntitySet Name="CatalogHeader" EntityType="iCatalogDatabaseModel.CatalogHeader" />
+          <EntitySet Name="Cities" EntityType="iCatalogDatabaseModel.Cities" />
+          <EntitySet Name="Companies" EntityType="iCatalogDatabaseModel.Companies" />
+          <EntitySet Name="Countries" EntityType="iCatalogDatabaseModel.Countries" />
+          <EntitySet Name="Devices" EntityType="iCatalogDatabaseModel.Devices" />
+          <EntitySet Name="Files" EntityType="iCatalogDatabaseModel.Files" />
+          <EntitySet Name="Products" EntityType="iCatalogDatabaseModel.Products" />
+          <EntitySet Name="ProductsFiles" EntityType="iCatalogDatabaseModel.ProductsFiles" />
+          <EntitySet Name="UserCatalogs" EntityType="iCatalogDatabaseModel.UserCatalogs" />
+          <EntitySet Name="Users" EntityType="iCatalogDatabaseModel.Users" />
+          <EntitySet Name="Visibility" EntityType="iCatalogDatabaseModel.Visibility" />
+          <AssociationSet Name="CatalogHeader_CatalogDetail" Association="iCatalogDatabaseModel.CatalogHeader_CatalogDetail">
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+            <End Role="CatalogDetail" EntitySet="CatalogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="Product_CatalogDetail" Association="iCatalogDatabaseModel.Product_CatalogDetail">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="CatalogDetail" EntitySet="CatalogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="CatalogHeader_UserCatalog" Association="iCatalogDatabaseModel.CatalogHeader_UserCatalog">
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+            <End Role="UserCatalogs" EntitySet="UserCatalogs" />
+          </AssociationSet>
+          <AssociationSet Name="Company_CatalogHeader" Association="iCatalogDatabaseModel.Company_CatalogHeader">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+          </AssociationSet>
+          <AssociationSet Name="Visibility_CatalogHeader" Association="iCatalogDatabaseModel.Visibility_CatalogHeader">
+            <End Role="Visibility" EntitySet="Visibility" />
+            <End Role="CatalogHeader" EntitySet="CatalogHeader" />
+          </AssociationSet>
+          <AssociationSet Name="City_Company" Association="iCatalogDatabaseModel.City_Company">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="City_User" Association="iCatalogDatabaseModel.City_User">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Country_City" Association="iCatalogDatabaseModel.Country_City">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="Company_File" Association="iCatalogDatabaseModel.Company_File">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Files" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="Company_Product" Association="iCatalogDatabaseModel.Company_Product">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Company_Visibility" Association="iCatalogDatabaseModel.Company_Visibility">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Visibility" EntitySet="Visibility" />
+          </AssociationSet>
+          <AssociationSet Name="Country_Company" Association="iCatalogDatabaseModel.Country_Company">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="Country_User" Association="iCatalogDatabaseModel.Country_User">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="User_Device" Association="iCatalogDatabaseModel.User_Device">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="File_ProductsFile" Association="iCatalogDatabaseModel.File_ProductsFile">
+            <End Role="Files" EntitySet="Files" />
+            <End Role="ProductsFiles" EntitySet="ProductsFiles" />
+          </AssociationSet>
+          <AssociationSet Name="Product_ProductsFile" Association="iCatalogDatabaseModel.Product_ProductsFile">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductsFiles" EntitySet="ProductsFiles" />
+          </AssociationSet>
+          <AssociationSet Name="User_UserCatalog" Association="iCatalogDatabaseModel.User_UserCatalog">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserCatalogs" EntitySet="UserCatalogs" />
+          </AssociationSet>
+          <EntitySet Name="Category" EntityType="iCatalogDatabaseModel.Category" />
+          <EntitySet Name="CategoryItem" EntityType="iCatalogDatabaseModel.CategoryItem" />
+          <AssociationSet Name="CategoryOne_Product1" Association="iCatalogDatabaseModel.CategoryOne_Product1">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Company_CategoryOne1" Association="iCatalogDatabaseModel.Company_CategoryOne1">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryItem_Category" Association="iCatalogDatabaseModel.FK_CategoryItem_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryItem" EntitySet="CategoryItem" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CatalogDetail">
+          <Key>
+            <PropertyRef Name="IdCatalogDetail" />
+          </Key>
+          <Property Name="IdCatalogDetail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageOrder" Type="Int32" />
+          <NavigationProperty Name="CatalogHeader" Relationship="iCatalogDatabaseModel.CatalogHeader_CatalogDetail" FromRole="CatalogDetail" ToRole="CatalogHeader" />
+          <NavigationProperty Name="Products" Relationship="iCatalogDatabaseModel.Product_CatalogDetail" FromRole="CatalogDetail" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="CatalogHeader">
+          <Key>
+            <PropertyRef Name="IdCatalogHeader" />
+          </Key>
+          <Property Name="IdCatalogHeader" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatalogCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="CatalogDescription" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="DateTo" Type="DateTime" Precision="3" />
+          <Property Name="DateFrom" Type="DateTime" Precision="3" />
+          <Property Name="Pages" Type="Int32" />
+          <NavigationProperty Name="CatalogDetail" Relationship="iCatalogDatabaseModel.CatalogHeader_CatalogDetail" FromRole="CatalogHeader" ToRole="CatalogDetail" />
+          <NavigationProperty Name="UserCatalogs" Relationship="iCatalogDatabaseModel.CatalogHeader_UserCatalog" FromRole="CatalogHeader" ToRole="UserCatalogs" />
+          <NavigationProperty Name="Companies" Relationship="iCatalogDatabaseModel.Company_CatalogHeader" FromRole="CatalogHeader" ToRole="Companies" />
+          <NavigationProperty Name="Visibility" Relationship="iCatalogDatabaseModel.Visibility_CatalogHeader" FromRole="CatalogHeader" ToRole="Visibility" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Companies" Relationship="iCatalogDatabaseModel.City_Company" FromRole="Cities" ToRole="Companies" />
+          <NavigationProperty Name="Users" Relationship="iCatalogDatabaseModel.City_User" FromRole="Cities" ToRole="Users" />
+          <NavigationProperty Name="Countries" Relationship="iCatalogDatabaseModel.Country_City" FromRole="Cities" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="IdCompany" />
+          </Key>
+          <Property Name="IdCompany" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="WebUrl" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyUserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CatalogHeader" Relationship="iCatalogDatabaseModel.Company_CatalogHeader" FromRole="Companies" ToRole="CatalogHeader" />
+          <NavigationProperty Name="Cities" Relationship="iCatalogDatabaseModel.City_Company" FromRole="Companies" ToRole="Cities" />
+          <NavigationProperty Name="Files" Relationship="iCatalogDatabaseModel.Company_File" FromRole="Companies" ToRole="Files" />
+          <NavigationProperty Name="Products" Relationship="iCatalogDatabaseModel.Company_Product" FromRole="Companies" ToRole="Products" />
+          <NavigationProperty Name="Visibility" Relationship="iCatalogDatabaseModel.Company_Visibility" FromRole="Companies" ToRole="Visibility" />
+          <NavigationProperty Name="Countries" Relationship="iCatalogDatabaseModel.Country_Company" FromRole="Companies" ToRole="Countries" />
+          <NavigationProperty Name="Category" Relationship="iCatalogDatabaseModel.Company_CategoryOne1" FromRole="Companies" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="IdCountry" />
+          </Key>
+          <Property Name="IdCountry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Cities" Relationship="iCatalogDatabaseModel.Country_City" FromRole="Countries" ToRole="Cities" />
+          <NavigationProperty Name="Companies" Relationship="iCatalogDatabaseModel.Country_Company" FromRole="Countries" ToRole="Companies" />
+          <NavigationProperty Name="Users" Relationship="iCatalogDatabaseModel.Country_User" FromRole="Countries" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="IdDevice" />
+          </Key>
+          <Property Name="IdDevice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="DeviceDescription" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastSync" Type="DateTime" Precision="3" />
+          <Property Name="IsAssociated" Type="Boolean" />
+          <NavigationProperty Name="Users" Relationship="iCatalogDatabaseModel.User_Device" FromRole="Devices" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="IdFile" />
+          </Key>
+          <Property Name="IdFile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FileDescription" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="File" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Companies" Relationship="iCatalogDatabaseModel.Company_File" FromRole="Files" ToRole="Companies" />
+          <NavigationProperty Name="ProductsFiles" Relationship="iCatalogDatabaseModel.File_ProductsFile" FromRole="Files" ToRole="ProductsFiles" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+          </Key>
+          <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CatalogDetail" Relationship="iCatalogDatabaseModel.Product_CatalogDetail" FromRole="Products" ToRole="CatalogDetail" />
+          <NavigationProperty Name="Companies" Relationship="iCatalogDatabaseModel.Company_Product" FromRole="Products" ToRole="Companies" />
+          <NavigationProperty Name="ProductsFiles" Relationship="iCatalogDatabaseModel.Product_ProductsFile" FromRole="Products" ToRole="ProductsFiles" />
+          <NavigationProperty Name="Category" Relationship="iCatalogDatabaseModel.CategoryOne_Product1" FromRole="Products" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="ProductsFiles">
+          <Key>
+            <PropertyRef Name="IdProductFile" />
+          </Key>
+          <Property Name="IdProductFile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Files" Relationship="iCatalogDatabaseModel.File_ProductsFile" FromRole="ProductsFiles" ToRole="Files" />
+          <NavigationProperty Name="Products" Relationship="iCatalogDatabaseModel.Product_ProductsFile" FromRole="ProductsFiles" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="UserCatalogs">
+          <Key>
+            <PropertyRef Name="IdUserCatalog" />
+          </Key>
+          <Property Name="IdUserCatalog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CatalogHeader" Relationship="iCatalogDatabaseModel.CatalogHeader_UserCatalog" FromRole="UserCatalogs" ToRole="CatalogHeader" />
+          <NavigationProperty Name="Users" Relationship="iCatalogDatabaseModel.User_UserCatalog" FromRole="UserCatalogs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsGeneralAdmin" Type="Boolean" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Cities" Relationship="iCatalogDatabaseModel.City_User" FromRole="Users" ToRole="Cities" />
+          <NavigationProperty Name="Countries" Relationship="iCatalogDatabaseModel.Country_User" FromRole="Users" ToRole="Countries" />
+          <NavigationProperty Name="Devices" Relationship="iCatalogDatabaseModel.User_Device" FromRole="Users" ToRole="Devices" />
+          <NavigationProperty Name="UserCatalogs" Relationship="iCatalogDatabaseModel.User_UserCatalog" FromRole="Users" ToRole="UserCatalogs" />
+        </EntityType>
+        <EntityType Name="Visibility">
+          <Key>
+            <PropertyRef Name="IdVisibility" />
+          </Key>
+          <Property Name="IdVisibility" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VisibilityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="VisibilityDescription" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PercentOfVisibilityPages" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="CatalogHeader" Relationship="iCatalogDatabaseModel.Visibility_CatalogHeader" FromRole="Visibility" ToRole="CatalogHeader" />
+          <NavigationProperty Name="Companies" Relationship="iCatalogDatabaseModel.Company_Visibility" FromRole="Visibility" ToRole="Companies" />
+        </EntityType>
+        <Association Name="CatalogHeader_CatalogDetail">
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.CatalogHeader" Multiplicity="0..1" />
+          <End Role="CatalogDetail" Type="iCatalogDatabaseModel.CatalogDetail" Multiplicity="*" />
+        </Association>
+        <Association Name="Product_CatalogDetail">
+          <End Role="Products" Type="iCatalogDatabaseModel.Products" Multiplicity="0..1" />
+          <End Role="CatalogDetail" Type="iCatalogDatabaseModel.CatalogDetail" Multiplicity="*" />
+        </Association>
+        <Association Name="CatalogHeader_UserCatalog">
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.CatalogHeader" Multiplicity="0..1" />
+          <End Role="UserCatalogs" Type="iCatalogDatabaseModel.UserCatalogs" Multiplicity="*" />
+        </Association>
+        <Association Name="Company_CatalogHeader">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Companies" Multiplicity="0..1" />
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.CatalogHeader" Multiplicity="*" />
+        </Association>
+        <Association Name="Visibility_CatalogHeader">
+          <End Role="Visibility" Type="iCatalogDatabaseModel.Visibility" Multiplicity="0..1" />
+          <End Role="CatalogHeader" Type="iCatalogDatabaseModel.CatalogHeader" Multiplicity="*" />
+        </Association>
+        <Association Name="City_Company">
+          <End Role="Cities" Type="iCatalogDatabaseModel.Cities" Multiplicity="0..1" />
+          <End Role="Companies" Type="iCatalogDatabaseModel.Companies" Multiplicity="*" />
+        </Association>
+        <Association Name="City_User">
+          <End Role="Cities" Type="iCatalogDatabaseModel.Cities" Multiplicity="0..1" />
+          <End Role="Users" Type="iCatalogDatabaseModel.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="Country_City">
+          <End Role="Countries" Type="iCatalogDatabaseModel.Countries" Multiplicity="0..1" />
+          <End Role="Cities" Type="iCatalogDatabaseModel.Cities" Multiplicity="*" />
+        </Association>
+        <Association Name="Company_File">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Companies" Multiplicity="0..1" />
+          <End Role="Files" Type="iCatalogDatabaseModel.Files" Multiplicity="*" />
+        </Association>
+        <Association Name="Company_Product">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Companies" Multiplicity="0..1" />
+          <End Role="Products" Type="iCatalogDatabaseModel.Products" Multiplicity="*" />
+        </Association>
+        <Association Name="Company_Visibility">
+          <End Role="Companies" Type="iCatalogDatabaseModel.Companies" Multiplicity="0..1" />
+          <End Role="Visibility" Type="iCatalogDatabaseModel.Visibility" Multiplicity="*" />
+        </Association>
+        <Association Name="Country_Company">
+          <End Role="Countries" Type="iCatalogDatabaseModel.Countries" Multiplicity="0..1" />
+          <End Role="Companies" Type="iCatalogDatabaseModel.Companies" Multiplicity="*" />
+        </Association>
+        <Association Name="Country_User">
+          <End Role="Countries" Type="iCatalogDatabaseModel.Countries" Multiplicity="0..1" />
+          <End Role="Users" Type="iCatalogDatabaseModel.Users" Multiplicity="*" />
+        </Association>
+        <Association Name="User_Device">
+          <End Role="Users" Type="iCatalogDatabaseModel.Users" Multiplicity="0..1" />
+          <End Role="Devices" Type="iCatalogDatabaseModel.Devices" Multiplicity="*" />
+        </Association>
+        <Association Name="File_ProductsFile">
+          <End Role="Files" Type="iCatalogDatabaseModel.Files" Multiplicity="0..1" />
+          <End Role="ProductsFiles" Type="iCatalogDatabaseModel.ProductsFiles" Multiplicity="*" />
+        </Association>
+        <Association Name="Product_ProductsFile">
+          <End Role="Products" Type="iCatalogDatabaseModel.Products" Multiplicity="0..1" />
+          <End Role="ProductsFiles" Type="iCatalogDatabaseModel.ProductsFiles" Multiplicity="*" />
+        </Association>
+        <Association Name="User_UserCatalog">
+          <End Role="Users" Type="iCatalogDatabaseModel.Users" Multiplicity="0..1" />
+          <End Role="UserCatalogs" Type="iCatalogDatabaseModel.UserCatalogs" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Type="Int32" Name="IdCategory" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CategoryName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CategoryDescription" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="iCatalogDatabaseModel.CategoryOne_Product1" FromRole="Category" ToRole="Products" />
+          <NavigationProperty Name="Companies" Relationship="iCatalogDatabaseModel.Company_CategoryOne1" FromRole="Category" ToRole="Companies" />
+          <NavigationProperty Name="CategoryItem" Relationship="iCatalogDatabaseModel.FK_CategoryItem_Category" FromRole="Category" ToRole="CategoryItem" />
+        </EntityType>
+        <EntityType Name="CategoryItem">
+          <Key>
+            <PropertyRef Name="IdCategoryItem" />
+          </Key>
+          <Property Type="Int32" Name="IdCategoryItem" Nullable="false" />
+          <Property Type="String" Name="CategoryItemName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="iCatalogDatabaseModel.FK_CategoryItem_Category" FromRole="CategoryItem" ToRole="Category" />
+        </EntityType>
+        <Association Name="CategoryOne_Product1">
+          <End Type="iCatalogDatabaseModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="iCatalogDatabaseModel.Products" Role="Products" Multiplicity="*" />
+        </Association>
+        <Association Name="Company_CategoryOne1">
+          <End Type="iCatalogDatabaseModel.Companies" Role="Companies" Multiplicity="0..1" />
+          <End Type="iCatalogDatabaseModel.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_CategoryItem_Category">
+          <End Type="iCatalogDatabaseModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="iCatalogDatabaseModel.CategoryItem" Role="CategoryItem" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="iCatalogDatabaseModelStoreContainer" CdmEntityContainer="iCatalogDatabaseEntities">
+          <EntitySetMapping Name="CatalogDetail">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.CatalogDetail">
+              <MappingFragment StoreEntitySet="CatalogDetail">
+                <ScalarProperty Name="IdCatalogDetail" ColumnName="IdCatalogDetail" />
+                <ScalarProperty Name="PageOrder" ColumnName="PageOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatalogHeader">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.CatalogHeader">
+              <MappingFragment StoreEntitySet="CatalogHeader">
+                <ScalarProperty Name="IdCatalogHeader" ColumnName="IdCatalogHeader" />
+                <ScalarProperty Name="CatalogCode" ColumnName="CatalogCode" />
+                <ScalarProperty Name="CatalogDescription" ColumnName="CatalogDescription" />
+                <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+                <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+                <ScalarProperty Name="Pages" ColumnName="Pages" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Cities">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Companies">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="WebUrl" ColumnName="WebUrl" />
+                <ScalarProperty Name="CompanyUserName" ColumnName="CompanyUserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Devices">
+              <MappingFragment StoreEntitySet="Devices">
+                <ScalarProperty Name="IdDevice" ColumnName="IdDevice" />
+                <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
+                <ScalarProperty Name="DeviceDescription" ColumnName="DeviceDescription" />
+                <ScalarProperty Name="LastSync" ColumnName="LastSync" />
+                <ScalarProperty Name="IsAssociated" ColumnName="IsAssociated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Files">
+              <MappingFragment StoreEntitySet="Files">
+                <ScalarProperty Name="IdFile" ColumnName="IdFile" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileDescription" ColumnName="FileDescription" />
+                <ScalarProperty Name="File" ColumnName="File" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsFiles">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.ProductsFiles">
+              <MappingFragment StoreEntitySet="ProductsFiles">
+                <ScalarProperty Name="IdProductFile" ColumnName="IdProductFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCatalogs">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.UserCatalogs">
+              <MappingFragment StoreEntitySet="UserCatalogs">
+                <ScalarProperty Name="IdUserCatalog" ColumnName="IdUserCatalog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsGeneralAdmin" ColumnName="IsGeneralAdmin" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visibility">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Visibility">
+              <MappingFragment StoreEntitySet="Visibility">
+                <ScalarProperty Name="IdVisibility" ColumnName="IdVisibility" />
+                <ScalarProperty Name="VisibilityName" ColumnName="VisibilityName" />
+                <ScalarProperty Name="VisibilityDescription" ColumnName="VisibilityDescription" />
+                <ScalarProperty Name="PercentOfVisibilityPages" ColumnName="PercentOfVisibilityPages" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CatalogHeader_CatalogDetail" TypeName="iCatalogDatabaseModel.CatalogHeader_CatalogDetail" StoreEntitySet="CatalogDetail">
+            <EndProperty Name="CatalogHeader">
+              <ScalarProperty Name="IdCatalogHeader" ColumnName="IdCatalogHeader" />
+            </EndProperty>
+            <EndProperty Name="CatalogDetail">
+              <ScalarProperty Name="IdCatalogDetail" ColumnName="IdCatalogDetail" />
+            </EndProperty>
+            <Condition ColumnName="IdCatalogHeader" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Product_CatalogDetail" TypeName="iCatalogDatabaseModel.Product_CatalogDetail" StoreEntitySet="CatalogDetail">
+            <EndProperty Name="Products">
+              <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+            </EndProperty>
+            <EndProperty Name="CatalogDetail">
+              <ScalarProperty Name="IdCatalogDetail" ColumnName="IdCatalogDetail" />
+            </EndProperty>
+            <Condition ColumnName="IdProduct" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CatalogHeader_UserCatalog" TypeName="iCatalogDatabaseModel.CatalogHeader_UserCatalog" StoreEntitySet="UserCatalogs">
+            <EndProperty Name="CatalogHeader">
+              <ScalarProperty Name="IdCatalogHeader" ColumnName="IdCatalogHeader" />
+            </EndProperty>
+            <EndProperty Name="UserCatalogs">
+              <ScalarProperty Name="IdUserCatalog" ColumnName="IdUserCatalog" />
+            </EndProperty>
+            <Condition ColumnName="IdCatalogHeader" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Company_CatalogHeader" TypeName="iCatalogDatabaseModel.Company_CatalogHeader" StoreEntitySet="CatalogHeader">
+            <EndProperty Name="Companies">
+              <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+            </EndProperty>
+            <EndProperty Name="CatalogHeader">
+              <ScalarProperty Name="IdCatalogHeader" ColumnName="IdCatalogHeader" />
+            </EndProperty>
+            <Condition ColumnName="IdCompany" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Visibility_CatalogHeader" TypeName="iCatalogDatabaseModel.Visibility_CatalogHeader" StoreEntitySet="CatalogHeader">
+            <EndProperty Name="Visibility">
+              <ScalarProperty Name="IdVisibility" ColumnName="IdVisibility" />
+            </EndProperty>
+            <EndProperty Name="CatalogHeader">
+              <ScalarProperty Name="IdCatalogHeader" ColumnName="IdCatalogHeader" />
+            </EndProperty>
+            <Condition ColumnName="IdVisibility" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="City_Company" TypeName="iCatalogDatabaseModel.City_Company" StoreEntitySet="Companies">
+            <EndProperty Name="Cities">
+              <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+            </EndProperty>
+            <EndProperty Name="Companies">
+              <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+            </EndProperty>
+            <Condition ColumnName="IdCity" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="City_User" TypeName="iCatalogDatabaseModel.City_User" StoreEntitySet="Users">
+            <EndProperty Name="Cities">
+              <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+            </EndProperty>
+            <Condition ColumnName="IdCity" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Country_City" TypeName="iCatalogDatabaseModel.Country_City" StoreEntitySet="Cities">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+            </EndProperty>
+            <EndProperty Name="Cities">
+              <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+            </EndProperty>
+            <Condition ColumnName="IdCountry" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Company_File" TypeName="iCatalogDatabaseModel.Company_File" StoreEntitySet="Files">
+            <EndProperty Name="Companies">
+              <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+            </EndProperty>
+            <EndProperty Name="Files">
+              <ScalarProperty Name="IdFile" ColumnName="IdFile" />
+            </EndProperty>
+            <Condition ColumnName="IdCompany" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Company_Product" TypeName="iCatalogDatabaseModel.Company_Product" StoreEntitySet="Products">
+            <EndProperty Name="Companies">
+              <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+            </EndProperty>
+            <EndProperty Name="Products">
+              <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+            </EndProperty>
+            <Condition ColumnName="IdCompany" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Company_Visibility" TypeName="iCatalogDatabaseModel.Company_Visibility" StoreEntitySet="Visibility">
+            <EndProperty Name="Companies">
+              <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+            </EndProperty>
+            <EndProperty Name="Visibility">
+              <ScalarProperty Name="IdVisibility" ColumnName="IdVisibility" />
+            </EndProperty>
+            <Condition ColumnName="IdCompany" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Country_Company" TypeName="iCatalogDatabaseModel.Country_Company" StoreEntitySet="Companies">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+            </EndProperty>
+            <EndProperty Name="Companies">
+              <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+            </EndProperty>
+            <Condition ColumnName="IdCountry" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Country_User" TypeName="iCatalogDatabaseModel.Country_User" StoreEntitySet="Users">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+            </EndProperty>
+            <Condition ColumnName="IdCountry" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="User_Device" TypeName="iCatalogDatabaseModel.User_Device" StoreEntitySet="Devices">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+            </EndProperty>
+            <EndProperty Name="Devices">
+              <ScalarProperty Name="IdDevice" ColumnName="IdDevice" />
+            </EndProperty>
+            <Condition ColumnName="IdUser" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="File_ProductsFile" TypeName="iCatalogDatabaseModel.File_ProductsFile" StoreEntitySet="ProductsFiles">
+            <EndProperty Name="Files">
+              <ScalarProperty Name="IdFile" ColumnName="IdFile" />
+            </EndProperty>
+            <EndProperty Name="ProductsFiles">
+              <ScalarProperty Name="IdProductFile" ColumnName="IdProductFile" />
+            </EndProperty>
+            <Condition ColumnName="IdFile" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Product_ProductsFile" TypeName="iCatalogDatabaseModel.Product_ProductsFile" StoreEntitySet="ProductsFiles">
+            <EndProperty Name="Products">
+              <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+            </EndProperty>
+            <EndProperty Name="ProductsFiles">
+              <ScalarProperty Name="IdProductFile" ColumnName="IdProductFile" />
+            </EndProperty>
+            <Condition ColumnName="IdProduct" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="User_UserCatalog" TypeName="iCatalogDatabaseModel.User_UserCatalog" StoreEntitySet="UserCatalogs">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+            </EndProperty>
+            <EndProperty Name="UserCatalogs">
+              <ScalarProperty Name="IdUserCatalog" ColumnName="IdUserCatalog" />
+            </EndProperty>
+            <Condition ColumnName="IdUser" IsNull="false" />
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryItem">
+            <EntityTypeMapping TypeName="iCatalogDatabaseModel.CategoryItem">
+              <MappingFragment StoreEntitySet="CategoryItem">
+                <ScalarProperty Name="CategoryItemName" ColumnName="CategoryItemName" />
+                <ScalarProperty Name="IdCategoryItem" ColumnName="IdCategoryItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CategoryOne_Product1" TypeName="iCatalogDatabaseModel.CategoryOne_Product1" StoreEntitySet="Products">
+            <EndProperty Name="Products">
+              <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+            </EndProperty>
+            <EndProperty Name="Category">
+              <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+            </EndProperty>
+            <Condition ColumnName="IdCategory" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Company_CategoryOne1" TypeName="iCatalogDatabaseModel.Company_CategoryOne1" StoreEntitySet="Category">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+            </EndProperty>
+            <EndProperty Name="Companies">
+              <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+            </EndProperty>
+            <Condition ColumnName="IdCompany" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_CategoryItem_Category" TypeName="iCatalogDatabaseModel.FK_CategoryItem_Category" StoreEntitySet="CategoryItem">
+            <EndProperty Name="CategoryItem">
+              <ScalarProperty Name="IdCategoryItem" ColumnName="IdCategoryItem" />
+            </EndProperty>
+            <EndProperty Name="Category">
+              <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+            </EndProperty>
+            <Condition ColumnName="IdCategory" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model" ZoomLevel="72">
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.CatalogDetail" Width="1.5" PointX="15" PointY="15" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.CatalogHeader" Width="1.5" PointX="9.75" PointY="17.5" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Cities" Width="1.5" PointX="3" PointY="12.375" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Companies" Width="1.5" PointX="5.25" PointY="11.25" Height="4.2879036458333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Countries" Width="1.5" PointX="0.75" PointY="12.375" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Devices" Width="1.5" PointX="10.5" PointY="12.25" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Files" Width="1.5" PointX="6.5" PointY="16.375" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Products" Width="1.5" PointX="12.75" PointY="13.25" Height="2.7494921875000014" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.ProductsFiles" Width="1.5" PointX="15" PointY="17.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.UserCatalogs" Width="1.5" PointX="12" PointY="17.375" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Users" Width="1.5" PointX="8.25" PointY="11.75" Height="3.1340950520833388" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Visibility" Width="1.5" PointX="6.5" PointY="19.25" Height="2.172587890624996" IsExpanded="true" />
+        <AssociationConnector Association="iCatalogDatabaseModel.CatalogHeader_CatalogDetail" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.5" PointY="17.5" />
+          <ConnectorPoint PointX="10.5" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="13.619789166666665" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="13.786455833333333" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="13.822916666666666" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="13.989583333333334" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="14.026044166666667" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="14.192710833333335" PointY="16.424988606770835" />
+          <ConnectorPoint PointX="15" PointY="16.424988606770835" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Product_CatalogDetail" ManuallyRouted="false">
+          <ConnectorPoint PointX="14.25" PointY="15.499746093750002" />
+          <ConnectorPoint PointX="15" PointY="15.499746093750002" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.CatalogHeader_UserCatalog" ManuallyRouted="false">
+          <ConnectorPoint PointX="11.25" PointY="18.235341796874998" />
+          <ConnectorPoint PointX="12" PointY="18.235341796874998" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Company_CatalogHeader" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="15.537903645833332" />
+          <ConnectorPoint PointX="6" PointY="18.490143229166666" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="18.490143229166666" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="18.490143229166666" />
+          <ConnectorPoint PointX="6.5260454166666664" PointY="18.490143229166666" />
+          <ConnectorPoint PointX="6.6927120833333325" PointY="18.490143229166666" />
+          <ConnectorPoint PointX="9.75" PointY="18.490143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Visibility_CatalogHeader" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="25.586293945312498" />
+          <ConnectorPoint PointX="10.5" PointY="25.586293945312498" />
+          <ConnectorPoint PointX="10.5" PointY="20.441793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.City_Company" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="13.365143229166666" />
+          <ConnectorPoint PointX="5.25" PointY="13.365143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.City_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="12.838819614583333" />
+          <ConnectorPoint PointX="5" PointY="12.838819614583333" />
+          <ConnectorPoint PointX="5" PointY="11" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="11" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="11" />
+          <ConnectorPoint PointX="7.760416666666667" PointY="11" />
+          <ConnectorPoint PointX="7.927083333333333" PointY="11" />
+          <ConnectorPoint PointX="8.5104146666666658" PointY="11" />
+          <ConnectorPoint PointX="8.6770813333333336" PointY="11" />
+          <ConnectorPoint PointX="9" PointY="11" />
+          <ConnectorPoint PointX="9" PointY="11.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Country_City" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="13.365143229166666" />
+          <ConnectorPoint PointX="3" PointY="13.365143229166666" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Company_File" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.5937475" PointY="15.537903645833332" />
+          <ConnectorPoint PointX="5.5937475" PointY="22.711293945312498" />
+          <ConnectorPoint PointX="6.5260454166666664" PointY="22.711293945312498" />
+          <ConnectorPoint PointX="6.6927120833333325" PointY="22.711293945312498" />
+          <ConnectorPoint PointX="7.5" PointY="22.711293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Company_Product" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="15.015707194010421" />
+          <ConnectorPoint PointX="7.760416666666667" PointY="15.015707194010421" />
+          <ConnectorPoint PointX="7.927083333333333" PointY="15.015707194010421" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="15.015707194010421" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="15.015707194010421" />
+          <ConnectorPoint PointX="12.75" PointY="15.015707194010421" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Company_Visibility" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.6093787499999994" PointY="15.537903645833332" />
+          <ConnectorPoint PointX="6.6093787499999994" PointY="25.586293945312498" />
+          <ConnectorPoint PointX="7.5" PointY="25.586293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Country_Company" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="14.355286458333332" />
+          <ConnectorPoint PointX="1.5" PointY="14.946595552083331" />
+          <ConnectorPoint PointX="5.25" PointY="14.946595552083331" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Country_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="12.838819614583333" />
+          <ConnectorPoint PointX="2.75" PointY="12.838819614583333" />
+          <ConnectorPoint PointX="2.75" PointY="10.75" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="10.75" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="10.75" />
+          <ConnectorPoint PointX="7.760416666666667" PointY="10.75" />
+          <ConnectorPoint PointX="7.927083333333333" PointY="10.75" />
+          <ConnectorPoint PointX="8.593748" PointY="10.75" />
+          <ConnectorPoint PointX="8.593748" PointY="11.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.User_Device" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="13.3362939453125" />
+          <ConnectorPoint PointX="10.5" PointY="13.3362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.File_ProductsFile" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="22.711293945312498" />
+          <ConnectorPoint PointX="10.416666666666666" PointY="22.711293945312498" />
+          <ConnectorPoint PointX="10.583333333333334" PointY="22.711293945312498" />
+          <ConnectorPoint PointX="15.75" PointY="22.711293945312498" />
+          <ConnectorPoint PointX="15.75" PointY="19.345683593750003" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.Product_ProductsFile" ManuallyRouted="false">
+          <ConnectorPoint PointX="14.1093775" PointY="15.999492187500001" />
+          <ConnectorPoint PointX="14.1093775" PointY="19.18943359375" />
+          <ConnectorPoint PointX="15" PointY="19.18943359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="iCatalogDatabaseModel.User_UserCatalog" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="11.96875" />
+          <ConnectorPoint PointX="12.375" PointY="11.96875" />
+          <ConnectorPoint PointX="12.375" PointY="17.375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.Category" Width="1.5" PointX="2" PointY="17.25" />
+        <EntityTypeShape EntityType="iCatalogDatabaseModel.CategoryItem" Width="1.5" PointX="4" PointY="18.875" />
+        <AssociationConnector Association="iCatalogDatabaseModel.CategoryOne_Product1" />
+        <AssociationConnector Association="iCatalogDatabaseModel.Company_CategoryOne1" />
+        <AssociationConnector Association="iCatalogDatabaseModel.FK_CategoryItem_Category" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

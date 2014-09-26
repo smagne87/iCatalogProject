@@ -1,0 +1,332 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+body
+{
+    overflow-x: hidden;
+}
+.logo-login
+{
+    margin-top: 80px;
+}
+.logo-login > div
+{
+    overflow: hidden;
+}
+
+.logo-image
+{
+    width: 134px;
+    height: 49px;
+}
+
+#menu-left .nav-list a
+{
+    padding: 12px 21px 10px;
+    color: #000;
+}
+#menu-left .nav-list a span
+{
+    border-left: 1px solid #447d85;
+    margin-left: 6px;
+    padding-left: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+#menu-left .nav-list a.active
+{
+    background-color: #61b5e6;
+    text-decoration: none;
+    border-bottom: 1px solid #416f8f;
+}
+#menu-left .nav-list a.last
+{
+    border-bottom: 1px solid #DDDDDD;
+}
+#menu-left .nav-list a.current
+{
+    background-color: #000;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+.icons-only
+{
+    text-align: center;
+}
+
+li.accordion-menu
+{
+    padding: 0;
+}
+li.accordion-menu .accordion-inner
+{
+    padding: 0;
+    border-top: none;
+}
+li.accordion-menu .nav-list
+{
+    margin-left: 0;
+    margin-bottom: 0;
+    background: #548eb0;
+}
+li.accordion-menu .nav-list a
+{
+    margin-right: 0;
+}
+.togglemenuleft
+{
+    background: #222222;
+    text-align: center;
+    cursor: pointer;
+    padding: 6px 0px 3px;
+}
+#widget .accordion-inner.paddind, #section-body .accordion-inner.paddind
+{
+    padding: 10px 20px 0;
+}
+
+#widget
+{
+    padding: 9px 0;
+}
+#widget .table, #section-body .table
+{
+    margin-bottom: 0;
+}
+
+#widget .table td em.ago
+{
+    float: right;
+}
+
+
+#widget a
+{
+    color: #777777;
+}
+#widget a:hover
+{
+    color: #555555;
+    text-decoration: none;
+}
+#widget .accordion-inner
+{
+    padding: 9px 0;
+}
+#widget .accordion-heading .accordion-toggle
+{
+    background: #000;
+    text-shadow: 1px 1px #222222;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+#widget a.accordion-toggle:hover
+{
+    text-decoration: none;
+}
+#widget .divider-vertical
+{
+    border-right: 1px solid #666666;
+    height: 40px;
+    margin: 0 14px 0 9px;
+    overflow: hidden;
+    width: 1px;
+}
+.flickr li
+{
+    float: left;
+    margin: 6px;
+}
+.flickr img
+{
+    border: 3px solid #000;
+    width: 50px;
+}
+#block-top .thumbnails a
+{
+    position: relative;
+}
+#block-top .thumbnails .badge
+{
+    position: absolute;
+    left: -5px;
+    top: -7px;
+}
+#block-top .thumbnails .label
+{
+    position: absolute;
+    left: -5px;
+    top: -7px;
+}
+#block-top .thumbnails li
+{
+    margin-left: 4px;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+.brand-list
+{
+    overflow-y: auto;
+    height: 150px;
+    text-align:center;
+}
+
+.selected
+{
+    background-color: #DDDDDD;
+    text-decoration: none;
+}
+.selected a
+{
+    color: #666666;
+    font-weight: bold;
+}
+
+.list-actions
+{
+    width: 60px;
+}
+
+.switch-btns
+{
+    display: block;
+    margin: 0 0 5px;
+}
+
+.field-validation-error
+{
+    display: none;
+}
+.editor
+{
+    height: 200px;
+}
+
+.unread
+{
+    background-color: #eff8fd;
+}
+
+.unread td
+{
+    background-color: transparent !important;
+}
+
+/*overriding bootstrap styles*/
+
+.tab-content
+{
+    overflow: hidden !important;
+}
+
+
+.tab-content table
+{
+    table-layout: fixed;
+}
+.tab-content td
+{
+    overflow: hidden;
+    text-overflow: elipsis;
+}
+
+
+.dataTables_length
+{
+    width: 305px !important;
+    float: right !important;
+}
+
+.dataTables_length select
+{
+    width: 70px !important;
+}
+
+.dataTables_filter
+{
+    float: left !important;
+    text-align: left !important;
+}
+.required
+{
+    padding-right: 5px;
+    color: Red;
+}
+
+.spinner
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: -50px; /* half height of the spinner gif */
+    text-align: center;
+    z-index: 1234;
+    overflow: auto;
+    background-color: Gray;
+    opacity: .30;
+    filter: Alpha(Opacity=30);
+}
+.spinner img
+{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+
+table.dataTable thead th.sortable-none
+{
+    cursor: default !important;
+}
+
+.navbar .brand
+{
+    background: url('');
+    text-indent: 0px;
+    width: 100px;
+    color: White;
+    font-size: 15px;
+    text-align:center;
+}
+
+.chart-left, .chart-right
+{
+    height: 300px;
+    width: 450px;
+    float: left;
+}
+
+.cont-dateRange{
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    height: 17px;
+    background: #1f3948;
+}
+
+.cont-dateRange input{
+    margin: 0 4px 0 0  ;
+}
+
+
+#ui-datepicker-div{
+    display:none;
+}
+
+
+
+footer 
+{
+    margin:0 1.5%;
+	background-color: #FFF;
+	padding: 50px 0;
+}
+
+p.copyright {
+	margin: 15px 0 0;
+}

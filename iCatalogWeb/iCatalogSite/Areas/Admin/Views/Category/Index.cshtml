@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Areas/Admin/Views/Shared/_TabbedMasterLayout.cshtml";
+}
+@section Breadcrumb{
+<ol class="breadcrumb">
+    <li class="active">
+        <i class="glyphicon glyphicon-home"></i> @Html.ActionLink("Home", "Index", "Home", new { area = "Admin" }, null) \ <i class="glyphicon glyphicon-list-alt"></i> Categories 
+    </li>
+</ol>
+}

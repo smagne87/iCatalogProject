@@ -1,0 +1,520 @@
+img
+{
+	border:none;
+}
+
+ul{
+  list-style: none;
+  padding: 0px;
+}
+
+.spinner
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: -50px; /* half height of the spinner gif */
+    text-align: center;
+    z-index: 1234;
+    overflow: auto;
+    background-color: Gray;
+    opacity: .30;
+    filter: Alpha(Opacity=30);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+}
+.spinner img
+{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+
+.cleared
+{
+	float: none;
+	clear: both;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size:1px;
+}
+
+.button{
+  text-decoration: none;
+}
+
+.button h1{
+  background-image: url("../img/buttons.png");
+  background-repeat: no-repeat;
+  cursor: pointer;
+  float: right;
+  height: auto;
+  margin: 0 25px;
+  min-width: 80px;
+  padding: 10px 14px;
+  text-align: center;
+  width: 80px;
+}
+
+.bodyHome{
+  background-color: #fff;
+  margin: 0px 90px;
+  border-left: solid 2px #b8b3b2;
+  border-right: solid 2px #b8b3b2;
+  padding: 0px 35px;
+}
+div#searchBox{
+  vertical-align: top;
+  padding: 0px 5px;
+  background-color: #363437;
+  min-height:470px;
+}
+.headerFilters{
+  background-image: url('../img/headersBackgroundRed.png');
+  background-repeat: repeat-x;  
+  height: 75px;
+  width: 100%;
+}
+.headerFilters h1{
+    margin: 0px;
+}
+.caja-links-login
+{
+    float:left;
+    padding:5px;
+    text-align:left;
+}
+h1{
+  font-size: 23px;
+  padding: 20px 40px;
+  color: #fff;
+  font-weight: normal;
+}
+h1 span{
+  font-weight: bold;
+}
+div#filtersBoxMoto,
+div#filtersBoxRepuestos,
+div#filtersBox{
+  margin-top:-2px;
+  background-image: url('../img/backgroundFilters.png');
+  background-repeat: repeat-x;  
+  height: 380px;
+  width: 100%;
+  padding-top:2%;
+}
+div#filtersBoxMoto,
+div#filtersBoxRepuestos,
+div#filtersBox{
+  color: #fff;
+  font-size: 12px;
+}
+div#filtersBoxMoto,
+div#filtersBoxRepuestos,
+div#filterBox label
+{
+    font-size: 16px;
+}
+div#noticias{
+  padding: 10px;
+}
+div#noticias div{
+  font-family: arial;
+  padding-left:5px;
+}
+div#noticias div a
+{
+    text-decoration:none;
+}
+div#noticias div h2{
+  color: #e00d1d;
+  font-size: 12px;
+  font-weight: bold;
+  margin:0px;
+}
+div#noticias div span{
+  color: #e00d1d;
+  font-size: 10px;
+  margin:0px;
+}
+div#noticias div p{
+  color: #000;
+  font-size: 10px;
+  margin:0px;
+}
+ul#menu{
+  background-image: url('../img/menu-background.png');
+  height: 50px;
+  padding-left: 107px;
+  width: 592px;
+}
+  ul#menu li{
+    float: left;
+  }
+
+  ul#menu a{
+    background-image: url('../img/menuSeparador.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    padding:0px 10px;
+    display: block;
+    line-height: 63px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 11px;
+    color: #000;
+    text-transform: uppercase;
+  }
+img#logo{
+  margin-bottom: 50px;
+  margin-left: 100px;
+}
+
+div#sectionLogin{
+  margin-top: 10px;
+  background-color:#ebeced;
+  float: right;
+}
+
+.backgroundHeaders{
+  background-image: url('../img/headersBackground.png');
+  background-repeat: repeat-x;
+}
+div#sectionNews{
+  margin-top: 10px;
+  display: inline-block;
+}
+.backgroundHeaders h3{
+  margin: 0;
+  padding: 8px 25px;
+  color: #fff;
+}
+
+section#sectionLogin article{
+  padding: 15px 30px;
+  text-align: right;
+  width: 265px;
+}
+
+section#sectionLogin article ul li{
+  padding-bottom: 10px;
+}
+
+section#sectionLogin article ul li input{
+  width: 200px;
+}
+
+section#sectionLogin article h1{
+  margin: 0;
+}
+div#destacados
+{
+    height:250px;
+}
+img.seleccionar
+{
+    float:right;
+    width:10px !important;
+    height:10px !important;
+}
+
+h2.headerBackgroundGris
+{
+    background-image: url('../img/headersBackgroundGris.png');
+    margin:0px;
+    padding:25px;
+    text-align:center;
+    height:52px;
+    font-size:30px;
+}
+
+.footerText
+{
+    color:#7f8082;
+    font-size:10px;
+    text-align:center;
+    display:block;
+    padding:5px;
+}
+
+.caja-links-header
+{
+    padding-top:1%;
+    color: #FFFFFF;
+    font-size: 10px;
+}
+.caja-links-header a
+{
+    color:#FFF;
+    text-decoration:none;
+}
+/* Quienes Somos */
+
+
+/* Servicios */
+
+section#servicios article
+{
+    height:230px;
+    margin: 10px 80px;
+    padding:10px;
+    border-bottom:solid #e0e0e1 2px;
+}
+section#servicios article:last-child
+{
+    border-bottom:none;
+}
+
+.tabHeader
+{
+    padding:10px;
+    color:#000;
+    width:180px;
+    text-align:center;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+div.publicacionesContenedor
+{
+    margin-top:30px;
+}
+div.publicacionesContenedor article
+{
+    padding-top:20px;
+    border-top:1px dotted #c0c0c0;
+}
+.fondoGrisHeader
+{
+    background-color:#eaebec;
+    padding:10px;
+}
+
+.forms-fields
+{
+    border-bottom: 1px dotted #C0C0C0;
+    padding:10px 20px 10px 0px;
+}
+
+.details-fields
+{
+    text-transform: capitalize;
+}
+
+.edit-fields
+{
+    margin:2.3px;
+}
+
+.dottedRow
+{
+    padding:0.7% 0px;
+    border-bottom: 1px dotted #C0C0C0;
+}
+
+.label-li, .editor-li
+{
+    width:300px;
+    float:left;
+}
+    .editor-li input
+    {
+        width:250px;
+    }
+.info-li
+{
+    width:100%;
+    height:20px;
+    font-size:10px;
+}
+
+ul#listEquipamiento li
+{
+    height:25px;
+}
+
+h5
+{
+    border-bottom:1px dotted #C0C0C0;
+    padding-bottom:5px;
+}
+
+ul#imagenesColumnaDetalle
+{
+    margin:0px;
+    display: table-cell;
+    vertical-align: top;
+    width: 110px;
+}
+
+ul#imagenesColumnaDetalle li
+{
+    margin:0px 0px 5px 0px;
+}
+
+.thumbnail
+{
+    width:60px;
+    height:60px;
+}
+.favoritos
+{
+    float: right;
+    position: relative;
+    z-index: 1001;
+    margin-right: 5px;
+    margin-top: -10px;
+    cursor:pointer;
+}
+
+/*----------------------Caja Publicaciones---------------------------------*/
+.headerDatosPublicacion,
+.datosPublicacion
+{
+    float:left;
+    text-align:left;
+    width:80px;
+}
+
+div#loginPage li
+{
+    padding:5px;
+}
+
+.filterHeader
+{
+    background-color:#343236;
+    padding: 6px 6px 20px 0px;
+    border-radius: 0px 20px 0px 0px;
+}
+
+.publicacionItem
+{
+    background-image:url('../../img/fondoPublicacion.png');
+    padding:5px; 
+    display:table; 
+    margin-bottom:10px;    
+    background-repeat:repeat-x;
+}
+
+/*
+.publicacionItemML
+{
+    background-image:url('../../img/fondoPublicacionML.png');
+    padding:5px; 
+    display:table; 
+    margin-bottom:10px;
+    background-repeat:repeat-x;
+}
+*/
+
+article#bodySearch
+{
+  background-color: #fff;
+  border-left: solid 2px #b8b3b2;
+  border-right: solid 2px #b8b3b2;
+}
+
+a.grayLink
+{
+    color:#c5c7c7;
+}
+
+.thumbnailItem
+{
+    display:table-cell;
+    vertical-align:top;
+    width:150px;
+    height:115px;
+}
+
+.itemInfoCar
+{
+    display:table-cell;
+    vertical-align:top;
+    width:100%;
+    height:120px;
+}
+
+.marginRows
+{
+    margin: 10px 0px;
+}
+
+.centerRowsImages{
+    padding:40px 0px 40px 50px;
+}
+
+.smallTabs
+{
+    padding: 0px 5px !important;
+    text-align: left !important;
+}
+
+section#sectionUser{
+  margin-top: 10px;
+  float: right;
+}
+
+.feed
+{
+    text-decoration:none;
+    color:#000;
+}
+.feed img,
+.imagenDestacada
+{
+    width:160px;
+    height:80px;
+}
+
+.destacado
+{
+    margin:5px;
+    text-decoration:none;
+    color:#59531c;
+}
+.destacado h2
+{
+    font-size:10px;
+    margin:0px;
+    float:left;
+}
+
+
+.misPublicacionesItem
+{
+    background-image:url('../img/fondoPublicacion.png');
+    background-repeat:repeat-x; 
+    padding:5px; 
+    margin-bottom:10px; 
+    margin-left:0px;
+}
+
+.no-margin-left
+{
+    margin-left: 0px !important;
+}
+
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.list-inline > li:first-child {
+  padding-left: 0;
+}
+
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }

@@ -31,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,21 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BBCategories.cs" />
-    <Compile Include="BBCities.cs" />
-    <Compile Include="BBCompanyAccount.cs" />
-    <Compile Include="BBCountries.cs" />
-    <Compile Include="BBDevices.cs" />
-    <Compile Include="BBProducts.cs" />
-    <Compile Include="BBUserAccount.cs" />
+    <Compile Include="CategoryBL.cs" />
+    <Compile Include="ModelController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="RepositoryBase\IRepositoryBase.cs" />
+    <Compile Include="RepositoryBase\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iCatalogData\iCatalogData.csproj">
       <Project>{D7CE9840-716C-419B-B1AB-3E3274A3D367}</Project>
       <Name>iCatalogData</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

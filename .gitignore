@@ -27,3 +27,17 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+/iCatalogWeb/iCatalogSite/bin/EntityFramework.xml
+/iCatalogWeb/iCatalogSite/bin/Newtonsoft.Json.xml
+/iCatalogWeb/iCatalogSite/bin/System.Net.Http.Formatting.xml
+/iCatalogWeb/iCatalogSite/bin/System.Net.Http.WebRequest.xml
+/iCatalogWeb/iCatalogSite/bin/System.Net.Http.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.Helpers.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.Http.WebHost.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.Http.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.Mvc.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.Optimization.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.Razor.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.WebPages.Deployment.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.WebPages.Razor.xml
+/iCatalogWeb/iCatalogSite/bin/System.Web.WebPages.xml

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<iCatalogSite.Areas.Admin.Models.CategoryModel>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_emptyLayout.cshtml";
+}
+
+<h2>Category List</h2>
+<a class="btn btn-success" onclick="reloadCreate();">Create New</a>
+<table id="tblCategories" class="display" cellspacing="0" width="100%">
+    @foreach (var item in Model)
+    {
+        <tr><td><a onclick="editItem('@item.IdCategory');">@item.CategoryName</a></td></tr>
+        <tr><td>@item.CategoryDescription</td></tr>
+        <tr><td><a onclick="deleteItem('@item.IdCategory');">Delete</a></td></tr>
+    }
+</table>
+@section JavaScriptSection{
+@Scripts.Render("~/Scripts/DataTableHelpers")
+<script type="text/javascript">
+    var columns = [
+            { "sTitle": 'Name', "sWidth": "90px" },
+            { "sTitle": 'Actions', "bSortable": false, "sWidth": "90px" }
+    ]
+    function Reload() {
+        loadTableContentJS("tblCategories", columns);
+    }
+    Reload();
+
+    $(document).ready(function () {
+        initPages('Category', 'Category', 'List Category', 'Add/Edit Category');
+    });
+    $('#tblCategories').live('keydown', function (e) {
+        var keyCode = e.keyCode || e.which;
+
+        if (keyCode == 9) {
+            e.preventDefault();
+            // call custom function here
+        }
+    });
+</script>
+}
